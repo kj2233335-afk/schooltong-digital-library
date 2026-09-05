@@ -259,6 +259,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 .side button.on{background:var(--navy-soft);color:var(--navy);font-weight:700}
 .stat{grid-template-columns:repeat(3,1fr)}
 .stat .card{padding:18px}
+.tier3{grid-template-columns:repeat(3,1fr)}
 .stat small{font-size:12px;color:var(--muted);letter-spacing:.04em}
 .stat b{display:block;font-size:26px;font-family:"Noto Serif KR";margin-top:4px}
 .stat .bar{height:8px;background:var(--line);border-radius:99px;margin-top:10px;overflow:hidden}
@@ -270,7 +271,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 
 /* ---------- 관리자 ---------- */
 .adm{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.adm .card{padding:22px}
+.adm .card{padding:22px;min-width:0}
 .adm h3{font-family:"Noto Sans KR";font-size:17px;margin-bottom:12px}
 .drop{border:2px dashed var(--line);border-radius:12px;padding:26px;text-align:center;color:var(--muted);background:var(--cream);font-size:14px}
 .drop b{color:var(--navy)}
@@ -305,16 +306,28 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
   .side-ask{display:none}
   .hero,.list,.detail,.plan,.my,.adm{grid-template-columns:1fr}
   .cats,.res,.res3,.how,.steps,.stat{grid-template-columns:repeat(2,1fr)}
+  .tier3{grid-template-columns:1fr}
   .spec{grid-template-columns:repeat(2,1fr)}
   .stack{display:none}
   .filter{position:static}
   .nav{display:none}
   .detail .cover.big{height:360px}
+  .hdr .in{flex-wrap:wrap;gap:14px 20px}
+  .icons{gap:14px}
 }
 @media (max-width:560px){
   .cats,.res,.res3,.how,.steps,.stat{grid-template-columns:1fr}
   .form .two{grid-template-columns:1fr}
   .toc{columns:1}
+  .icons{display:none}
+  .ctl{padding:8px 10px;gap:8px;flex-direction:column;align-items:stretch}
+  .ctl .lbl{display:none}
+  .ctl .tabs{flex:none;justify-content:center}
+  .ctl .tabs button{padding:4px 9px;font-size:12px;white-space:nowrap}
+  .ctl .sw{justify-content:center}
+  .lic-bar{flex-wrap:wrap;gap:8px;padding:12px 14px}
+  .lic-bar .sp{display:none}
+  .lic-bar .btn{width:100%;text-align:center}
 }
 @media (prefers-reduced-motion: reduce){ *{transition:none!important} }
 </style>
@@ -666,7 +679,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
   </div>
 
   <div class="sec-h"><h2>1. 회원 등급 3종</h2></div>
-  <div class="grid stat" style="grid-template-columns:1fr 1fr 1fr">
+  <div class="grid stat tier3">
     <div class="card" style="padding:20px">
       <span class="chip">① 유료 회원</span>
       <b style="display:block;font-size:17px;margin:10px 0 8px">연간 이용권 결제 학교</b>

@@ -224,6 +224,17 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 .f-seg button.on{background:var(--navy);color:#fff;border-color:var(--navy);font-weight:700}
 .f-reset{width:100%;margin:-4px 0 6px;font-size:12.5px;padding:8px}
 
+
+.paylanes{padding:16px 18px;margin-top:16px}
+.paylanes h4{margin:0 0 10px;font-size:14px;font-weight:800}
+.lane-row{display:grid;grid-template-columns:150px 1fr;gap:10px;align-items:start;padding:10px 0;border-top:1px solid var(--line)}
+.lane-k{font-weight:800;font-size:13.5px;color:var(--navy)}
+.lane-k small{display:block;font-weight:400;font-size:11.5px;color:var(--muted)}
+.lane-row .flow{margin-top:0}
+.flow em{font-style:normal;font-size:11px;color:var(--gold);font-weight:700;margin-left:4px}
+.form #bizBox .two input{width:100%}
+@media (max-width:560px){.lane-row{grid-template-columns:1fr}}
+
 /* ---------- 메인 ---------- */
 .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:34px 36px;position:relative;overflow:hidden}
 .hero h1{font-size:34px;line-height:1.3;margin:10px 0 14px}
@@ -636,30 +647,33 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
         <div class="eyebrow">학교 연간 이용권</div>
         <h2>학교 한 곳, 선생님 모두, 1년 무제한</h2>
         <div class="price tnum">연 240,000<small>원 (부가세 포함)</small></div>
-        <div style="font-size:13px;opacity:.85">※ 가격은 시안용 임시 금액입니다</div>
+        <div style="font-size:13px;opacity:.85">부가세 포함 · 세금계산서 또는 현금영수증 발행</div>
         <ul>
           <li>전체 자료 190종+ 무제한 다운로드 (매월 신규 추가)</li>
-          <li>학교 코드 하나로 교사 전원 등록 · 인원 제한 없음</li>
+          <li>학교 코드 하나로 선생님 5명까지 등록 (추가 계정은 관리자 요청)</li>
           <li>교육 목적 인쇄·배부 이용 허락 포함</li>
           <li>학교인쇄통 제본 인쇄 주문 시 인쇄비 5% 할인</li>
-          <li>세금계산서 발행 · 학교 행정실 계좌이체 가능</li>
+          <li>계좌이체 · 학교 법인카드 · 개인 카드 · 휴대폰 결제 / 세금계산서·현금영수증 발행</li>
         </ul>
         <div class="note">자료 나눔에 참여해 주신 선생님의 학교는 첫 1년 무료 이용권을 드립니다. 신청서의 '나눔 참여 코드'에 안내받은 코드를 입력해 주세요.</div>
       </div>
-      <div class="grid steps">
-        <div class="card"><div class="k">STEP 1</div><h4>신청서 제출</h4><p>학교명·담당 선생님·결제 방법 입력</p></div>
-        <div class="card"><div class="k">STEP 2</div><h4>견적서·계산서 발송</h4><p>1영업일 내 이메일로 발송</p></div>
-        <div class="card"><div class="k">STEP 3</div><h4>입금 확인</h4><p>카드 즉시 · 계좌이체 확인 후</p></div>
-        <div class="card"><div class="k">STEP 4</div><h4>학교 코드 발급</h4><p>담당 선생님 이메일·문자로 전달</p></div>
+      <div class="card paylanes">
+        <h4>신청 후 진행 순서 — 결제 방법에 따라 두 갈래</h4>
+        <div class="lane-row"><span class="lane-k">계좌이체<small>학교 행정실 · 에듀파인</small></span>
+          <div class="flow"><span>신청서</span><i>→</i><span>견적서 자동 메일 <em>즉시</em></span><i>→</i><span>행정실 입금</span><i>→</i><span>입금 확인</span><i>→</i><span>학교 코드 메일</span><i>→</i><span>세금계산서 <em>홈택스</em></span></div></div>
+        <div class="lane-row"><span class="lane-k">카드 · 휴대폰<small>학교 법인카드 · 개인 카드 · 휴대폰</small></span>
+          <div class="flow"><span>신청서</span><i>→</i><span>온라인 결제 <em>즉시</em></span><i>→</i><span>학교 코드 메일 <em>즉시</em></span><i>→</i><span>카드전표 · 현금영수증 <em>자동</em></span></div></div>
+        <p class="muted" style="font-size:12.5px;margin:10px 0 0">법인카드로 결제해도 세금계산서가 필요한 학교는 신청서에서 「세금계산서」를 고르면 됩니다.</p>
       </div>
       <div class="faq">
         <details open><summary>같은 학교 다른 선생님도 쓸 수 있나요?</summary><p>네. 담당 선생님이 받은 학교 코드를 회원가입 시 입력하면 같은 학교 소속으로 등록되어 바로 이용할 수 있습니다.</p></details>
-        <details><summary>학교 행정실 계좌이체로 결제할 수 있나요?</summary><p>가능합니다. 신청서에서 '계좌이체(세금계산서)'를 선택하면 견적서와 세금계산서를 먼저 보내드립니다.</p></details>
+        <details><summary>학교 행정실 계좌이체로 결제할 수 있나요?</summary><p>가능합니다. 신청서에서 「계좌이체」를 고르면 견적서가 바로 메일로 가고, 입금 확인 후 학교 코드와 세금계산서를 보내드립니다.</p></details>
+          <details><summary>선생님 개인 카드나 휴대폰으로 결제해도 되나요?</summary><p>됩니다. 결제 즉시 학교 코드가 발급되고 카드전표 또는 현금영수증이 자동 발행됩니다. 학교 예산으로 정산할 때는 「세금계산서」를 함께 고르세요.</p></details>
         <details><summary>내려받은 PDF를 학교인쇄통에서 바로 인쇄할 수 있나요?</summary><p>자료 상세 화면의 '이 자료로 인쇄 주문' 버튼을 누르면 부수·제본 방식만 고르고 바로 주문됩니다.</p></details>
         <details><summary>이용권이 끝나면 내려받은 파일은 어떻게 되나요?</summary><p>이미 내려받은 파일은 계속 교육 목적으로 사용할 수 있습니다. 새 자료 다운로드만 중단됩니다.</p></details>
       </div>
     </div>
-    <form class="card form" onsubmit="event.preventDefault();toast('이용권 신청서 접수','입력 내용이 구글 시트 \'이용권 마스터\'에 한 줄 추가되고 관리자 메일이 갑니다. 담당 선생님은 1영업일 내 견적서를 받습니다','구글 시트 · 메일')">
+    <form class="card form" onsubmit="event.preventDefault();toast('이용권 신청서 접수','구글 시트 \'이용권 마스터\'에 한 줄 추가(Q열 결제방법·R열 증빙·S열 사업자번호). 계좌이체면 견적서 PDF가 즉시 메일 발송(T열 「발송」), 카드·휴대폰이면 PG 결제창으로 이동','구글 시트 · 메일 · PG')">
       <h3>학교 이용권 신청</h3>
       <div class="muted" style="font-size:13px">입력 내용은 관리자 구글 시트에 자동 기록됩니다.</div>
       <div class="two">
@@ -672,13 +686,23 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
       </div>
       <div class="f"><label>이메일 (학교 코드를 받을 주소)</label><input value="teacher@sen.go.kr"></div>
       <div class="f"><label>결제 방법</label>
-        <div class="radios">
-          <label><input type="radio" name="pay" checked>계좌이체 (세금계산서)</label>
-          <label><input type="radio" name="pay">신용카드</label>
-          <label><input type="radio" name="pay">학교 행정 후불</label>
+        <div class="radios" id="payRadios">
+          <label><input type="radio" name="pay" value="계좌이체" checked>계좌이체 (학교 행정실)</label>
+          <label><input type="radio" name="pay" value="법인카드">학교 법인카드</label>
+          <label><input type="radio" name="pay" value="개인카드">개인 신용·체크카드</label>
+          <label><input type="radio" name="pay" value="휴대폰">휴대폰 결제</label>
         </div></div>
+      <div class="f"><label>증빙 서류</label>
+        <div class="radios" id="docRadios">
+          <label><input type="radio" name="doc" value="세금계산서" checked>세금계산서</label>
+          <label><input type="radio" name="doc" value="현금영수증">현금영수증</label>
+          <label><input type="radio" name="doc" value="카드전표">카드 매출전표만</label>
+        </div></div>
+      <div class="f" id="bizBox"><label>세금계산서 발행 정보</label>
+        <div class="two"><input value="123-83-00000" placeholder="사업자등록번호"><input value="서울한강초등학교 행정실" placeholder="발행처 · 담당자"></div>
+        <input value="admin@sen.go.kr" placeholder="계산서 받을 이메일" style="margin-top:6px"></div>
       <div class="f"><label>나눔 참여 코드 (있는 경우)</label><input placeholder="예: SHARE-2026-0132"></div>
-      <div class="f"><label>요청 사항</label><textarea rows="2" placeholder="세금계산서 발행 정보, 시작 희망일 등"></textarea></div>
+      <div class="f"><label>요청 사항</label><textarea rows="2" placeholder="시작 희망일, 추가 계정 요청 등"></textarea></div>
       <div class="f" style="margin-top:18px"><button class="btn pri lg" type="submit">이용권 신청서 보내기</button></div>
       <div class="muted" style="font-size:12px;margin-top:8px">문의 02-2269-1100 · tong2269@naver.com</div>
     </form>
@@ -733,10 +757,11 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
         <div class="tb-tools">
           <input class="tb-search" placeholder="학교명 · 코드 · 담당교사" oninput="admFilter()" id="admSearch">
           <select id="admStatus" onchange="admFilter()"><option value="">상태 전체</option><option>이용중</option><option>30일 내 만료</option><option>만료</option><option>신청 접수</option></select>
+          <select id="admDoc" onchange="admFilter()"><option value="">증빙 전체</option><option>세금계산서 미발행</option><option>발행 완료</option></select>
           <select id="admSort" onchange="admFilter()"><option>만료 임박순</option><option>학교명순</option><option>최근 발급순</option></select>
         </div></div>
       <div class="tbl-wrap"><table class="rtbl adm-tbl">
-        <thead><tr><th>학교</th><th>담당교사</th><th>구분</th><th>코드</th><th>발급</th><th>만료</th><th class="th-num">교사</th><th>상태</th><th>메일</th></tr></thead><tbody id="admRows"></tbody></table></div>
+        <thead><tr><th>학교</th><th>담당교사</th><th>구분</th><th>코드</th><th>발급</th><th>만료</th><th class="th-num">교사</th><th>상태</th><th>결제</th><th>증빙</th><th>메일</th></tr></thead><tbody id="admRows"></tbody></table></div>
       <div class="tbl-foot"><span class="muted" id="admCount">1 – 6 / 37교</span><span class="pager"><b>1</b><a>2</a><a>3</a><a>…</a><a>7</a><a>›</a></span></div>
       <table style="display:none"><tr><th>학교</th><th>코드</th><th>만료</th><th>교사</th><th>상태</th></tr>
         <tr><td>서울한강초</td><td class="tnum">ST-P-2026-0417</td><td class="tnum">2027-03-31</td><td class="tnum">14</td><td><span class="chip ok">이용중</span></td></tr>
@@ -745,8 +770,8 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
         <tr><td>광주송정초</td><td class="tnum">—</td><td class="tnum">—</td><td class="tnum">1</td><td><span class="chip">신청 접수</span></td></tr>
         <tr><td>수원영통초</td><td class="tnum">SW-2025-0211</td><td class="tnum">2026-08-31</td><td class="tnum">11</td><td><span class="chip warn">만료</span></td></tr>
       </table></div>
-      <div class="flow"><span>신청 폼</span><i>→</i><span>구글 시트</span><i>→</i><span>입금 확인 체크</span><i>→</i><span>코드 자동 발급 메일</span><i>→</i><span>만료 30일 전 알림</span></div>
-      <div style="margin-top:14px;display:flex;gap:8px"><button class="btn ghost" onclick="toast('구글 시트 동기화','홈페이지의 학교 이용권 표와 구글 시트 \'이용권 마스터\'를 맞춥니다. 평소엔 매일 새벽 자동, 이 버튼은 즉시 실행','구글 시트')">구글 시트 동기화</button><button class="btn pri" onclick="toast('학교 코드 발급','입금 확인된 학교에 코드(예: GJ-2026-0421)를 만들고 담당 선생님께 메일·문자로 보냅니다','홈페이지 · 메일')">코드 발급</button></div>
+      <div class="flow"><span>신청 폼</span><i>→</i><span>구글 시트</span><i>→</i><span>계좌이체: 견적서 자동 메일 → 입금 확인 「확인」</span><i>/</i><span>카드·휴대폰: PG 즉시 결제</span><i>→</i><span>코드 자동 발급 메일</span><i>→</i><span>세금계산서 홈택스 발행 → U열 「발행」</span><i>→</i><span>만료 30일 전 알림</span></div>
+      <div style="margin-top:14px;display:flex;gap:8px"><button class="btn ghost" onclick="toast('세금계산서 발행 대상','R열 세금계산서 + H열 확인 + U열 비어 있는 학교 목록. 매일 08시 관리자 메일에도 같은 목록이 옵니다. 홈택스에서 발행 후 U열에 「발행」 입력','구글 시트 · 홈택스')">계산서 발행 대상</button><button class="btn ghost" onclick="toast('구글 시트 동기화','홈페이지의 학교 이용권 표와 구글 시트 \'이용권 마스터\'를 맞춥니다. 평소엔 매일 새벽 자동, 이 버튼은 즉시 실행','구글 시트')">구글 시트 동기화</button><button class="btn pri" onclick="toast('학교 코드 발급','입금 확인된 학교에 코드(예: GJ-2026-0421)를 만들고 담당 선생님께 메일·문자로 보냅니다','홈페이지 · 메일')">코드 발급</button></div>
     </div>
   </div>
 </section>
@@ -771,7 +796,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
       <b style="display:block;font-size:17px;margin:10px 0 8px">연간 이용권 결제 학교</b>
       <dl class="kv" style="font-size:13px">
         <dt>자료실</dt><dd>전체 무제한</dd>
-        <dt>인쇄 할인</dt><dd>적용 <span class="chip warn">임시 5%</span></dd>
+        <dt>인쇄 할인</dt><dd>적용 <span class="chip ok">확정 5%</span></dd>
         <dt>유효기간</dt><dd>결제일부터 1년</dd>
       </dl>
     </div>
@@ -780,7 +805,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
       <b style="display:block;font-size:17px;margin:10px 0 8px">자료를 제공한 선생님 · 자문단</b>
       <dl class="kv" style="font-size:13px">
         <dt>자료실</dt><dd>전체 무제한</dd>
-        <dt>인쇄 할인</dt><dd>적용 <span class="chip warn">임시 5%</span></dd>
+        <dt>인쇄 할인</dt><dd>적용 <span class="chip ok">확정 5%</span></dd>
         <dt>유효기간</dt><dd>코드 발급일부터 1년</dd>
       </dl>
     </div>
@@ -809,7 +834,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
         <tr><td>체험 발급</td><td class="tnum">ST-T-2026-0001</td><td>T = 체험, 필요 시</td></tr>
       </table></div>
       <p class="muted" style="font-size:13px;margin-top:12px">
-        코드는 학교 단위 1개. 같은 학교 교사 여러 명이 쓰도록 계정 다중 등록을 허용하되 상한을 둡니다 <span class="chip warn">임시 5명</span>
+        코드는 학교 단위 1개. 같은 학교 교사 여러 명이 쓰도록 계정 다중 등록을 허용하되 상한을 둡니다 <span class="chip ok">확정 5명</span>
       </p>
     </div>
     <div class="card">
@@ -871,16 +896,16 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
     </table></div>
   </div>
 
-  <div class="sec-h"><h2>7. 대표 확정 필요 항목</h2></div>
+  <div class="sec-h"><h2>7. 대표 확정 항목</h2></div>
   <div class="card" style="padding:22px">
-    <p class="muted" style="font-size:14px;margin:0 0 14px">아래 값은 임시 기재이며, 개발 착수 전 확정합니다.</p>
+    <p class="muted" style="font-size:14px;margin:0 0 14px">2026-09-07 대표 확정. 시트 「설정」 탭의 값과 동일합니다.</p>
     <div class="tbl-wrap"><table>
-      <tr><th>항목</th><th>임시값</th><th>확정값</th></tr>
-      <tr><td>연간 이용권 가격</td><td class="tnum">240,000원</td><td class="muted">—</td></tr>
-      <tr><td>인쇄 할인율</td><td class="tnum">5%</td><td class="muted">—</td></tr>
-      <tr><td>무료 샘플 자료</td><td class="tnum">3종</td><td class="muted">—</td></tr>
-      <tr><td>자료제공단 무료 사용 기간</td><td class="tnum">1년</td><td class="muted">—</td></tr>
-      <tr><td>코드당 등록 계정 수</td><td class="tnum">5명</td><td class="muted">—</td></tr>
+      <tr><th>항목</th><th>확정값</th><th>비고</th></tr>
+      <tr><td>연간 이용권 가격</td><td class="tnum">240,000원</td><td class="muted">부가세 포함</td></tr>
+      <tr><td>인쇄 할인율</td><td class="tnum">5%</td><td class="muted">학교인쇄통 제본 인쇄 주문 시</td></tr>
+      <tr><td>무료 샘플 자료</td><td class="tnum">3종</td><td class="muted">비회원도 다운로드</td></tr>
+      <tr><td>자료제공단 무료 사용 기간</td><td class="tnum">1년</td><td class="muted">승인일 기준</td></tr>
+      <tr><td>코드당 등록 계정 수</td><td class="tnum">5명</td><td class="muted">학교당</td></tr>
     </table></div>
   </div>
 
@@ -961,6 +986,14 @@ function fReset(){
 }
 document.addEventListener("click",e=>{const b=e.target.closest("#fLevel button");if(!b)return;fLv=b.dataset.v;document.querySelectorAll("#fLevel button").forEach(x=>x.classList.toggle("on",x===b));fRenderGrades([]);fApply();});
 document.addEventListener("change",e=>{if(e.target.closest("#filterBox"))fApply();});
+document.addEventListener("change",e=>{
+  const r=e.target.closest("#payRadios input");if(!r)return;
+  const v=r.value, docs=document.querySelectorAll("#docRadios input");
+  const def=v==="계좌이체"?"세금계산서":v==="법인카드"?"세금계산서":v==="개인카드"?"카드전표":"현금영수증";
+  docs.forEach(d=>d.checked=d.value===def);
+  const biz=$("#bizBox");if(biz)biz.style.display=def==="세금계산서"?"":"none";
+});
+document.addEventListener("change",e=>{const r=e.target.closest("#docRadios input");if(!r)return;const biz=$("#bizBox");if(biz)biz.style.display=r.value==="세금계산서"?"":"none";});
 function render(){
   $("#homeNew").innerHTML=R.filter(r=>r.tag==="NEW").concat(R[5]).slice(0,4).map(card).join("");
   $("#homeHot").innerHTML=[...R].sort((a,b)=>b.dl-a.dl).slice(0,4).map(card).join("");
@@ -1011,22 +1044,22 @@ function myFilter(){
   $("#myCount").textContent=q||tc?`${rows.length}건 검색됨`:`1 – ${rows.length} / 63건`;
 }
 const LIC=[
- {sc:"서울한강초등학교",tc:"박선희",ty:"유료",code:"ST-P-2026-0417",iss:"2026-04-01",exp:"2027-03-31",n:14,st:"이용중",m:"발송"},
- {sc:"부천중앙중학교",tc:"김민수",ty:"자료제공단",code:"ST-C-2026-0402",iss:"2025-09-30",exp:"2026-09-30",n:9,st:"30일 내 만료",m:"발송"},
- {sc:"대전유성고등학교",tc:"정수아",ty:"유료",code:"ST-P-2026-0388",iss:"2026-02-28",exp:"2027-02-28",n:21,st:"이용중",m:"발송"},
- {sc:"광주송정초등학교",tc:"오세진",ty:"유료",code:"—",iss:"—",exp:"—",n:1,st:"신청 접수",m:"미발송"},
- {sc:"수원영통초등학교",tc:"한지원",ty:"유료",code:"ST-P-2025-0211",iss:"2025-08-31",exp:"2026-08-31",n:11,st:"만료",m:"발송"},
- {sc:"인천부평중학교",tc:"류현서",ty:"체험",code:"ST-T-2026-0451",iss:"2026-08-20",exp:"2026-09-20",n:3,st:"30일 내 만료",m:"발송"},
+ {sc:"서울한강초등학교",tc:"박선희",ty:"유료",code:"ST-P-2026-0417",iss:"2026-04-01",exp:"2027-03-31",n:14,st:"이용중",pay:"계좌이체",doc:"세금계산서",docSt:"발행",m:"발송"},
+ {sc:"부천중앙중학교",tc:"김민수",ty:"자료제공단",code:"ST-C-2026-0402",iss:"2025-09-30",exp:"2026-09-30",n:9,st:"30일 내 만료",pay:"무료",doc:"—",docSt:"—",m:"발송"},
+ {sc:"대전유성고등학교",tc:"정수아",ty:"유료",code:"ST-P-2026-0388",iss:"2026-02-28",exp:"2027-02-28",n:21,st:"이용중",pay:"법인카드",doc:"세금계산서",docSt:"미발행",m:"발송"},
+ {sc:"광주송정초등학교",tc:"오세진",ty:"유료",code:"—",iss:"—",exp:"—",n:1,st:"신청 접수",pay:"계좌이체",doc:"세금계산서",docSt:"견적서 발송",m:"미발송"},
+ {sc:"수원영통초등학교",tc:"한지원",ty:"유료",code:"ST-P-2025-0211",iss:"2025-08-31",exp:"2026-08-31",n:11,st:"만료",pay:"개인카드",doc:"현금영수증",docSt:"발행",m:"발송"},
+ {sc:"인천부평중학교",tc:"류현서",ty:"체험",code:"ST-T-2026-0451",iss:"2026-08-20",exp:"2026-09-20",n:3,st:"30일 내 만료",pay:"휴대폰",doc:"카드전표",docSt:"자동",m:"발송"},
 ];
 const STCHIP={"이용중":"ok","30일 내 만료":"warn","만료":"","신청 접수":""};
 function admFilter(){
-  const q=($("#admSearch")?.value||"").trim(), st=$("#admStatus")?.value||"", so=$("#admSort")?.value||"만료 임박순";
-  let rows=LIC.filter(r=>(!q||r.sc.includes(q)||r.code.includes(q)||r.tc.includes(q))&&(!st||r.st===st));
+  const q=($("#admSearch")?.value||"").trim(), st=$("#admStatus")?.value||"", dc=$("#admDoc")?.value||"", so=$("#admSort")?.value||"만료 임박순";
+  let rows=LIC.filter(r=>(!q||r.sc.includes(q)||r.code.includes(q)||r.tc.includes(q))&&(!st||r.st===st)&&(!dc||(dc==="세금계산서 미발행"?(r.doc==="세금계산서"&&r.docSt!=="발행"):r.docSt==="발행"||r.docSt==="자동")));
   if(so==="학교명순")rows=[...rows].sort((a,b)=>a.sc.localeCompare(b.sc,"ko"));
   else if(so==="최근 발급순")rows=[...rows].sort((a,b)=>b.iss.localeCompare(a.iss));
   else rows=[...rows].sort((a,b)=>(a.exp==="—"?"9":a.exp).localeCompare(b.exp==="—"?"9":b.exp));
   const body=$("#admRows");if(!body)return;
-  body.innerHTML=rows.map(r=>`<tr><td><b>${r.sc}</b></td><td>${r.tc}</td><td>${r.ty}</td><td class="tnum">${r.code}</td><td class="tnum">${r.iss}</td><td class="tnum">${r.exp}</td><td class="tnum td-num">${r.n}</td><td><span class="chip ${STCHIP[r.st]||""}">${r.st}</span></td><td>${r.m==="발송"?'<span class="chip ok">발송</span>':'<span class="chip">미발송</span>'}</td></tr>`).join("")||`<tr><td colspan="9" class="muted" style="text-align:center;padding:26px">검색 결과가 없습니다</td></tr>`;
+  body.innerHTML=rows.map(r=>`<tr><td><b>${r.sc}</b></td><td>${r.tc}</td><td>${r.ty}</td><td class="tnum">${r.code}</td><td class="tnum">${r.iss}</td><td class="tnum">${r.exp}</td><td class="tnum td-num">${r.n}</td><td><span class="chip ${STCHIP[r.st]||""}">${r.st}</span></td><td>${r.pay}</td><td>${r.doc==="—"?"—":r.doc+" · "}${r.doc==="—"?"":`<span class="chip ${r.docSt==="미발행"?"warn":(r.docSt==="발행"||r.docSt==="자동")?"ok":""}">${r.docSt}</span>`}</td><td>${r.m==="발송"?'<span class="chip ok">발송</span>':'<span class="chip">미발송</span>'}</td></tr>`).join("")||`<tr><td colspan="11" class="muted" style="text-align:center;padding:26px">검색 결과가 없습니다</td></tr>`;
   $("#admCount").textContent=q||st?`${rows.length}교 검색됨`:`1 – ${rows.length} / 37교`;
 }
 function my(){

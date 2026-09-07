@@ -164,6 +164,44 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 .lic-bar.ok .dot{background:var(--ok)}
 .lic-bar .sp{margin-left:auto}
 
+
+/* ---------- 자료 목록 표 ---------- */
+.tblcard{padding:0;overflow:hidden}
+.rtbl{font-size:13.5px}
+.rtbl th{white-space:nowrap;background:var(--navy-soft);color:var(--navy);font-size:12px;padding:10px 10px;border-bottom:1px solid var(--line)}
+.rtbl td{padding:8px 10px;vertical-align:middle;border-bottom:1px solid var(--line);white-space:nowrap}
+.rtbl .td-title{white-space:normal;min-width:210px}
+.rtbl .td-title .chip{margin-left:4px;vertical-align:middle}
+.rtbl .rrow{cursor:pointer}
+.rtbl .rrow:hover td{background:var(--navy-soft)}
+.rtbl .td-title b{font-weight:700;color:var(--ink)}
+.rtbl .td-thumb{width:44px;padding-right:0}
+.rtbl .thumb{display:block;width:30px;height:40px;border-radius:2px 4px 4px 2px;position:relative;box-shadow:0 1px 3px rgba(0,0,0,.25);border-left:3px solid rgba(0,0,0,.2)}
+.rtbl .thumb i{position:absolute;left:8px;right:5px;height:2px;background:rgba(255,255,255,.55);border-radius:1px}
+.rtbl .thumb i:nth-child(1){top:9px}.rtbl .thumb i:nth-child(2){top:15px;right:10px}.rtbl .thumb i:nth-child(3){top:21px;right:7px}
+.rtbl .td-num,.rtbl .th-num{text-align:right}
+.rtbl .td-act,.rtbl .th-act{text-align:center;white-space:nowrap}
+.btn.sm{padding:5px 12px;font-size:12px;border-radius:7px}
+.tbl-foot{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;font-size:12.5px}
+.pager{display:flex;gap:4px}.pager a,.pager b{min-width:26px;height:26px;display:grid;place-items:center;border-radius:6px;border:1px solid var(--line);font-size:12px;cursor:pointer}
+.pager b{background:var(--navy);color:#fff;border-color:var(--navy)}
+@media (max-width:900px){
+  .rtbl .th-date,.rtbl .td-date,.rtbl th:nth-child(6),.rtbl td:nth-child(6){display:none}
+}
+@media (max-width:560px){
+  .rtbl thead{display:none}
+  .rtbl,.rtbl tbody{display:block}
+  .rtbl .rrow{display:grid;grid-template-columns:44px 1fr auto;grid-template-rows:auto auto auto;column-gap:8px;padding:10px 12px;border-bottom:1px solid var(--line)}
+  .rtbl .rrow td{display:block;padding:0;border:0;font-size:12px;color:var(--muted);white-space:normal}
+  .rtbl .td-thumb{grid-column:1;grid-row:1/4}
+  .rtbl .td-title{grid-column:2;grid-row:1;font-size:14px;min-width:0}
+  .rtbl .td-act{grid-column:3;grid-row:1/4;align-self:center}
+  .rtbl td:nth-child(4){grid-column:2;grid-row:2}
+  .rtbl td:nth-child(5){grid-column:2;grid-row:3}
+  .rtbl .rrow td:nth-child(3),.rtbl .rrow td:nth-child(6),.rtbl .rrow .td-date,.rtbl .rrow .td-num{display:none}
+}
+}
+
 /* ---------- 메인 ---------- */
 .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:34px 36px;position:relative;overflow:hidden}
 .hero h1{font-size:34px;line-height:1.3;margin:10px 0 14px}
@@ -523,7 +561,11 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
     <div>
       <div class="list-top"><span class="cnt tnum">검색 결과 42종</span><span class="muted">초등 · 5~6학년 · 학교자율시간</span>
         <select><option>최신순</option><option>다운로드 많은순</option><option>쪽수 적은순</option></select></div>
-      <div class="grid res3" id="listGrid"></div>
+      <div class="card tblcard"><div class="tbl-wrap"><table class="rtbl" id="listTable">
+        <thead><tr><th class="th-thumb"></th><th>자료명</th><th>주제</th><th>학교급·학년</th><th>판형·쪽수·차시</th><th>형식</th><th class="th-date">등록일</th><th class="th-num">내려받기</th><th class="th-act">받기</th></tr></thead>
+        <tbody id="listBody"></tbody>
+      </table></div>
+      <div class="tbl-foot"><span class="muted">1 – 12 / 42종</span><span class="pager"><b>1</b><a>2</a><a>3</a><a>4</a><a>›</a></span></div></div>
     </div>
   </div>
 </section>
@@ -842,10 +884,19 @@ let lic=false, cur=1;
 const $=s=>document.querySelector(s);
 function card(r){return `<div class="rc" data-id="${r.id}"><div class="cover" style="background:${r.c}">${r.tag?`<span class="tag">${r.tag}</span>`:""}${r.t}</div>
 <div class="bd"><div class="meta"><b>${r.lv}</b><span>${r.th}</span></div><div class="meta"><span>${r.sz} · ${r.pg}쪽 · ${r.ls}</span><span class="tnum">↓ ${r.dl.toLocaleString()}</span></div></div></div>`}
+const DATES=["2026-09-04","2026-09-02","2026-08-29","2026-08-27","2026-08-21","2026-08-15","2026-08-11","2026-08-05"];
+function row(r){const free=r.tag==="무료 샘플";const fmt=r.id%3===0?"PDF+원본":"PDF";
+ return `<tr class="rrow" data-id="${r.id}">
+  <td class="td-thumb"><span class="thumb" style="background:${r.c}"><i></i><i></i><i></i></span></td>
+  <td class="td-title"><b>${r.t}</b>${r.tag?` <span class="chip ${free?"ok":"gold"}">${r.tag}</span>`:""}</td>
+  <td>${r.th}</td><td>${r.lv}</td><td class="tnum">${r.sz} · ${r.pg}쪽 · ${r.ls}</td><td>${fmt}</td>
+  <td class="tnum td-date">${DATES[(r.id-1)%DATES.length]}</td><td class="tnum td-num">${r.dl.toLocaleString()}</td>
+  <td class="td-act">${lic||free?`<button class="btn pri sm" onclick="event.stopPropagation();toast('${r.t} 내려받기','${free?"무료 샘플 — 누구나":"이용권 학교 —"} PDF가 바로 내려받아집니다. 다운로드 수 +1, 우리학교 자료함에 기록','홈페이지')">받기</button>`:`<button class="btn ghost sm" onclick="event.stopPropagation();show('plan')">이용권 안내</button>`}</td>
+ </tr>`}
 function render(){
   $("#homeNew").innerHTML=R.filter(r=>r.tag==="NEW").concat(R[5]).slice(0,4).map(card).join("");
   $("#homeHot").innerHTML=[...R].sort((a,b)=>b.dl-a.dl).slice(0,4).map(card).join("");
-  $("#listGrid").innerHTML=R.map(card).join("")+R.slice(0,4).map(card).join("");
+  $("#listBody").innerHTML=R.concat(R.slice(0,4)).map(row).join("");
   const on=lic;
   $("#licHome").className="lic-bar"+(on?" ok":"");
   $("#licHome").innerHTML=on
@@ -912,7 +963,7 @@ document.addEventListener("click",e=>{
   const h=e.target.closest(".ah");
   if(h){h.classList.toggle("open");h.nextElementSibling.classList.toggle("open");return}
   const hf=e.target.closest("[data-href]");if(hf){window.open(hf.dataset.href,"_blank","noopener");return}const sn=e.target.closest("[data-soon]");if(sn){toast(sn.dataset.soon+" — 준비중","아직 실제 페이지가 없는 신규 품목입니다. 출시되면 기존 메뉴처럼 연결됩니다.","신규");return}const s=e.target.closest("[data-s]");if(s){show(s.dataset.s);return}
-  const c=e.target.closest(".rc,[data-id].rlink");if(c){detail(+c.dataset.id);show("detail")}
+  const c=e.target.closest(".rc,.rrow,[data-id].rlink");if(c){detail(+c.dataset.id);show("detail")}
 });
 $("#swLic").addEventListener("click",()=>{lic=!lic;render();toast(lic?"이용권 있는 학교 교사 화면":"이용권 없는 학교 교사 화면",lic?"같은 화면이 이렇게 바뀝니다 — 다운로드·인쇄주문 버튼이 열리고 우리학교 자료함이 채워집니다":"이용권이 없으면 신청 유도 화면. 무료 샘플 3종만 다운로드 가능","시안 전환")});
 let tt;function toast(t1,body,sys){const t=$("#toast");t.innerHTML=`<div class="tt-h"><span class="tt-k">이 버튼을 누르면</span>${sys?`<span class="tt-s">${sys}</span>`:""}<button class="tt-x" aria-label="닫기">✕</button></div><div class="tt-t">${t1}</div>${body?`<div class="tt-b">${body}</div>`:""}`;t.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("show"),6000);t.querySelector(".tt-x").onclick=()=>t.classList.remove("show")}

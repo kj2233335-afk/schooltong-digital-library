@@ -212,6 +212,18 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 @media (max-width:560px){.tb-tools{width:100%}.tb-search{flex:1 1 100%}
  .rtbl.adm-tbl thead{display:table-header-group}.rtbl.adm-tbl tbody{display:table-row-group}.rtbl.adm-tbl tr{display:table-row}.rtbl.adm-tbl td{display:table-cell;white-space:nowrap}}
 
+
+.f-guide{background:var(--navy-soft);border-radius:10px;padding:10px 12px;margin-bottom:12px}
+.f-guide b{display:block;font-size:14px;color:var(--navy);margin-bottom:3px}
+.f-guide span{font-size:12px;color:var(--muted);line-height:1.5;display:block}
+.filter h4{display:flex;align-items:center;gap:6px;text-transform:none;letter-spacing:0;font-size:13px;color:var(--ink);font-weight:700}
+.filter h4 i{font-style:normal;width:18px;height:18px;border-radius:50%;background:var(--navy);color:#fff;font-size:11px;display:grid;place-items:center;flex-shrink:0}
+.filter h4 small{font-weight:400;color:var(--muted);font-size:11px;margin-left:auto}
+.f-seg{display:flex;gap:4px}
+.f-seg button{flex:1;padding:7px 0;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:8px;font:inherit;font-size:13px;cursor:pointer}
+.f-seg button.on{background:var(--navy);color:#fff;border-color:var(--navy);font-weight:700}
+.f-reset{width:100%;margin-top:14px;font-size:12.5px;padding:8px}
+
 /* ---------- 메인 ---------- */
 .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:34px 36px;position:relative;overflow:hidden}
 .hero h1{font-size:34px;line-height:1.3;margin:10px 0 14px}
@@ -556,20 +568,26 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 <section class="screen" id="s-list">
   <div class="crumb">디지털자료실 › <b>전체 자료</b></div>
   <div class="list">
-    <aside class="card filter">
-      <h4>학교급</h4>
-      <label><input type="checkbox" checked>초등학교</label><label><input type="checkbox">중학교</label><label><input type="checkbox">고등학교</label>
-      <h4>학년</h4>
-      <label><input type="checkbox">1~2학년</label><label><input type="checkbox">3~4학년</label><label><input type="checkbox" checked>5~6학년</label>
-      <h4>주제</h4>
-      <label><input type="checkbox" checked>학교자율시간</label><label><input type="checkbox">독서·글쓰기</label><label><input type="checkbox">진로·인성</label><label><input type="checkbox">학급운영</label><label><input type="checkbox">안전·환경</label>
-      <h4>판형 · 분량</h4>
-      <label><input type="checkbox" checked>B5</label><label><input type="checkbox">A4</label><label><input type="checkbox">32쪽 이하</label><label><input type="checkbox">33~64쪽</label><label><input type="checkbox">64~128쪽</label><label><input type="checkbox">128쪽 이상</label>
-      <h4>기타</h4>
-      <label><input type="checkbox">무료 샘플만</label><label><input type="checkbox">편집 원본(한글) 포함</label>
+    <aside class="card filter" id="filterBox">
+      <div class="f-guide"><b>자료 찾기</b><span>위에서부터 차례로 고르세요. 고를 때마다 오른쪽 목록이 바로 줄어듭니다.</span></div>
+      <h4><i>1</i>학교급 <small>하나만</small></h4>
+      <div class="f-seg" id="fLevel"><button class="on" data-v="초등">초등</button><button data-v="중등">중등</button><button data-v="고등">고등</button></div>
+      <h4><i>2</i>학년 <small>여러 개 가능</small></h4>
+      <div id="fGrade"></div>
+      <h4><i>3</i>주제 <small>여러 개 가능</small></h4>
+      <div id="fTopic">
+        <label><input type="checkbox" value="학교자율시간">학교자율시간</label><label><input type="checkbox" value="독서·글쓰기">독서·글쓰기</label><label><input type="checkbox" value="진로·인성">진로·인성</label><label><input type="checkbox" value="학급운영">학급운영</label><label><input type="checkbox" value="안전·환경">안전·환경</label><label><input type="checkbox" value="행사·기록">행사·기록</label><label><input type="checkbox" value="창체·생활기록">창체·생활기록</label><label><input type="checkbox" value="표지·디자인 서식">표지·디자인 서식</label>
+      </div>
+      <h4><i>4</i>판형 · 분량 <small>필요할 때만</small></h4>
+      <div id="fSize">
+        <label><input type="checkbox" value="B5">B5</label><label><input type="checkbox" value="A4">A4</label><label><input type="checkbox" value="s32">32쪽 이하</label><label><input type="checkbox" value="s64">33~64쪽</label><label><input type="checkbox" value="s128">65쪽 이상</label>
+      </div>
+      <h4><i>+</i>기타</h4>
+      <div id="fEtc"><label><input type="checkbox" value="free">무료 샘플만</label><label><input type="checkbox" value="src">편집 원본(한글) 포함</label></div>
+      <button class="btn ghost f-reset" onclick="fReset()">선택 초기화</button>
     </aside>
     <div>
-      <div class="list-top"><span class="cnt tnum">검색 결과 42종</span><span class="muted">초등 · 5~6학년 · 학교자율시간</span>
+      <div class="list-top"><span class="cnt tnum" id="fCount">검색 결과 42종</span><span class="muted" id="fSummary">초등 · 5~6학년 · 학교자율시간</span>
         <select><option>최신순</option><option>다운로드 많은순</option><option>쪽수 적은순</option></select></div>
       <div class="card tblcard"><div class="tbl-wrap"><table class="rtbl" id="listTable">
         <thead><tr><th class="th-thumb"></th><th>자료명</th><th>주제</th><th>학교급·학년</th><th>판형·쪽수·차시</th><th>형식</th><th class="th-date">등록일</th><th class="th-num">내려받기</th><th class="th-act">받기</th></tr></thead>
@@ -910,10 +928,45 @@ function row(r){const free=r.tag==="무료 샘플";const fmt=r.id%3===0?"PDF+원
   <td class="tnum td-date">${DATES[(r.id-1)%DATES.length]}</td><td class="tnum td-num">${r.dl.toLocaleString()}</td>
   <td class="td-act">${lic||free?`<button class="btn pri sm" onclick="event.stopPropagation();toast('${r.t} 내려받기','${free?"무료 샘플 — 누구나":"이용권 학교 —"} PDF가 바로 내려받아집니다. 다운로드 수 +1, 우리학교 자료함에 기록','홈페이지')">받기</button>`:`<button class="btn ghost sm" onclick="event.stopPropagation();show('plan')">이용권 안내</button>`}</td>
  </tr>`}
+const GRADES={"초등":["1~2학년","3~4학년","5~6학년"],"중등":["1학년","2학년","3학년"],"고등":["1학년","2학년","3학년"]};
+const LVMAP={"초등":"초등","중등":"중학","고등":"고등"};
+let fLv="초등";
+function fRenderGrades(keep){
+  const box=$("#fGrade");if(!box)return;
+  box.innerHTML=GRADES[fLv].map(g=>`<label><input type="checkbox" value="${g}" ${keep&&keep.includes(g)?"checked":""}>${g}</label>`).join("");
+}
+function fVals(id){return [...document.querySelectorAll(`#${id} input:checked`)].map(i=>i.value)}
+function fApply(){
+  const gr=fVals("fGrade"), tp=fVals("fTopic"), sz=fVals("fSize"), et=fVals("fEtc");
+  let rows=R.filter(r=>{
+    if(!r.lv.startsWith(LVMAP[fLv])&&!r.lv.startsWith("전 "))return false;
+    if(gr.length&&!gr.some(g=>r.lv.includes(g.replace("학년",""))||r.lv.includes("전학년")||r.lv.includes("전 학교급")))return false;
+    if(tp.length&&!tp.includes(r.th))return false;
+    const sizes=sz.filter(v=>!v.startsWith("s")), pages=sz.filter(v=>v.startsWith("s"));
+    if(sizes.length&&!sizes.some(v=>r.sz.includes(v)))return false;
+    if(pages.length&&!pages.some(v=>v==="s32"?r.pg<=32:v==="s64"?(r.pg>32&&r.pg<=64):r.pg>64))return false;
+    if(et.includes("free")&&r.tag!=="무료 샘플")return false;
+    if(et.includes("src")&&r.id%3!==0)return false;
+    return true;
+  });
+  const body=$("#listBody");if(body)body.innerHTML=rows.length?rows.map(row).join(""):`<tr><td colspan="9" class="muted" style="text-align:center;padding:30px">조건에 맞는 자료가 없습니다. 아래쪽 조건부터 하나씩 풀어보세요.</td></tr>`;
+  const n=rows.length?rows.length*5+2:0;
+  $("#fCount").textContent=`검색 결과 ${n}종`;
+  const parts=[fLv].concat(gr.length?[gr.join(",")]:[]).concat(tp.length?[tp.join(",")]:[]).concat(sz.length?[sz.map(v=>({s32:"32쪽 이하",s64:"33~64쪽",s128:"65쪽 이상"})[v]||v).join(",")]:[]);
+  $("#fSummary").textContent=parts.join(" · ");
+  const foot=document.querySelector("#s-list .tbl-foot .muted");if(foot)foot.textContent=`1 – ${Math.min(rows.length,12)} / ${n}종`;
+}
+function fReset(){
+  fLv="초등";document.querySelectorAll("#fLevel button").forEach(b=>b.classList.toggle("on",b.dataset.v==="초등"));
+  fRenderGrades([]);document.querySelectorAll("#fTopic input,#fSize input,#fEtc input").forEach(i=>i.checked=false);fApply();
+}
+document.addEventListener("click",e=>{const b=e.target.closest("#fLevel button");if(!b)return;fLv=b.dataset.v;document.querySelectorAll("#fLevel button").forEach(x=>x.classList.toggle("on",x===b));fRenderGrades([]);fApply();});
+document.addEventListener("change",e=>{if(e.target.closest("#filterBox"))fApply();});
 function render(){
   $("#homeNew").innerHTML=R.filter(r=>r.tag==="NEW").concat(R[5]).slice(0,4).map(card).join("");
   $("#homeHot").innerHTML=[...R].sort((a,b)=>b.dl-a.dl).slice(0,4).map(card).join("");
-  $("#listBody").innerHTML=R.concat(R.slice(0,4)).map(row).join("");
+  if(!$("#fGrade").children.length)fRenderGrades([]);
+  fApply();
   const on=lic;
   $("#licHome").className="lic-bar"+(on?" ok":"");
   $("#licHome").innerHTML=on

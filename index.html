@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body style="margin:0">
 <title>학교인쇄통 디지털자료실</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Noto+Serif+KR:wght@600;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
 <style>
 :root{
   --navy:#1E3F82; --navy-deep:#142B5C; --navy-soft:#E6ECF7;
@@ -26,8 +26,8 @@
   --shadow:0 8px 24px rgba(0,0,0,.35);
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--cream);color:var(--ink);font-family:"Noto Sans KR",system-ui,-apple-system,"Malgun Gothic",sans-serif;font-size:15px;line-height:1.6;word-break:keep-all}
-h1,h2,h3,h4{margin:0;text-wrap:balance;font-family:"Noto Serif KR","Noto Sans KR",serif}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-size:15px;line-height:1.6;word-break:keep-all}
+h1,h2,h3,h4{margin:0;text-wrap:balance;font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif}
 a{color:inherit;text-decoration:none}
 button{font:inherit;cursor:pointer}
 .tnum{font-variant-numeric:tabular-nums}
@@ -84,7 +84,7 @@ button{font:inherit;cursor:pointer}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--sb-navy:#DCE6FA;--sb-navy-dark:#0B1220;--sb-gold-soft:#3A3014;--sb-g50:#1A2030;--sb-g200:#2C3650;--sb-g400:#7F8BA6;--sb-g700:#C5CDDD;--sb-white:#141A28;--sb-text:#E6EAF2} }
 :root[data-theme="dark"]{--sb-navy:#DCE6FA;--sb-navy-dark:#0B1220;--sb-gold-soft:#3A3014;--sb-g50:#1A2030;--sb-g200:#2C3650;--sb-g400:#7F8BA6;--sb-g700:#C5CDDD;--sb-white:#141A28;--sb-text:#E6EAF2}
 .shell{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:280px 1fr;gap:0 26px;align-items:start}
-.sb{position:sticky;top:52px;max-height:calc(100vh - 52px);overflow-y:auto;background:var(--sb-white);border:1px solid var(--sb-g200);border-top:0;border-radius:0 0 12px 12px;box-shadow:0 2px 16px rgba(0,0,0,.08);font-family:"Noto Sans KR",sans-serif}
+.sb{position:sticky;top:52px;max-height:calc(100vh - 52px);overflow-y:auto;background:var(--sb-white);border:1px solid var(--sb-g200);border-top:0;border-radius:0 0 12px 12px;box-shadow:0 2px 16px rgba(0,0,0,.08);font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif}
 .sb::-webkit-scrollbar{width:4px}.sb::-webkit-scrollbar-thumb{background:var(--sb-g400);border-radius:4px}
 .sb .print-nav{display:flex;align-items:center;gap:8px;padding:12px 16px;background:linear-gradient(135deg,#1B2A4A 0%,#2C3E6B 100%);color:#D4AF37;font-size:13px;font-weight:700;cursor:pointer;border-bottom:2px solid #D4AF37;letter-spacing:-.3px}
 [data-href]{cursor:pointer}
@@ -170,7 +170,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 .hero p{max-width:34em;color:var(--muted);font-size:16px}
 .hero .cta{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
 .stack{position:relative;height:230px}
-.book{position:absolute;width:130px;height:180px;border-radius:6px 12px 12px 6px;box-shadow:var(--shadow);padding:16px 14px;color:#fff;font-family:"Noto Serif KR",serif;font-weight:900;font-size:13px;line-height:1.35;border-left:8px solid rgba(0,0,0,.18)}
+.book{position:absolute;width:130px;height:180px;border-radius:6px 12px 12px 6px;box-shadow:var(--shadow);padding:16px 14px;color:#fff;font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-weight:900;font-size:13px;line-height:1.35;border-left:8px solid rgba(0,0,0,.18)}
 .book small{display:block;font-family:"Noto Sans KR";font-weight:500;font-size:11px;opacity:.85;margin-top:8px}
 .book.b1{left:0;top:30px;background:#1E3F82;transform:rotate(-6deg)}
 .book.b2{left:100px;top:10px;background:#2E7D5B;transform:rotate(2deg)}
@@ -179,14 +179,14 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 .cats{grid-template-columns:repeat(4,1fr)}
 .cat{padding:20px;border-radius:14px;background:var(--paper);border:1px solid var(--line);cursor:pointer;transition:border-color .15s,transform .12s}
 .cat:hover{border-color:var(--navy);transform:translateY(-2px)}
-.cat .ic{width:40px;height:40px;border-radius:10px;background:var(--navy-soft);color:var(--navy);display:grid;place-items:center;font-weight:900;font-size:16px;margin-bottom:12px;font-family:"Noto Serif KR"}
+.cat .ic{width:40px;height:40px;border-radius:10px;background:var(--navy-soft);color:var(--navy);display:grid;place-items:center;font-weight:900;font-size:16px;margin-bottom:12px;font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif}
 .cat h3{font-size:16px;font-family:"Noto Sans KR";font-weight:700}
 .cat p{margin:4px 0 0;font-size:13px;color:var(--muted)}
 .cat .n{font-size:12px;color:var(--navy);font-weight:700;margin-top:10px}
 .res{grid-template-columns:repeat(4,1fr)}
 .rc{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;cursor:pointer;transition:transform .12s,box-shadow .12s}
 .rc:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-.cover{height:170px;display:flex;align-items:flex-end;padding:14px;color:#fff;font-family:"Noto Serif KR",serif;font-weight:900;font-size:17px;line-height:1.3;position:relative;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+.cover{height:170px;display:flex;align-items:flex-end;padding:14px;color:#fff;font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-weight:900;font-size:17px;line-height:1.3;position:relative;text-shadow:0 1px 2px rgba(0,0,0,.25)}
 .cover:before{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;background:rgba(0,0,0,.18)}
 .cover .tag{position:absolute;top:10px;right:10px;font-size:10px;font-family:"Noto Sans KR";font-weight:900;background:var(--mustard);color:#1B2230;padding:2px 7px;border-radius:5px;text-shadow:none}
 .rc .bd{padding:12px 14px 14px}
@@ -194,7 +194,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 .rc .meta b{color:var(--ink);font-weight:500}
 .how{grid-template-columns:repeat(3,1fr)}
 .how .card{padding:22px}
-.how .k{font-family:"Noto Serif KR";font-weight:900;font-size:28px;color:var(--mustard);line-height:1}
+.how .k{font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-weight:900;font-size:28px;color:var(--mustard);line-height:1}
 .how h3{font-size:16px;font-family:"Noto Sans KR";margin:10px 0 6px}
 .how p{margin:0;font-size:14px;color:var(--muted)}
 
@@ -236,7 +236,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 .pricecard:after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:var(--mustard);opacity:.18}
 .pricecard .eyebrow{color:var(--mustard)}
 .pricecard h2{font-size:26px;margin:8px 0 4px;color:#fff}
-.pricecard .price{font-family:"Noto Serif KR";font-weight:900;font-size:44px;line-height:1.1;margin:18px 0 4px}
+.pricecard .price{font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif;font-weight:900;font-size:44px;line-height:1.1;margin:18px 0 4px}
 .pricecard .price small{font-size:16px;font-family:"Noto Sans KR";font-weight:500;opacity:.85}
 .pricecard ul{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:8px;font-size:15px}
 .pricecard li:before{content:"✓";display:inline-block;width:22px;color:var(--mustard);font-weight:900}
@@ -269,7 +269,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 .stat .card{padding:18px}
 .tier3{grid-template-columns:repeat(3,1fr)}
 .stat small{font-size:12px;color:var(--muted);letter-spacing:.04em}
-.stat b{display:block;font-size:26px;font-family:"Noto Serif KR";margin-top:4px}
+.stat b{display:block;font-size:26px;font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif;margin-top:4px}
 .stat .bar{height:8px;background:var(--line);border-radius:99px;margin-top:10px;overflow:hidden}
 .stat .bar i{display:block;height:100%;background:var(--navy);width:62%}
 .member{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}

@@ -45,7 +45,9 @@ button{font:inherit;cursor:pointer}
 
 /* ---------- 사이트 헤더 (기존 school-tong.com 틀 유지) ---------- */
 :root{--slate:#5B6A8A;--slate-deep:#4A587A}
-.util{background:var(--paper);border-bottom:1px solid var(--line);font-size:12px;color:var(--muted)}
+.util{background:var(--paper);border-bottom:1px solid var(--line);font-size:13px;color:var(--ink)}
+.util span[data-href]{font-weight:600}
+.util span[data-href]:after{content:"↗";font-size:10px;opacity:.55;margin-left:2px}
 .util .in{max-width:1320px;margin:0 auto;padding:6px 20px;display:flex;gap:18px;justify-content:flex-end}
 .hdr{background:var(--paper)}
 .hdr .in{max-width:1320px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;gap:28px}
@@ -60,7 +62,7 @@ button{font:inherit;cursor:pointer}
 .logo .txt small{display:block;font-size:9px;color:var(--muted);letter-spacing:.02em;margin-bottom:3px}
 .logo .txt b{font-size:24px;color:#2A3F6B;font-weight:900}
 .search{flex:1;max-width:450px;margin:0 auto;border:1px solid #9AA3B8;padding:9px 16px;text-align:center;font-size:15px;color:#3A4560;background:var(--paper)}
-.icons{display:flex;gap:22px;font-size:11px;color:#4A5570;text-align:center}
+.icons{display:flex;gap:22px;font-size:12px;color:var(--ink);text-align:center;font-weight:600}
 .icons div{position:relative}
 .icons .ic{display:block;width:26px;height:26px;margin:0 auto 4px;border:2px solid #5B6A8A;border-radius:6px}
 .icons .badge{position:absolute;top:-6px;right:-4px;background:#3A4C7A;color:#fff;font-size:9px;border-radius:99px;padding:0 5px;font-weight:700}
@@ -68,8 +70,9 @@ button{font:inherit;cursor:pointer}
 .gnb .in{max-width:1320px;margin:0 auto;display:flex;align-items:stretch}
 .gnb .allbtn{width:280px;flex:none;background:var(--slate);color:#fff;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center;gap:14px;padding:16px 0}
 .gnb .allbtn:after{content:"≡";font-size:22px}
-.nav{display:flex;flex:1;justify-content:space-around;align-items:center;font-size:16px;color:#2E3A55}
-.nav span{padding:16px 6px;border-bottom:3px solid transparent;cursor:pointer}
+.nav{display:flex;flex:1;justify-content:space-around;align-items:center;font-size:17px;color:var(--ink)}
+.nav span{padding:16px 6px;border-bottom:3px solid transparent;cursor:pointer;font-weight:700}
+.nav span[data-href]:after{content:"↗";font-size:12px;opacity:.55;margin-left:4px}
 .nav span.cur{color:var(--navy);border-color:var(--mustard);font-weight:700}
 .nav .new{display:inline-block;background:var(--mustard);color:#1B2230;font-size:10px;font-weight:900;padding:1px 6px;border-radius:999px;margin-left:5px;vertical-align:middle}
 .gnb .notice{flex:none;width:280px;border-left:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:0 16px;font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden}
@@ -86,8 +89,8 @@ button{font:inherit;cursor:pointer}
 .sb .print-nav{display:flex;align-items:center;gap:8px;padding:12px 16px;background:linear-gradient(135deg,#1B2A4A 0%,#2C3E6B 100%);color:#D4AF37;font-size:13px;font-weight:700;cursor:pointer;border-bottom:2px solid #D4AF37;letter-spacing:-.3px}
 [data-href]{cursor:pointer}
 .si .ext{margin-left:auto;opacity:.45;font-size:11px}
-.sb .sb-cap{padding:11px 16px 9px;background:var(--sb-navy);color:#fff;font-size:13px;font-weight:800;letter-spacing:-.2px}
-.sb .sb-cap small{display:block;font-weight:500;font-size:11px;opacity:.8;margin-top:3px}
+.sb .sb-cap{padding:11px 16px 9px;background:#1B2A4A;color:#FFFFFF;border-bottom:1px solid #D4AF37;font-size:13px;font-weight:800;letter-spacing:-.2px}
+.sb .sb-cap small{display:block;font-weight:500;font-size:11px;color:#D4AF37;margin-top:3px}
 .sb .print-nav .arr{margin-left:auto;opacity:.7;font-size:11px}
 .ag{border-bottom:1px solid var(--sb-g200)}
 .ag:last-of-type{border-bottom:0}

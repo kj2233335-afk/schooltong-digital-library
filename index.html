@@ -222,7 +222,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 .f-seg{display:flex;gap:4px}
 .f-seg button{flex:1;padding:7px 0;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:8px;font:inherit;font-size:13px;cursor:pointer}
 .f-seg button.on{background:var(--navy);color:#fff;border-color:var(--navy);font-weight:700}
-.f-reset{width:100%;margin-top:14px;font-size:12.5px;padding:8px}
+.f-reset{width:100%;margin:-4px 0 6px;font-size:12.5px;padding:8px}
 
 /* ---------- 메인 ---------- */
 .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:34px 36px;position:relative;overflow:hidden}
@@ -570,6 +570,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
   <div class="list">
     <aside class="card filter" id="filterBox">
       <div class="f-guide"><b>자료 찾기</b><span>위에서부터 차례로 고르세요. 고를 때마다 오른쪽 목록이 바로 줄어듭니다.</span></div>
+      <button class="btn ghost f-reset" onclick="fReset()">검색 초기화</button>
       <h4><i>1</i>학교급 <small>하나만</small></h4>
       <div class="f-seg" id="fLevel"><button class="on" data-v="초등">초등</button><button data-v="중등">중등</button><button data-v="고등">고등</button></div>
       <h4><i>2</i>학년 <small>여러 개 가능</small></h4>
@@ -584,7 +585,6 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
       </div>
       <h4><i>+</i>기타</h4>
       <div id="fEtc"><label><input type="checkbox" value="free">무료 샘플만</label><label><input type="checkbox" value="src">편집 원본(한글) 포함</label></div>
-      <button class="btn ghost f-reset" onclick="fReset()">선택 초기화</button>
     </aside>
     <div>
       <div class="list-top"><span class="cnt tnum" id="fCount">검색 결과 42종</span><span class="muted" id="fSummary">초등 · 5~6학년 · 학교자율시간</span>

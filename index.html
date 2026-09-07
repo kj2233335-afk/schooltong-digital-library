@@ -202,6 +202,16 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 }
 }
 
+
+.tb-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.tb-tools{display:flex;gap:6px;flex-wrap:wrap}
+.tb-search{font:inherit;font-size:13px;padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);min-width:180px}
+.tb-tools select{font:inherit;font-size:13px;padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink)}
+.adm-tbl th,.adm-tbl td{padding:8px 10px;font-size:13px}
+.adm > .card:nth-child(2){grid-column:1/-1}
+@media (max-width:560px){.tb-tools{width:100%}.tb-search{flex:1 1 100%}
+ .rtbl.adm-tbl thead{display:table-header-group}.rtbl.adm-tbl tbody{display:table-row-group}.rtbl.adm-tbl tr{display:table-row}.rtbl.adm-tbl td{display:table-cell;white-space:nowrap}}
+
 /* ---------- 메인 ---------- */
 .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:34px 36px;position:relative;overflow:hidden}
 .hero h1{font-size:34px;line-height:1.3;margin:10px 0 14px}
@@ -702,10 +712,17 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
       <div style="margin-top:14px"><button class="btn pri" onclick="toast('자료 등록 → 검수 대기','드라이브 PDF가 자료실에 올라가고 앞 3쪽 미리보기가 자동 생성됩니다. 디자인팀 검수 완료 시 공개','홈페이지 · 드라이브')">등록</button></div>
     </div>
     <div class="card">
-      <h3>학교 이용권 관리</h3>
-      <div class="tbl-wrap"><table>
-        <tr><th>학교</th><th>코드</th><th>만료</th><th>교사</th><th>상태</th></tr>
-        <tr><td>서울한강초</td><td class="tnum">HG-2026-0417</td><td class="tnum">2027-03-31</td><td class="tnum">14</td><td><span class="chip ok">이용중</span></td></tr>
+      <div class="tb-head"><h3>학교 이용권 관리 <span class="muted" style="font-size:13px;font-weight:400">37교</span></h3>
+        <div class="tb-tools">
+          <input class="tb-search" placeholder="학교명 · 코드 · 담당교사" oninput="admFilter()" id="admSearch">
+          <select id="admStatus" onchange="admFilter()"><option value="">상태 전체</option><option>이용중</option><option>30일 내 만료</option><option>만료</option><option>신청 접수</option></select>
+          <select id="admSort" onchange="admFilter()"><option>만료 임박순</option><option>학교명순</option><option>최근 발급순</option></select>
+        </div></div>
+      <div class="tbl-wrap"><table class="rtbl adm-tbl">
+        <thead><tr><th>학교</th><th>담당교사</th><th>구분</th><th>코드</th><th>발급</th><th>만료</th><th class="th-num">교사</th><th>상태</th><th>메일</th></tr></thead><tbody id="admRows"></tbody></table></div>
+      <div class="tbl-foot"><span class="muted" id="admCount">1 – 6 / 37교</span><span class="pager"><b>1</b><a>2</a><a>3</a><a>…</a><a>7</a><a>›</a></span></div>
+      <table style="display:none"><tr><th>학교</th><th>코드</th><th>만료</th><th>교사</th><th>상태</th></tr>
+        <tr><td>서울한강초</td><td class="tnum">ST-P-2026-0417</td><td class="tnum">2027-03-31</td><td class="tnum">14</td><td><span class="chip ok">이용중</span></td></tr>
         <tr><td>부천중앙중</td><td class="tnum">BC-2026-0402</td><td class="tnum">2026-09-30</td><td class="tnum">9</td><td><span class="chip warn">30일 내 만료</span></td></tr>
         <tr><td>대전유성고</td><td class="tnum">DJ-2026-0388</td><td class="tnum">2027-02-28</td><td class="tnum">21</td><td><span class="chip ok">이용중</span></td></tr>
         <tr><td>광주송정초</td><td class="tnum">—</td><td class="tnum">—</td><td class="tnum">1</td><td><span class="chip">신청 접수</span></td></tr>
@@ -904,7 +921,7 @@ function render(){
    :`<span class="dot"></span><b>서울한강초등학교</b>는 아직 학교 이용권이 없습니다. 무료 샘플 3종은 바로 내려받을 수 있어요.<span class="sp"></span><button class="btn gold" data-s="plan" style="padding:7px 12px">학교 이용권 신청</button>`;
   $("#swLic").textContent=on?"이용권 있는 학교 교사":"이용권 없는 학교 교사";
   $("#swLic").className=on?"lic":"";
-  detail(cur); my();
+  detail(cur); my(); admFilter();
 }
 function detail(id){
   cur=id;const r=R.find(x=>x.id===id);
@@ -922,6 +939,44 @@ function detail(id){
      <div class="row"><button class="btn gold lg" data-s="plan">학교 이용권 신청하기</button><button class="btn ghost lg" onclick="toast('미리보기 3쪽','이용권이 없어도 앞 3쪽은 \'미리보기\' 워터마크가 찍힌 이미지로 볼 수 있습니다','홈페이지')">미리보기 3쪽 보기</button><button class="btn ghost" onclick="toast('담당 선생님께 추천','같은 학교 연구부장·교무부장 등 담당 선생님께 이용권 안내 메일을 보냅니다. 일반 교사가 학교에 도입을 건의하는 통로','메일')">담당 선생님께 추천</button></div>
      <div class="hint">이미 우리 학교가 이용권을 갖고 있다면, 회원정보에서 학교 코드를 입력해 주세요.</div>`;
 }
+const DL=[
+ {d:"2026-09-04 15:20",id:1,t:"학교자율시간 진로탐색 워크북",th:"학교자율시간",w:"박선희",f:"PDF"},
+ {d:"2026-09-03 10:02",id:4,t:"생태환경 프로젝트 탐구노트",th:"안전·환경",w:"이정민",f:"PDF"},
+ {d:"2026-09-01 09:41",id:3,t:"감정 온도계 인성 활동지",th:"진로·인성",w:"최유진",f:"PDF+원본"},
+ {d:"2026-08-28 14:12",id:2,t:"한 학기 한 권 읽기 독서기록장",th:"독서·글쓰기",w:"박선희",f:"PDF"},
+ {d:"2026-08-26 11:05",id:6,t:"안전교육 7대 영역 학습지",th:"안전·환경",w:"김도윤",f:"PDF+원본"},
+ {d:"2026-08-20 16:48",id:5,t:"학급 생활지도 활동지 모음",th:"학급운영",w:"이정민",f:"PDF"},
+ {d:"2026-08-19 09:30",id:8,t:"교지·문집 표지 템플릿 20종",th:"표지·디자인 서식",w:"박선희",f:"PDF+원본"},
+ {d:"2026-08-12 13:55",id:7,t:"고교 학점제 진로설계 플래너",th:"진로·인성",w:"최유진",f:"PDF"},
+];
+function myFilter(){
+  const q=($("#mySearch")?.value||"").trim(), tc=$("#myTeacher")?.value||"", so=$("#mySort")?.value||"최신순";
+  let rows=DL.filter(r=>(!q||r.t.includes(q)||r.w.includes(q))&&(!tc||r.w===tc));
+  if(so==="자료명순")rows=[...rows].sort((a,b)=>a.t.localeCompare(b.t,"ko"));
+  else if(so==="선생님순")rows=[...rows].sort((a,b)=>a.w.localeCompare(b.w,"ko"));
+  const body=$("#myRows");if(!body)return;
+  body.innerHTML=rows.map(r=>`<tr class="rrow" data-id="${r.id}"><td class="tnum">${r.d}</td><td class="td-title"><b>${r.t}</b></td><td>${r.th}</td><td>${r.w}</td><td>${r.f}</td><td class="td-act"><button class="btn ghost sm" onclick="event.stopPropagation();toast('${r.t} 다시 받기','같은 파일을 다시 내려받습니다. 다운로드 수는 늘지 않음','홈페이지')">다시 받기</button></td></tr>`).join("")||`<tr><td colspan="6" class="muted" style="text-align:center;padding:26px">검색 결과가 없습니다</td></tr>`;
+  $("#myCount").textContent=q||tc?`${rows.length}건 검색됨`:`1 – ${rows.length} / 63건`;
+}
+const LIC=[
+ {sc:"서울한강초등학교",tc:"박선희",ty:"유료",code:"ST-P-2026-0417",iss:"2026-04-01",exp:"2027-03-31",n:14,st:"이용중",m:"발송"},
+ {sc:"부천중앙중학교",tc:"김민수",ty:"자료제공단",code:"ST-C-2026-0402",iss:"2025-09-30",exp:"2026-09-30",n:9,st:"30일 내 만료",m:"발송"},
+ {sc:"대전유성고등학교",tc:"정수아",ty:"유료",code:"ST-P-2026-0388",iss:"2026-02-28",exp:"2027-02-28",n:21,st:"이용중",m:"발송"},
+ {sc:"광주송정초등학교",tc:"오세진",ty:"유료",code:"—",iss:"—",exp:"—",n:1,st:"신청 접수",m:"미발송"},
+ {sc:"수원영통초등학교",tc:"한지원",ty:"유료",code:"ST-P-2025-0211",iss:"2025-08-31",exp:"2026-08-31",n:11,st:"만료",m:"발송"},
+ {sc:"인천부평중학교",tc:"류현서",ty:"체험",code:"ST-T-2026-0451",iss:"2026-08-20",exp:"2026-09-20",n:3,st:"30일 내 만료",m:"발송"},
+];
+const STCHIP={"이용중":"ok","30일 내 만료":"warn","만료":"","신청 접수":""};
+function admFilter(){
+  const q=($("#admSearch")?.value||"").trim(), st=$("#admStatus")?.value||"", so=$("#admSort")?.value||"만료 임박순";
+  let rows=LIC.filter(r=>(!q||r.sc.includes(q)||r.code.includes(q)||r.tc.includes(q))&&(!st||r.st===st));
+  if(so==="학교명순")rows=[...rows].sort((a,b)=>a.sc.localeCompare(b.sc,"ko"));
+  else if(so==="최근 발급순")rows=[...rows].sort((a,b)=>b.iss.localeCompare(a.iss));
+  else rows=[...rows].sort((a,b)=>(a.exp==="—"?"9":a.exp).localeCompare(b.exp==="—"?"9":b.exp));
+  const body=$("#admRows");if(!body)return;
+  body.innerHTML=rows.map(r=>`<tr><td><b>${r.sc}</b></td><td>${r.tc}</td><td>${r.ty}</td><td class="tnum">${r.code}</td><td class="tnum">${r.iss}</td><td class="tnum">${r.exp}</td><td class="tnum td-num">${r.n}</td><td><span class="chip ${STCHIP[r.st]||""}">${r.st}</span></td><td>${r.m==="발송"?'<span class="chip ok">발송</span>':'<span class="chip">미발송</span>'}</td></tr>`).join("")||`<tr><td colspan="9" class="muted" style="text-align:center;padding:26px">검색 결과가 없습니다</td></tr>`;
+  $("#admCount").textContent=q||st?`${rows.length}교 검색됨`:`1 – ${rows.length} / 37교`;
+}
 function my(){
   $("#myBody").innerHTML=lic?`
    <div class="grid stat">
@@ -930,14 +985,18 @@ function my(){
      <div class="card"><small>인쇄 주문</small><b class="tnum">4건</b><span class="muted" style="font-size:12px">최근: 진로탐색 워크북 120부 (배송 중)</span></div>
    </div>
    <div class="card" style="padding:22px;margin-top:18px">
-     <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><div><div class="eyebrow">우리학교 코드</div><div class="muted" style="font-size:13px">동료 선생님께 이 코드를 알려주세요. 회원가입 시 입력하면 바로 이용됩니다.</div></div><span class="code" style="margin-left:auto">HG-2026-0417</span><button class="btn ghost" onclick="toast('학교 코드 복사','동료 선생님께 카톡·메신저로 붙여넣어 전달할 수 있습니다','홈페이지')">복사</button><button class="btn pri" onclick="toast('메일로 초대','동료 선생님 이메일을 입력하면 학교 코드가 담긴 가입 안내 메일이 갑니다','메일')">메일로 초대</button></div>
+     <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><div><div class="eyebrow">우리학교 코드</div><div class="muted" style="font-size:13px">동료 선생님께 이 코드를 알려주세요. 회원가입 시 입력하면 바로 이용됩니다.</div></div><span class="code" style="margin-left:auto">ST-P-2026-0417</span><button class="btn ghost" onclick="toast('학교 코드 복사','동료 선생님께 카톡·메신저로 붙여넣어 전달할 수 있습니다','홈페이지')">복사</button><button class="btn pri" onclick="toast('메일로 초대','동료 선생님 이메일을 입력하면 학교 코드가 담긴 가입 안내 메일이 갑니다','메일')">메일로 초대</button></div>
    </div>
    <div class="card" style="padding:22px;margin-top:18px">
-     <h3 style="font-family:'Noto Sans KR';font-size:16px;margin-bottom:8px">최근 다운로드</h3>
-     <div class="tbl-wrap"><table><tr><th>일시</th><th>자료</th><th>선생님</th><th></th></tr>
-     <tr><td class="tnum">09-04 15:20</td><td>학교자율시간 진로탐색 워크북</td><td>박선희</td><td><a data-id="1" class="rlink" style="color:var(--navy);font-weight:700">다시 받기</a></td></tr>
-     <tr><td class="tnum">09-03 10:02</td><td>생태환경 프로젝트 탐구노트</td><td>이정민</td><td><a data-id="4" class="rlink" style="color:var(--navy);font-weight:700">다시 받기</a></td></tr>
-     <tr><td class="tnum">09-01 09:41</td><td>감정 온도계 인성 활동지</td><td>최유진</td><td><a data-id="3" class="rlink" style="color:var(--navy);font-weight:700">다시 받기</a></td></tr></table></div>
+     <div class="tb-head"><h3 style="font-family:'Noto Sans KR';font-size:16px">다운로드 이력 <span class="muted" style="font-size:13px;font-weight:400">63건</span></h3>
+       <div class="tb-tools">
+         <input class="tb-search" placeholder="자료명 · 선생님 검색" oninput="myFilter()" id="mySearch">
+         <select id="myTeacher" onchange="myFilter()"><option value="">선생님 전체</option><option>박선희</option><option>이정민</option><option>최유진</option><option>김도윤</option></select>
+         <select id="myPeriod" onchange="myFilter()"><option value="">기간 전체</option><option>이번 주</option><option>이번 달</option><option>3개월</option></select>
+         <select id="mySort" onchange="myFilter()"><option>최신순</option><option>자료명순</option><option>선생님순</option></select>
+       </div></div>
+     <div class="tbl-wrap"><table class="rtbl" id="myTable"><thead><tr><th>일시</th><th>자료</th><th>주제</th><th>선생님</th><th>형식</th><th class="th-act">받기</th></tr></thead><tbody id="myRows"></tbody></table></div>
+     <div class="tbl-foot"><span class="muted" id="myCount">1 – 8 / 63건</span><span class="pager"><b>1</b><a>2</a><a>3</a><a>…</a><a>8</a><a>›</a></span></div>
    </div>
    <div class="card" style="padding:22px;margin-top:18px">
      <h3 style="font-family:'Noto Sans KR';font-size:16px;margin-bottom:4px">우리학교 선생님 14명</h3>
@@ -951,6 +1010,7 @@ function my(){
      <p class="muted" style="max-width:32em;margin:0 auto 18px">학교 이용권을 신청하면 이곳에서 이용권 기간, 우리 학교 선생님들의 다운로드 이력, 인쇄 주문 현황을 한눈에 볼 수 있습니다.</p>
      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn gold lg" data-s="plan">학교 이용권 신청하기</button><button class="btn ghost lg" onclick="toast('학교 코드 입력','기존 회원정보 수정 화면에 \'학교 코드\' 칸이 추가됩니다. 코드를 넣으면 그 학교 소속으로 묶여 바로 이용권 적용','홈페이지 회원')">이미 코드가 있어요 — 학교 코드 입력</button></div>
    </div>`;
+  myFilter();
 }
 function show(s){
   document.querySelectorAll(".screen").forEach(e=>e.classList.toggle("on",e.id==="s-"+s));

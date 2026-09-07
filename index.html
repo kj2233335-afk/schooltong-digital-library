@@ -86,15 +86,18 @@ button{font:inherit;cursor:pointer}
 .sb .print-nav{display:flex;align-items:center;gap:8px;padding:12px 16px;background:linear-gradient(135deg,#1B2A4A 0%,#2C3E6B 100%);color:#D4AF37;font-size:13px;font-weight:700;cursor:pointer;border-bottom:2px solid #D4AF37;letter-spacing:-.3px}
 [data-href]{cursor:pointer}
 .si .ext{margin-left:auto;opacity:.45;font-size:11px}
+.sb .sb-cap{padding:11px 16px 9px;background:var(--sb-navy);color:#fff;font-size:13px;font-weight:800;letter-spacing:-.2px}
+.sb .sb-cap small{display:block;font-weight:500;font-size:11px;opacity:.8;margin-top:3px}
 .sb .print-nav .arr{margin-left:auto;opacity:.7;font-size:11px}
 .ag{border-bottom:1px solid var(--sb-g200)}
 .ag:last-of-type{border-bottom:0}
-.ah{display:flex;align-items:center;gap:8px;padding:13px 16px;cursor:pointer;user-select:none;transition:background .2s;width:100%;border:0;background:transparent;text-align:left;font-family:inherit}
+.ah{display:flex;align-items:center;gap:8px;padding:14px 16px;border-top:1px solid var(--sb-g200)!important;cursor:pointer;user-select:none;transition:background .2s;width:100%;border:0;background:transparent;text-align:left;font-family:inherit}
 .ah:hover{background:var(--sb-g50)}
 .ah.open{background:var(--sb-gold-soft)}
 .ah .ico{font-size:16px;flex-shrink:0}
-.ah .nm{font-size:13.5px;font-weight:700;color:var(--sb-navy);flex:1;letter-spacing:-.3px}
+.ah .nm{font-size:15px;font-weight:800;color:var(--sb-navy);flex:1;letter-spacing:-.3px}
 .ah .cnt{font-size:11px;color:var(--sb-g700);margin-right:4px}
+.ah .cnt:after{content:"개"}
 .ah .chev{font-size:10px;color:var(--sb-g700);transition:transform .3s ease;flex-shrink:0}
 .ah.open .chev{transform:rotate(90deg)}
 .ah.featured{background:linear-gradient(135deg,#FFF8E1 0%,#FFF3E0 100%);border-left:3px solid var(--sb-gold)}
@@ -104,8 +107,8 @@ button{font:inherit;cursor:pointer}
 .ah.digital .nm{color:#fff}.ah.digital .cnt{color:rgba(255,255,255,.6)}.ah.digital .chev{color:var(--sb-gold)}
 .ah.digital.open{background:linear-gradient(135deg,#1B2A4A 0%,#1E3F82 100%)}
 .ab{max-height:0;overflow:hidden;transition:max-height .35s ease;background:var(--sb-g50)}
-.ab.open{max-height:600px}
-.si{display:flex;align-items:center;padding:9px 18px 9px 42px;font-size:12.5px;color:var(--sb-g700);cursor:pointer;transition:all .15s;border-bottom:1px solid rgba(0,0,0,.04);width:100%;border-left:0;border-right:0;border-top:0;background:transparent;text-align:left;font-family:inherit}
+.ab.open{max-height:900px}
+.si{display:flex;align-items:center;padding:9px 18px 9px 26px;font-size:13px;color:var(--sb-g700);cursor:pointer;transition:all .15s;border-bottom:1px solid rgba(0,0,0,.04);width:100%;border-left:0;border-right:0;border-top:0;background:transparent;text-align:left;font-family:inherit}
 .si:hover{background:var(--sb-white);color:var(--sb-navy);padding-left:46px}
 .si:last-child{border-bottom:0}
 .si.on{background:var(--sb-white);color:var(--sb-navy);font-weight:700;box-shadow:inset 3px 0 0 var(--sb-gold)}
@@ -356,7 +359,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 <div class="util"><div class="in"><span data-href="https://www.gwanggotong.com/bbs/login.php?url=/bbs/group.php?gr_id=intra">인트라넷</span><span data-href="https://www.school-tong.com/bbs/content.php?co_id=sitemap">사이트맵</span><span data-href="https://www.school-tong.com/bbs/register.php">회원가입</span><span data-href="https://www.school-tong.com/page/?pid=contactus">오시는 길</span></div></div>
 <div class="hdr"><div class="in">
   <div class="logo"><span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="txt"><small>디자인부터 인쇄까지</small><b>학교인쇄통</b></span></div>
-  <div class="search">★ 선생님이 선택한 블로그 리뷰!! ★</div>
+  <div class="search">선생님이 선택한 블로그 리뷰</div>
   <div class="icons">
     <div data-href="https://www.school-tong.com/shop/search.php"><span class="ic"></span>전체검색</div>
     <div><span class="ic"></span>박선희 선생님</div>
@@ -377,9 +380,10 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 
 <div class="shell">
 <aside class="sb" id="sb">
-  <div class="print-nav" data-href="https://www.school-tong.com/bbs/board.php?bo_table=print_nav"><span>🖨️</span>인쇄 네비게이션 — 규격·용지·제본<span class="arr">›</span></div>
+  <div class="sb-cap">학교인쇄통 전체 카테고리 <small>↗ 표시 = 기존 홈페이지 페이지로 이동 · 없으면 신규</small></div>
+  <div class="print-nav" data-href="https://www.school-tong.com/bbs/board.php?bo_table=print_nav">인쇄 네비게이션 — 규격·용지·제본<span class="arr">›</span></div>
   <div class="ag">
-    <button class="ah digital open"><span class="ico">📂</span><span class="nm">디지털자료실 <span class="tg gold">NEW</span></span><span class="cnt">5</span><span class="chev">▶</span></button>
+    <button class="ah digital open"><span class="nm">디지털자료실 <span class="tg gold">NEW</span></span><span class="cnt">5</span><span class="chev"></span></button>
     <div class="ab open">
       <button class="si on" data-s="home">자료 둘러보기</button>
       <button class="si" data-s="list">전체 자료 <span class="tg hot">190종</span></button>
@@ -389,7 +393,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
     </div>
   </div>
   <div class="ag">
-    <button class="ah featured open"><span class="ico">🔥</span><span class="nm">신제품 추천</span><span class="cnt">5</span><span class="chev">▶</span></button>
+    <button class="ah featured open"><span class="nm">신제품 추천</span><span class="cnt">5</span><span class="chev"></span></button>
     <div class="ab open">
       <button class="si" data-soon="감사기록장 4종">감사기록장 4종<span class="tg hot">HOT</span></button>
       <button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item28_1" title="실제 페이지로 이동">명문 필사노트<span class="tg new">NEW</span><span class="ext">↗</span></button>
@@ -399,51 +403,51 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
     </div>
   </div>
   <div class="ag">
-    <button class="ah"><span class="ico">📚</span><span class="nm">학습·교육 교재</span><span class="cnt">5</span><span class="chev">▶</span></button>
-    <div class="ab">
+    <button class="ah open"><span class="nm">학습·교육 교재</span><span class="cnt">5</span><span class="chev"></span></button>
+    <div class="ab open">
       <button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item01_1" title="실제 페이지로 이동">학습플래너<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item27_1" title="실제 페이지로 이동">뉴-스터디플래너<span class="ext">↗</span></button>
       <button class="si" data-s="list">재량교재 <span class="tg gold">자료실</span></button>
       <button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item07" title="실제 페이지로 이동">학교부교재<span class="ext">↗</span></button><button class="si" data-soon="학급경영노트">학급경영노트<span class="tg soon">준비중</span></button>
     </div>
   </div>
   <div class="ag">
-    <button class="ah"><span class="ico">📖</span><span class="nm">독서·필사 활동</span><span class="cnt">4</span><span class="chev">▶</span></button>
-    <div class="ab">
+    <button class="ah open"><span class="nm">독서·필사 활동</span><span class="cnt">4</span><span class="chev"></span></button>
+    <div class="ab open">
       <button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item28_1" title="실제 페이지로 이동">명문 필사노트<span class="tg new">NEW</span><span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item09" title="실제 페이지로 이동">독서기록장<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item10_3" title="실제 페이지로 이동">독서통장<span class="ext">↗</span></button><button class="si" data-soon="성경필사노트">성경필사노트<span class="tg soon">준비중</span></button>
     </div>
   </div>
   <div class="ag">
-    <button class="ah"><span class="ico">📝</span><span class="nm">노트·수첩 제작</span><span class="cnt">7</span><span class="chev">▶</span></button>
-    <div class="ab">
+    <button class="ah open"><span class="nm">노트·수첩 제작</span><span class="cnt">7</span><span class="chev"></span></button>
+    <div class="ab open">
       <button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item12" title="실제 페이지로 이동">스프링노트 제작<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item13_1" title="실제 페이지로 이동">독판노트 제작<span class="ext">↗</span></button><button class="si" data-soon="노트내지 300종">노트내지 300종<span class="tg soon">준비중</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item11" title="실제 페이지로 이동">운동회노트<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item14" title="실제 페이지로 이동">스케치북<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item08" title="실제 페이지로 이동">알림장 / 종합장<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item22_1" title="실제 페이지로 이동">원아수첩 / 애견수첩<span class="ext">↗</span></button>
     </div>
   </div>
   <div class="ag">
-    <button class="ah"><span class="ico">🏫</span><span class="nm">학교 행정·출판</span><span class="cnt">8</span><span class="chev">▶</span></button>
-    <div class="ab">
+    <button class="ah open"><span class="nm">학교 행정·출판</span><span class="cnt">8</span><span class="chev"></span></button>
+    <div class="ab open">
       <button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item04" title="실제 페이지로 이동">학교교지 &amp; 문집<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item17" title="실제 페이지로 이동">학교요람<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item18" title="실제 페이지로 이동">교육계획서<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item19_1" title="실제 페이지로 이동">교무수첩<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item02_5" title="실제 페이지로 이동">학교달력(학사력)<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item16" title="실제 페이지로 이동">학교신문 &amp; 소식지<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item03" title="실제 페이지로 이동">학교홍보물 &amp; 브로슈어<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item21_1" title="실제 페이지로 이동">창체기록장 · 생활본<span class="ext">↗</span></button>
     </div>
   </div>
   <div class="ag">
-    <button class="ah"><span class="ico">🎁</span><span class="nm">기프트·기타</span><span class="cnt">1</span><span class="chev">▶</span></button>
-    <div class="ab"><button class="si" data-href="https://www.ddak-joa.com/" title="실제 페이지로 이동">학교 기프트 몰<span class="ext">↗</span></button></div>
+    <button class="ah open"><span class="nm">기프트·기타</span><span class="cnt">1</span><span class="chev"></span></button>
+    <div class="ab open"><button class="si" data-href="https://www.ddak-joa.com/" title="실제 페이지로 이동">학교 기프트 몰<span class="ext">↗</span></button></div>
   </div>
   <div class="ag">
-    <button class="ah"><span class="ico">📢</span><span class="nm">블로그·SNS 채널</span><span class="cnt">5</span><span class="chev">▶</span></button>
-    <div class="ab">
-      <a class="si link" href="https://blog.naver.com/tong2269" target="_blank" rel="noopener">📝 학교인쇄통 블로그<span class="ext">↗</span></a>
-      <a class="si link" href="https://www.ddak-joa.com/" target="_blank" rel="noopener">📝 딱조아기프트 블로그<span class="ext">↗</span></a>
-      <a class="si link" href="https://blog.naver.com/gichool100" target="_blank" rel="noopener">📝 인쇄는 처음이라<span class="ext">↗</span></a>
-      <a class="si link" href="https://www.youtube.com/@megaplus__TV" target="_blank" rel="noopener">▶️ 유튜브 채널<span class="ext">↗</span></a>
-      <a class="si link" href="https://www.instagram.com/mega._.plus/" target="_blank" rel="noopener">📷 인스타그램<span class="ext">↗</span></a>
+    <button class="ah open"><span class="nm">블로그·SNS 채널</span><span class="cnt">5</span><span class="chev"></span></button>
+    <div class="ab open">
+      <a class="si link" href="https://blog.naver.com/tong2269" target="_blank" rel="noopener">학교인쇄통 블로그<span class="ext">↗</span></a>
+      <a class="si link" href="https://www.ddak-joa.com/" target="_blank" rel="noopener">딱조아기프트 블로그<span class="ext">↗</span></a>
+      <a class="si link" href="https://blog.naver.com/gichool100" target="_blank" rel="noopener">인쇄는 처음이라<span class="ext">↗</span></a>
+      <a class="si link" href="https://www.youtube.com/@megaplus__TV" target="_blank" rel="noopener">유튜브 채널<span class="ext">↗</span></a>
+      <a class="si link" href="https://www.instagram.com/mega._.plus/" target="_blank" rel="noopener">인스타그램<span class="ext">↗</span></a>
     </div>
   </div>
   <div class="contact">
-    <div class="t">📞 문의 · 상담</div>
-    <div class="r"><span>☎️</span><span class="l">전화</span> 02-2269-1100</div>
-    <div class="r"><span>📱</span><span class="l">모바일</span> <a href="tel:010-8580-6454">010-8580-6454</a></div>
-    <div class="r"><span>✉️</span><span class="l">이메일</span> <a href="mailto:tong2269@naver.com">tong2269@naver.com</a></div>
-    <div class="r"><span>📠</span><span class="l">팩스</span> 02-2269-0655</div>
+    <div class="t">문의 · 상담</div>
+    <div class="r"><span class="l">전화</span> 02-2269-1100</div>
+    <div class="r"><span class="l">모바일</span> <a href="tel:010-8580-6454">010-8580-6454</a></div>
+    <div class="r"><span class="l">이메일</span> <a href="mailto:tong2269@naver.com">tong2269@naver.com</a></div>
+    <div class="r"><span class="l">팩스</span> 02-2269-0655</div>
   </div>
   <div class="statbar"><div><b>1,000+</b><small>거래 학교</small></div><div><b>30년</b><small>교육인쇄 전문</small></div><div><b>12,500+</b><small>콘텐츠 수량</small></div></div>
 </aside>
@@ -857,7 +861,7 @@ function detail(id){
   const free=r.tag==="무료 샘플";
   $("#dAct").innerHTML=(lic||free)
    ?`<div><span class="chip ok">${free?"무료 샘플":"우리학교 이용권 적용"}</span> <span class="muted" style="font-size:13px">다운로드한 PDF에 '서울한강초등학교 · 2026-09-05' 표기</span></div>
-     <div class="row"><button class="btn pri lg" onclick="toast('PDF 다운로드','10분간만 유효한 1회용 링크가 만들어지고, PDF 전 페이지 하단에 \'학교명 · 다운로드 일시\' 워터마크가 자동으로 찍힙니다','홈페이지')">PDF 다운로드</button><button class="btn gold lg" onclick="toast('이 자료로 인쇄 주문','기존 학교인쇄통 주문 화면으로 넘어가며 판형·쪽수가 미리 채워집니다. 선생님은 부수·제본만 선택. 이용권 학교는 인쇄비 5% 자동 할인','홈페이지 주문')">이 자료로 인쇄 주문</button><button class="btn ghost" onclick="toast('즐겨찾기 담기','우리학교 자료함 > 즐겨찾기 자료에 저장됩니다','홈페이지')">☆ 즐겨찾기</button></div>
+     <div class="row"><button class="btn pri lg" onclick="toast('PDF 다운로드','10분간만 유효한 1회용 링크가 만들어지고, PDF 전 페이지 하단에 \'학교명 · 다운로드 일시\' 워터마크가 자동으로 찍힙니다','홈페이지')">PDF 다운로드</button><button class="btn gold lg" onclick="toast('이 자료로 인쇄 주문','기존 학교인쇄통 주문 화면으로 넘어가며 판형·쪽수가 미리 채워집니다. 선생님은 부수·제본만 선택. 이용권 학교는 인쇄비 5% 자동 할인','홈페이지 주문')">이 자료로 인쇄 주문</button><button class="btn ghost" onclick="toast('즐겨찾기 담기','우리학교 자료함 > 즐겨찾기 자료에 저장됩니다','홈페이지')">즐겨찾기</button></div>
      <div class="hint">인쇄 주문 시 이용권 학교 인쇄비 5% 할인이 자동 적용됩니다.</div>`
    :`<div><span class="chip warn">학교 이용권 필요</span> <span class="muted" style="font-size:13px">우리 학교는 아직 이용권이 없습니다</span></div>
      <div class="row"><button class="btn gold lg" data-s="plan">학교 이용권 신청하기</button><button class="btn ghost lg" onclick="toast('미리보기 3쪽','이용권이 없어도 앞 3쪽은 \'미리보기\' 워터마크가 찍힌 이미지로 볼 수 있습니다','홈페이지')">미리보기 3쪽 보기</button><button class="btn ghost" onclick="toast('담당 선생님께 추천','같은 학교 연구부장·교무부장 등 담당 선생님께 이용권 안내 메일을 보냅니다. 일반 교사가 학교에 도입을 건의하는 통로','메일')">담당 선생님께 추천</button></div>

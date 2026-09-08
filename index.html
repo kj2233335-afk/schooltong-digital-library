@@ -235,6 +235,26 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 .form #bizBox .two input{width:100%}
 @media (max-width:560px){.lane-row{grid-template-columns:1fr}}
 
+
+.dtabs{display:flex;gap:0;border-bottom:2px solid var(--line);margin-top:24px}
+.dtabs button{font:inherit;font-size:14px;font-weight:700;padding:10px 16px;border:0;background:none;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;display:flex;align-items:center;gap:6px}
+.dtabs button.on{color:var(--navy);border-bottom-color:var(--navy)}
+.dtabs .cnt{background:var(--navy-soft);color:var(--navy);font-size:11px;padding:1px 7px;border-radius:999px}
+.dpanel{display:none;padding-top:14px}.dpanel.on{display:block}
+.dl-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px;font-size:14px}
+.dl-head .muted{font-size:12.5px}
+.ftbl th,.ftbl td{padding:8px 8px;font-size:12.5px}
+.ftbl .fn{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--muted);word-break:break-all}
+.ftbl td:nth-child(2),.ftbl td:nth-child(5),.ftbl th{white-space:nowrap}
+.dl-rule{margin-top:18px;background:var(--navy-soft);border-radius:10px;padding:14px 16px}
+.dl-rule>b{display:block;font-size:13.5px;color:var(--navy);margin-bottom:8px}
+.kvt{width:100%;border-collapse:collapse;font-size:12.5px}
+.kvt th{text-align:left;white-space:nowrap;padding:6px 10px 6px 0;vertical-align:top;color:var(--navy);width:90px}
+.kvt td{padding:6px 0;border-bottom:1px solid var(--line);line-height:1.55}
+.kvt tr:last-child td{border-bottom:0}
+.kvt code{font-family:ui-monospace,Menlo,monospace;font-size:12px;background:var(--paper);padding:1px 5px;border-radius:4px}
+@media (max-width:560px){.ftbl th:nth-child(3),.ftbl td:nth-child(3){display:none!important}.rtbl.ftbl thead{display:table-header-group}.rtbl.ftbl tbody{display:table-row-group}.rtbl.ftbl tr{display:table-row}.rtbl.ftbl td{display:table-cell}.kvt th{width:70px}}
+
 /* ---------- 메인 ---------- */
 .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:34px 36px;position:relative;overflow:hidden}
 .hero h1{font-size:34px;line-height:1.3;margin:10px 0 14px}
@@ -286,6 +306,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 .crumb{font-size:13px;color:var(--muted);margin-bottom:16px}
 .crumb b{color:var(--ink);font-weight:500}
 .detail{display:grid;grid-template-columns:360px 1fr;gap:28px;align-items:start}
+.detail>div{min-width:0}
 .detail .cover.big{height:440px;border-radius:14px;font-size:28px;padding:26px;box-shadow:var(--shadow);background-image:repeating-linear-gradient(0deg,transparent 0 40px,rgba(255,255,255,.06) 40px 41px)}
 .thumbs{display:flex;gap:8px;margin-top:12px}
 .thumbs div{flex:1;height:64px;border:1px solid var(--line);border-radius:8px;background:repeating-linear-gradient(0deg,var(--paper) 0 7px,var(--line) 7px 8px);position:relative;overflow:hidden}
@@ -628,10 +649,39 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
         <div><small>파일</small><b>인쇄용 PDF</b></div>
       </div>
       <div class="actbox" id="dAct"></div>
-      <h3 style="font-family:'Noto Sans KR';font-size:16px;margin-top:22px">구성 (차시별)</h3>
-      <ol class="toc" id="dToc"></ol>
-      <h3 style="font-family:'Noto Sans KR';font-size:16px;margin-top:22px">이용 범위</h3>
-      <p class="muted" style="font-size:14px;margin:6px 0 0">이용권을 보유한 학교의 교육 목적 인쇄·배부에 한해 이용할 수 있습니다. 다운로드한 PDF에는 학교명과 다운로드 일시가 자동으로 표기됩니다. 외부 공유·재판매·온라인 게시는 금지됩니다.</p>
+      <div class="dtabs"><button class="on" data-dt="intro">소개</button><button data-dt="dl">다운로드 <span class="cnt" id="dFileCnt">4</span></button><button data-dt="print">인쇄 주문</button></div>
+
+      <div class="dpanel on" id="dp-intro">
+        <h3 style="font-family:'Noto Sans KR';font-size:16px;margin-top:6px">구성 (차시별)</h3>
+        <ol class="toc" id="dToc"></ol>
+        <h3 style="font-family:'Noto Sans KR';font-size:16px;margin-top:22px">이용 범위</h3>
+        <p class="muted" style="font-size:14px;margin:6px 0 0">이용권을 보유한 학교의 교육 목적 인쇄·배부에 한해 이용할 수 있습니다. 다운로드한 PDF에는 학교명과 다운로드 일시가 자동으로 표기됩니다. 외부 공유·재판매·온라인 게시는 금지됩니다.</p>
+      </div>
+
+      <div class="dpanel" id="dp-dl">
+        <div class="dl-head"><b>이 자료의 파일</b><span class="muted" id="dFileSum">자료 ID ST-D-0001 · 서버 폴더 /library/ST-D-0001/</span></div>
+        <div class="tbl-wrap"><table class="rtbl ftbl"><thead><tr><th>파일</th><th class="th-num">용량</th><th>등록</th><th>권한</th><th class="th-act">받기</th></tr></thead><tbody id="dFiles"></tbody></table></div>
+        <div class="dl-rule">
+          <b>개발자 참고 — 파일 저장·다운로드 규칙 (자료 1,000종 기준)</b>
+          <table class="kvt">
+            <tr><th>저장 서버</th><td>기존 학교인쇄통 서버(카페24 megaplus1100) 그대로 사용. 별도 스토리지 없음</td></tr>
+            <tr><th>폴더 규칙</th><td><code>/library/{자료ID}/</code> 한 자료 = 한 폴더. 자료ID는 <code>ST-D-0001</code>부터 4자리 순번 (9,999종까지)</td></tr>
+            <tr><th>파일명 규칙</th><td><code>{자료ID}_{종류}_v{버전}.{확장자}</code> — 종류: 본문 / 표지 / 원본 / 미리보기1~3. 예) <code>ST-D-0001_본문_v2.pdf</code></td></tr>
+            <tr><th>용량 추정</th><td>자료당 평균 15MB(본문 PDF 12MB + 표지 1MB + 원본 2MB) × 1,000종 = 약 15GB. 미리보기 이미지는 등록 시 자동 생성</td></tr>
+            <tr><th>다운로드 처리</th><td>① 로그인·이용권 코드 검사 → ② PDF 전 쪽 하단에 「학교명 · 코드 · 일시」 워터마크 삽입 → ③ 10분 유효 1회용 링크 발급 → ④ 로그 기록(자료ID·학교코드·계정·일시·IP). 원본 파일 경로는 절대 노출하지 않음</td></tr>
+            <tr><th>권한</th><td>본문·표지·원본 = 이용권 학교(유료·자료제공단) / 미리보기 3장 = 누구나 / 무료 샘플 자료는 본문도 누구나</td></tr>
+            <tr><th>버전 관리</th><td>새 버전 업로드 시 이전 파일은 <code>/library/{자료ID}/old/</code>로 이동, 목록에는 최신만 표시. 이미 받은 학교에는 「새 버전」 표시</td></tr>
+            <tr><th>기록 연동</th><td>다운로드 로그 → 관리자 통계 + ⑤ 우리학교 자료함 「다운로드 이력」 표. 학교별 월 다운로드 수는 관리자 화면에 집계</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="dpanel" id="dp-print">
+        <p class="muted" style="font-size:14px;margin:6px 0 12px">이 자료를 학교인쇄통에서 바로 제본 인쇄합니다. 판형·쪽수는 자동으로 채워지고 선생님은 부수·제본만 고릅니다.</p>
+        <dl class="kv"><dt>판형 · 쪽수</dt><dd id="dPrintSpec">B5 · 48쪽</dd><dt>제본</dt><dd>무선 제본 (기본) · 중철 · 스프링 선택 가능</dd><dt>할인</dt><dd>이용권 학교 인쇄비 5% 자동 적용</dd><dt>연결 화면</dt><dd>학교인쇄통 기존 주문 화면 (학교부교재 품목)</dd></dl>
+        <div style="margin-top:14px"><button class="btn gold lg" onclick="toast('이 자료로 인쇄 주문','기존 학교인쇄통 주문 화면으로 넘어가며 판형·쪽수가 미리 채워집니다. 이용권 학교는 인쇄비 5% 자동 할인','홈페이지 주문')">이 자료로 인쇄 주문</button></div>
+      </div>
+
       <div class="sec-h" style="margin-top:30px"><h2 style="font-size:18px">함께 많이 본 자료</h2></div>
       <div class="grid res3" id="dRel"></div>
     </div>
@@ -1008,6 +1058,23 @@ function render(){
   $("#swLic").className=on?"lic":"";
   detail(cur); my(); admFilter();
 }
+function dlFiles(r){
+  const did="ST-D-"+String(r.id).padStart(4,"0"), free=r.tag==="무료 샘플", ok=lic||free, src=r.id%3===0;
+  const mb=n=>n>=1?n.toFixed(1)+" MB":Math.round(n*1024)+" KB";
+  const date=DATES[(r.id-1)%DATES.length], ver=r.id%4===0?"v2":"v1";
+  const rows=[
+    {k:"인쇄용 PDF (본문)",f:`${did}_본문_${ver}.pdf`,s:r.pg*0.26,who:"이용권 학교",need:!free},
+    {k:"표지 PDF",f:`${did}_표지_${ver}.pdf`,s:1.2,who:"이용권 학교",need:!free},
+  ];
+  if(src)rows.push({k:"편집 원본 (한글 hwp)",f:`${did}_원본_${ver}.hwp`,s:2.4,who:"이용권 학교",need:true});
+  rows.push({k:"미리보기 이미지 3장",f:`${did}_미리보기1~3.jpg`,s:0.35,who:"누구나",need:false});
+  const tb=$("#dFiles");if(!tb)return;
+  tb.innerHTML=rows.map(x=>`<tr><td><b>${x.k}</b><br><span class="fn">${x.f}</span></td><td class="tnum td-num">${mb(x.s)}</td><td class="tnum">${date} · ${ver}</td><td>${x.need?`<span class="chip ${ok?"ok":"warn"}">${x.who}</span>`:`<span class="chip">${x.who}</span>`}</td><td class="td-act">${(!x.need||ok)?`<button class="btn pri sm" onclick="event.stopPropagation();toast('${x.k} 받기','${x.need?"워터마크(학교명·코드·일시) 삽입 후 10분 유효 링크로 내려받기. 로그 기록":"워터마크 없이 바로 내려받기. 로그만 기록"}','홈페이지')">받기</button>`:`<button class="btn ghost sm" data-s="plan">이용권 필요</button>`}</td></tr>`).join("");
+  $("#dFileCnt").textContent=rows.length;
+  $("#dFileSum").textContent=`자료 ID ${did} · 서버 폴더 /library/${did}/ · 총 ${mb(rows.reduce((a,x)=>a+x.s,0))}`;
+  const ps=$("#dPrintSpec");if(ps)ps.textContent=`${r.sz} · ${r.pg}쪽`;
+}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-dt]");if(!b)return;document.querySelectorAll(".dtabs button").forEach(x=>x.classList.toggle("on",x===b));document.querySelectorAll(".dpanel").forEach(x=>x.classList.toggle("on",x.id==="dp-"+b.dataset.dt));});
 function detail(id){
   cur=id;const r=R.find(x=>x.id===id);
   $("#dCrumb").textContent=r.t;$("#dTitle").textContent=r.t;$("#dDesc").textContent=r.d;
@@ -1015,6 +1082,7 @@ function detail(id){
   $("#dCover").style.background=r.c;$("#dCover").innerHTML=(r.tag?`<span class="tag">${r.tag}</span>`:"")+r.t;
   $("#dToc").innerHTML=r.toc.map(x=>`<li>${x}</li>`).join("");
   $("#dRel").innerHTML=R.filter(x=>x.id!==id).slice(0,3).map(card).join("");
+  dlFiles(r);
   const free=r.tag==="무료 샘플";
   $("#dAct").innerHTML=(lic||free)
    ?`<div><span class="chip ok">${free?"무료 샘플":"우리학교 이용권 적용"}</span> <span class="muted" style="font-size:13px">다운로드한 PDF에 '서울한강초등학교 · 2026-09-05' 표기</span></div>

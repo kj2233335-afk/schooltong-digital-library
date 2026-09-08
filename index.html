@@ -84,6 +84,7 @@ button{font:inherit;cursor:pointer}
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){--sb-navy:#DCE6FA;--sb-navy-dark:#0B1220;--sb-gold-soft:#3A3014;--sb-g50:#1A2030;--sb-g200:#2C3650;--sb-g400:#7F8BA6;--sb-g700:#C5CDDD;--sb-white:#141A28;--sb-text:#E6EAF2} }
 :root[data-theme="dark"]{--sb-navy:#DCE6FA;--sb-navy-dark:#0B1220;--sb-gold-soft:#3A3014;--sb-g50:#1A2030;--sb-g200:#2C3650;--sb-g400:#7F8BA6;--sb-g700:#C5CDDD;--sb-white:#141A28;--sb-text:#E6EAF2}
 .shell{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:280px 1fr;gap:0 26px;align-items:start}
+.shell>*{min-width:0}
 .sb{position:sticky;top:52px;max-height:calc(100vh - 52px);overflow-y:auto;background:var(--sb-white);border:0;scrollbar-width:none;border-radius:0 0 12px 12px;box-shadow:0 2px 16px rgba(0,0,0,.08);font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif}
 .sb::-webkit-scrollbar{width:4px}.sb::-webkit-scrollbar-thumb{background:var(--sb-g400);border-radius:4px}
 .sb .print-nav{display:flex;align-items:center;gap:8px;padding:12px 16px;background:linear-gradient(135deg,#1B2A4A 0%,#2C3E6B 100%);color:#D4AF37;font-size:13px;font-weight:700;cursor:pointer;border-bottom:2px solid #D4AF37;letter-spacing:-.3px}
@@ -182,11 +183,19 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 .rtbl .td-num,.rtbl .th-num{text-align:right}
 .rtbl .td-act,.rtbl .th-act{text-align:center;white-space:nowrap}
 .btn.sm{padding:5px 12px;font-size:12px;border-radius:7px}
+.btn.dlbtn{padding:7px 14px;font-size:13px;font-weight:800;border-radius:8px;white-space:nowrap;display:inline-flex;align-items:center;gap:7px}
+.btn.dlbtn i{width:11px;height:10px;border:2px solid currentColor;border-top:0;border-radius:0 0 3px 3px;position:relative;display:inline-block;margin-top:4px}
+.btn.dlbtn i:before{content:"";position:absolute;left:3.5px;top:-8px;width:2px;height:8px;background:currentColor}
+.btn.dlbtn i:after{content:"";position:absolute;left:1px;top:-4px;width:5px;height:5px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg)}
+.btn.dlbtn.lock{font-weight:600}
+.btn.dlbtn.lock i{border:2px solid currentColor;border-radius:2px;width:10px;height:8px;margin-top:5px}.btn.dlbtn.lock i:before{left:1px;top:-6px;width:4px;height:5px;background:none;border:2px solid currentColor;border-bottom:0;border-radius:4px 4px 0 0}.btn.dlbtn.lock i:after{display:none}
+#listTable .td-act,#listTable .th-act{text-align:left}
 .tbl-foot{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;font-size:12.5px}
 .pager{display:flex;gap:4px}.pager a,.pager b{min-width:26px;height:26px;display:grid;place-items:center;border-radius:6px;border:1px solid var(--line);font-size:12px;cursor:pointer}
 .pager b{background:var(--navy);color:#fff;border-color:var(--navy)}
+@media (max-width:1400px){#listTable th:nth-child(7),#listTable td:nth-child(7),#listTable .th-date,#listTable .td-date{display:none}}
 @media (max-width:900px){
-  .rtbl .th-date,.rtbl .td-date,.rtbl th:nth-child(6),.rtbl td:nth-child(6){display:none}
+  .rtbl .th-date,.rtbl .td-date{display:none}
 }
 @media (max-width:560px){
   .rtbl thead{display:none}
@@ -198,7 +207,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
   .rtbl .td-act{grid-column:3;grid-row:1/4;align-self:center}
   .rtbl td:nth-child(4){grid-column:2;grid-row:2}
   .rtbl td:nth-child(5){grid-column:2;grid-row:3}
-  .rtbl .rrow td:nth-child(3),.rtbl .rrow td:nth-child(6),.rtbl .rrow .td-date,.rtbl .rrow .td-num{display:none}
+  #listTable .rrow td:nth-child(6),#listTable .rrow td:nth-child(7),#myTable .rrow td:nth-child(3),#myTable .rrow td:nth-child(5),.rtbl .rrow .td-date,.rtbl .rrow .td-num{display:none}
 }
 }
 
@@ -255,6 +264,14 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 .kvt code{font-family:ui-monospace,Menlo,monospace;font-size:12px;background:var(--paper);padding:1px 5px;border-radius:4px}
 @media (max-width:560px){.ftbl th:nth-child(3),.ftbl td:nth-child(3){display:none!important}.rtbl.ftbl thead{display:table-header-group}.rtbl.ftbl tbody{display:table-row-group}.rtbl.ftbl tr{display:table-row}.rtbl.ftbl td{display:table-cell}.kvt th{width:70px}}
 
+#listTable td:nth-child(4),#listTable td:nth-child(5),#listTable td:nth-child(6){white-space:normal}
+#listTable td:nth-child(6){min-width:90px}
+#listTable .td-thumb{width:38px;padding-right:0}
+#listTable .td-title{max-width:230px;min-width:190px}
+#listTable{font-size:13px}
+#listTable .dlbtn{padding:6px 11px;font-size:12.5px}
+@media (max-width:560px){#listTable .td-title{min-width:0;max-width:none}#listTable .dlbtn{padding:6px 9px;font-size:12px}}
+
 /* ---------- 메인 ---------- */
 .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:34px 36px;position:relative;overflow:hidden}
 .hero h1{font-size:34px;line-height:1.3;margin:10px 0 14px}
@@ -292,6 +309,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 
 /* ---------- 목록 ---------- */
 .list{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:start}
+.list>div,.my>div{min-width:0}
 .filter{position:sticky;top:64px;padding:16px}
 .filter h4{font-size:12px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;font-family:"Noto Sans KR";margin:14px 0 8px}
 .filter h4:first-child{margin-top:0}
@@ -621,7 +639,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
       <div class="list-top"><span class="cnt tnum" id="fCount">검색 결과 42종</span><span class="muted" id="fSummary">초등 · 5~6학년 · 학교자율시간</span>
         <select><option>최신순</option><option>다운로드 많은순</option><option>쪽수 적은순</option></select></div>
       <div class="card tblcard"><div class="tbl-wrap"><table class="rtbl" id="listTable">
-        <thead><tr><th class="th-thumb"></th><th>자료명</th><th>주제</th><th>학교급·학년</th><th>판형·쪽수·차시</th><th>형식</th><th class="th-date">등록일</th><th class="th-num">내려받기</th><th class="th-act">받기</th></tr></thead>
+        <thead><tr><th class="th-thumb"></th><th>자료명</th><th class="th-act">다운로드</th><th>주제</th><th>학교급·학년</th><th>판형·쪽수·차시</th><th>형식</th><th class="th-date">등록일</th><th class="th-num">내려받기</th></tr></thead>
         <tbody id="listBody"></tbody>
       </table></div>
       <div class="tbl-foot"><span class="muted">1 – 12 / 42종</span><span class="pager"><b>1</b><a>2</a><a>3</a><a>4</a><a>›</a></span></div></div>
@@ -660,7 +678,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 
       <div class="dpanel" id="dp-dl">
         <div class="dl-head"><b>이 자료의 파일</b><span class="muted" id="dFileSum">자료 ID ST-D-0001 · 서버 폴더 /library/ST-D-0001/</span></div>
-        <div class="tbl-wrap"><table class="rtbl ftbl"><thead><tr><th>파일</th><th class="th-num">용량</th><th>등록</th><th>권한</th><th class="th-act">받기</th></tr></thead><tbody id="dFiles"></tbody></table></div>
+        <div class="tbl-wrap"><table class="rtbl ftbl"><thead><tr><th>파일</th><th class="th-num">용량</th><th>등록</th><th>권한</th><th class="th-act">다운로드</th></tr></thead><tbody id="dFiles"></tbody></table></div>
         <div class="dl-rule">
           <b>개발자 참고 — 파일 저장·다운로드 규칙 (자료 1,000종 기준)</b>
           <table class="kvt">
@@ -994,13 +1012,14 @@ const $=s=>document.querySelector(s);
 function card(r){return `<div class="rc" data-id="${r.id}"><div class="cover" style="background:${r.c}">${r.tag?`<span class="tag">${r.tag}</span>`:""}${r.t}</div>
 <div class="bd"><div class="meta"><b>${r.lv}</b><span>${r.th}</span></div><div class="meta"><span>${r.sz} · ${r.pg}쪽 · ${r.ls}</span><span class="tnum">↓ ${r.dl.toLocaleString()}</span></div></div></div>`}
 const DATES=["2026-09-04","2026-09-02","2026-08-29","2026-08-27","2026-08-21","2026-08-15","2026-08-11","2026-08-05"];
-function row(r){const free=r.tag==="무료 샘플";const fmt=r.id%3===0?"PDF+원본":"PDF";
+function row(r){const free=r.tag==="무료 샘플";const fmt=r.id%3===0?"PDF + 한글 원본":"PDF";
+ const act=(lic||free)?`<button class="btn pri dlbtn" onclick="event.stopPropagation();toast('${r.t} 다운로드','${free?"무료 샘플 — 누구나":"이용권 학교 —"} PDF가 바로 내려받아집니다. 워터마크(학교명·코드·일시) 삽입, 다운로드 수 +1, 우리학교 자료함에 기록','홈페이지')"><i></i>다운로드</button>`:`<button class="btn ghost dlbtn lock" onclick="event.stopPropagation();show('plan')"><i></i>이용권 필요</button>`;
  return `<tr class="rrow" data-id="${r.id}">
   <td class="td-thumb"><span class="thumb" style="background:${r.c}"><i></i><i></i><i></i></span></td>
   <td class="td-title"><b>${r.t}</b>${r.tag?` <span class="chip ${free?"ok":"gold"}">${r.tag}</span>`:""}</td>
+  <td class="td-act">${act}</td>
   <td>${r.th}</td><td>${r.lv}</td><td class="tnum">${r.sz} · ${r.pg}쪽 · ${r.ls}</td><td>${fmt}</td>
   <td class="tnum td-date">${DATES[(r.id-1)%DATES.length]}</td><td class="tnum td-num">${r.dl.toLocaleString()}</td>
-  <td class="td-act">${lic||free?`<button class="btn pri sm" onclick="event.stopPropagation();toast('${r.t} 내려받기','${free?"무료 샘플 — 누구나":"이용권 학교 —"} PDF가 바로 내려받아집니다. 다운로드 수 +1, 우리학교 자료함에 기록','홈페이지')">받기</button>`:`<button class="btn ghost sm" onclick="event.stopPropagation();show('plan')">이용권 안내</button>`}</td>
  </tr>`}
 const GRADES={"초등":["1~2학년","3~4학년","5~6학년"],"중등":["1학년","2학년","3학년"],"고등":["1학년","2학년","3학년"]};
 const LVMAP={"초등":"초등","중등":"중학","고등":"고등"};
@@ -1069,7 +1088,7 @@ function dlFiles(r){
   if(src)rows.push({k:"편집 원본 (한글 hwp)",f:`${did}_원본_${ver}.hwp`,s:2.4,who:"이용권 학교",need:true});
   rows.push({k:"미리보기 이미지 3장",f:`${did}_미리보기1~3.jpg`,s:0.35,who:"누구나",need:false});
   const tb=$("#dFiles");if(!tb)return;
-  tb.innerHTML=rows.map(x=>`<tr><td><b>${x.k}</b><br><span class="fn">${x.f}</span></td><td class="tnum td-num">${mb(x.s)}</td><td class="tnum">${date} · ${ver}</td><td>${x.need?`<span class="chip ${ok?"ok":"warn"}">${x.who}</span>`:`<span class="chip">${x.who}</span>`}</td><td class="td-act">${(!x.need||ok)?`<button class="btn pri sm" onclick="event.stopPropagation();toast('${x.k} 받기','${x.need?"워터마크(학교명·코드·일시) 삽입 후 10분 유효 링크로 내려받기. 로그 기록":"워터마크 없이 바로 내려받기. 로그만 기록"}','홈페이지')">받기</button>`:`<button class="btn ghost sm" data-s="plan">이용권 필요</button>`}</td></tr>`).join("");
+  tb.innerHTML=rows.map(x=>`<tr><td><b>${x.k}</b><br><span class="fn">${x.f}</span></td><td class="tnum td-num">${mb(x.s)}</td><td class="tnum">${date} · ${ver}</td><td>${x.need?`<span class="chip ${ok?"ok":"warn"}">${x.who}</span>`:`<span class="chip">${x.who}</span>`}</td><td class="td-act">${(!x.need||ok)?`<button class="btn pri dlbtn" onclick="event.stopPropagation();toast('${x.k} 다운로드','${x.need?"워터마크(학교명·코드·일시) 삽입 후 10분 유효 링크로 내려받기. 로그 기록":"워터마크 없이 바로 내려받기. 로그만 기록"}','홈페이지')"><i></i>다운로드</button>`:`<button class="btn ghost dlbtn lock" data-s="plan"><i></i>이용권 필요</button>`}</td></tr>`).join("");
   $("#dFileCnt").textContent=rows.length;
   $("#dFileSum").textContent=`자료 ID ${did} · 서버 폴더 /library/${did}/ · 총 ${mb(rows.reduce((a,x)=>a+x.s,0))}`;
   const ps=$("#dPrintSpec");if(ps)ps.textContent=`${r.sz} · ${r.pg}쪽`;
@@ -1108,7 +1127,7 @@ function myFilter(){
   if(so==="자료명순")rows=[...rows].sort((a,b)=>a.t.localeCompare(b.t,"ko"));
   else if(so==="선생님순")rows=[...rows].sort((a,b)=>a.w.localeCompare(b.w,"ko"));
   const body=$("#myRows");if(!body)return;
-  body.innerHTML=rows.map(r=>`<tr class="rrow" data-id="${r.id}"><td class="tnum">${r.d}</td><td class="td-title"><b>${r.t}</b></td><td>${r.th}</td><td>${r.w}</td><td>${r.f}</td><td class="td-act"><button class="btn ghost sm" onclick="event.stopPropagation();toast('${r.t} 다시 받기','같은 파일을 다시 내려받습니다. 다운로드 수는 늘지 않음','홈페이지')">다시 받기</button></td></tr>`).join("")||`<tr><td colspan="6" class="muted" style="text-align:center;padding:26px">검색 결과가 없습니다</td></tr>`;
+  body.innerHTML=rows.map(r=>`<tr class="rrow" data-id="${r.id}"><td class="tnum">${r.d}</td><td class="td-title"><b>${r.t}</b></td><td>${r.th}</td><td>${r.w}</td><td>${r.f}</td><td class="td-act"><button class="btn pri dlbtn" onclick="event.stopPropagation();toast('${r.t} 다운로드','같은 파일을 다시 내려받습니다. 다운로드 수는 늘지 않음','홈페이지')"><i></i>다운로드</button></td></tr>`).join("")||`<tr><td colspan="6" class="muted" style="text-align:center;padding:26px">검색 결과가 없습니다</td></tr>`;
   $("#myCount").textContent=q||tc?`${rows.length}건 검색됨`:`1 – ${rows.length} / 63건`;
 }
 const LIC=[
@@ -1148,7 +1167,7 @@ function my(){
          <select id="myPeriod" onchange="myFilter()"><option value="">기간 전체</option><option>이번 주</option><option>이번 달</option><option>3개월</option></select>
          <select id="mySort" onchange="myFilter()"><option>최신순</option><option>자료명순</option><option>선생님순</option></select>
        </div></div>
-     <div class="tbl-wrap"><table class="rtbl" id="myTable"><thead><tr><th>일시</th><th>자료</th><th>주제</th><th>선생님</th><th>형식</th><th class="th-act">받기</th></tr></thead><tbody id="myRows"></tbody></table></div>
+     <div class="tbl-wrap"><table class="rtbl" id="myTable"><thead><tr><th>일시</th><th>자료</th><th>주제</th><th>선생님</th><th>형식</th><th class="th-act">다운로드</th></tr></thead><tbody id="myRows"></tbody></table></div>
      <div class="tbl-foot"><span class="muted" id="myCount">1 – 8 / 63건</span><span class="pager"><b>1</b><a>2</a><a>3</a><a>…</a><a>8</a><a>›</a></span></div>
    </div>
    <div class="card" style="padding:22px;margin-top:18px">

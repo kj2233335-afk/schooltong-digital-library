@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/broadsheet-3e4f85c2-f386-4c50-bf57-4af842a8325d/styles.css">
+<script src="_ds/broadsheet-3e4f85c2-f386-4c50-bf57-4af842a8325d/_ds_bundle.js"></script>
+<style>.app-scroll::-webkit-scrollbar{width:0;height:0}
+.btn{white-space:nowrap}</style>
+</helmet>
+<div style="height:100%;min-height:100%;display:flex;flex-direction:column;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);position:relative;overflow:hidden">
+
+<div style="flex:none;padding:var(--space-3) var(--space-4) 0;background:var(--color-bg)">
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:var(--space-3)">
+<button onClick="{{ goHome }}" style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;border:0;background:transparent;padding:0;cursor:pointer;color:inherit;min-width:0;text-align:left">
+<span style="font-size:11px;letter-spacing:.12em;line-height:1.4;color:var(--color-neutral-600);white-space:nowrap">디자인부터 인쇄까지</span>
+<span style="display:flex;align-items:baseline;gap:6px;white-space:nowrap">
+<span style="font-family:var(--font-heading);font-weight:600;font-size:18px;line-height:1.4;color:var(--color-accent-700)">학교인쇄통</span>
+<span style="font-family:var(--font-heading);font-size:12.5px;line-height:1.4;color:var(--color-neutral-700)">디지털자료실</span>
+</span>
+</button>
+<div style="display:flex;align-items:center;gap:var(--space-1)">
+<button class="btn btn-ghost btn-icon" style="width:44px;height:44px" onClick="{{ openMenu }}" aria-label="전체 카테고리">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16"></path><path d="M4 12h16"></path><path d="M4 17h16"></path></svg>
+</button>
+<button class="btn btn-ghost btn-icon" style="width:44px;height:44px" onClick="{{ openNotices }}" aria-label="공지">
+<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 10a6 6 0 1 1 12 0c0 4 1.5 5.5 1.5 5.5h-15S6 14 6 10Z"></path><path d="M10 19a2 2 0 0 0 4 0"></path></svg>
+</button>
+<button class="btn btn-ghost btn-icon" style="width:44px;height:44px;position:relative" onClick="{{ openCart }}" aria-label="인쇄 주문">
+<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 5h2.2l2.3 10.5h9.4L20 8H7"></path><circle cx="9.5" cy="19" r="1.3"></circle><circle cx="17.5" cy="19" r="1.3"></circle></svg>
+<span style="position:absolute;top:2px;right:0;min-width:17px;height:17px;padding:0 4px;box-sizing:border-box;border-radius:9px;background:var(--color-accent-2);color:#fff;font-size:11px;line-height:17px;text-align:center">{{ orderCount }}</span>
+</button>
+</div>
+</div>
+<div style="margin-top:var(--space-3);border-top:3px solid var(--color-text)"></div>
+<div style="border-top:1px solid var(--color-text);margin-top:2px"></div>
+<div style="display:flex;align-items:center;gap:var(--space-2);padding:var(--space-2) 0;font-size:12.5px;color:var(--color-neutral-700)">
+<span style="font-family:var(--font-heading);color:var(--color-text)">{{ schoolName }}</span>
+<span style="width:1px;height:11px;background:var(--color-neutral-400)"></span>
+<span>{{ teacherName }}</span>
+<span style="margin-left:auto;color:var(--color-accent-700)">{{ tierLabel }}</span>
+</div>
+<div style="border-top:1px solid var(--color-divider)"></div>
+</div>
+
+<div class="app-scroll" style="flex:1;overflow-y:auto;padding:0 var(--space-4) 92px">
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:var(--space-8);padding-top:var(--space-4)">
+
+<div style="display:flex;flex-direction:column;gap:var(--space-2)">
+<div style="display:flex;gap:var(--space-2)">
+<span style="flex:none;width:7px;height:7px;border-radius:50%;background:var(--color-accent-2);margin-top:7px"></span>
+<p style="margin:0;font-size:15px;line-height:1.55;word-break:keep-all">{{ passNotice }}</p>
+</div>
+<button class="btn btn-primary" style="height:48px;align-self:flex-start" onClick="{{ goPass }}">{{ passCta }}</button>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:var(--space-3)">
+<span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-accent-700)">학교인쇄통 디지털자료실</span>
+<h1 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:32px;line-height:1.2;letter-spacing:-.01em;word-break:keep-all">우리 학교 재량교재,<br>이제 내려받아<br>바로 인쇄합니다</h1>
+<p style="margin:0;font-size:15.5px;line-height:1.65;color:var(--color-neutral-800);word-break:keep-all">학교자율시간·창의적 체험활동·학급운영에 바로 쓰는 인쇄용 PDF 워크북. 학교 연간 이용권 하나로 선생님 모두가 무제한 다운로드하고, 클릭 한 번으로 학교인쇄통 제본 인쇄까지 이어집니다.</p>
+<div style="display:flex;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-1)">
+<button class="btn btn-secondary" style="height:48px" onClick="{{ goPass }}">학교 이용권 알아보기</button>
+<button class="btn btn-ghost" style="height:48px" onClick="{{ goSamples }}">무료 샘플 3종 보기</button>
+</div>
+</div>
+
+<div style="position:relative;margin:0 calc(var(--space-4) * -1)">
+<div style="position:absolute;top:0;bottom:0;right:0;width:4px;background:#fff;z-index:2;pointer-events:none"></div>
+<div style="position:absolute;top:0;bottom:0;left:0;width:4px;background:#fff;z-index:2;pointer-events:none"></div>
+<div class="app-scroll" style="display:flex;gap:var(--space-3);overflow-x:auto;scroll-snap-type:x mandatory;padding:2px var(--space-4) var(--space-2)">
+<sc-for list="{{ covers }}" as="bk" hint-placeholder-count="3">
+<button style="flex:none;width:196px;scroll-snap-align:start;border:0;background:transparent;padding:0;display:flex;flex-direction:column;gap:var(--space-2);text-align:left;cursor:pointer" onClick="{{ bk.onOpen }}">
+<span style="height:3px;background:{{ bk.fill }}"></span>
+<span style="height:158px;background:var(--color-surface);display:flex;align-items:flex-end;padding:var(--space-2);box-sizing:border-box;font-size:11px;letter-spacing:.1em;color:var(--color-neutral-600)">{{ bk.format }}</span>
+<span style="font-family:var(--font-heading);font-weight:600;font-size:17px;line-height:1.35;word-break:keep-all">{{ bk.title }}</span>
+<span style="font-size:12.5px;line-height:1.5;color:var(--color-neutral-700);word-break:keep-all">{{ bk.meta }}</span>
+</button>
+</sc-for>
+<div style="flex:none;width:2px"></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:var(--space-3)">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-2)">
+<h2 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:21px">주제별로 찾기</h2>
+<button class="btn btn-ghost" style="height:36px;font-size:13px" onClick="{{ goAll }}">전체 자료 보기 →</button>
+</div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-3)">
+<sc-for list="{{ subjects }}" as="sj" hint-placeholder-count="8">
+<button style="border:0;background:var(--color-surface);border-radius:var(--radius-md);padding:var(--space-3);min-height:132px;display:flex;flex-direction:column;gap:var(--space-1);align-items:flex-start;text-align:left;cursor:pointer" onClick="{{ sj.onPick }}">
+<span style="display:flex;align-items:baseline;justify-content:space-between;width:100%">
+<span style="font-family:var(--font-heading);font-size:22px;line-height:1;color:var(--color-accent-700)">{{ sj.glyph }}</span>
+<span style="font-size:11.5px;color:var(--color-neutral-600)">{{ sj.count }}</span>
+</span>
+<span style="font-family:var(--font-heading);font-weight:600;font-size:16px;word-break:keep-all;margin-top:var(--space-1)">{{ sj.name }}</span>
+<span style="font-size:12.5px;line-height:1.45;color:var(--color-neutral-700);word-break:keep-all">{{ sj.desc }}</span>
+</button>
+</sc-for>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:var(--space-2)">
+<h2 style="margin:0 0 var(--space-1);font-family:var(--font-heading);font-weight:600;font-size:21px">이번 주 새로 올라온 자료</h2>
+<sc-for list="{{ fresh }}" as="fr" hint-placeholder-count="4">
+<button style="border:0;border-top:1px solid var(--color-divider);background:transparent;display:flex;align-items:center;gap:var(--space-2);min-height:56px;padding:var(--space-2) 0;text-align:left;cursor:pointer;width:100%" onClick="{{ fr.onOpen }}">
+<span style="display:flex;flex-direction:column;gap:3px;min-width:0;flex:1">
+<span style="font-family:var(--font-heading);font-size:16px;word-break:keep-all">{{ fr.title }}</span>
+<span style="font-size:12px;color:var(--color-neutral-700)">{{ fr.meta }}</span>
+</span>
+<sc-if value="{{ fr.tag }}" hint-placeholder-val="{{ false }}">
+<span class="tag {{ fr.cls }}" style="flex:none">{{ fr.tag }}</span>
+</sc-if>
+<svg style="flex:none" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-neutral-600)" stroke-width="1.5"><path d="M9 5l7 7-7 7"></path></svg>
+</button>
+</sc-for>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:var(--space-2)">
+<h2 style="margin:0 0 var(--space-1);font-family:var(--font-heading);font-weight:600;font-size:21px">가장 많이 내려받은 자료</h2>
+<sc-for list="{{ popular }}" as="pp" hint-placeholder-count="4">
+<button style="border:0;border-top:1px solid var(--color-divider);background:transparent;display:flex;align-items:center;gap:var(--space-3);min-height:56px;padding:var(--space-2) 0;text-align:left;cursor:pointer;width:100%" onClick="{{ pp.onOpen }}">
+<span style="flex:none;font-family:var(--font-heading);font-size:20px;color:var(--color-accent-2-700);width:22px">{{ pp.rank }}</span>
+<span style="display:flex;flex-direction:column;gap:3px;min-width:0;flex:1">
+<span style="font-family:var(--font-heading);font-size:16px;word-break:keep-all">{{ pp.title }}</span>
+<span style="font-size:12px;color:var(--color-neutral-700)">{{ pp.meta }}</span>
+</span>
+</button>
+</sc-for>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:var(--space-3)">
+<h2 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:21px">이용 방법</h2>
+<sc-for list="{{ steps }}" as="st" hint-placeholder-count="3">
+<div style="display:flex;gap:var(--space-3);align-items:flex-start;border-top:1px solid var(--color-divider);padding-top:var(--space-3)">
+<span style="flex:none;font-family:var(--font-heading);font-size:26px;line-height:1;color:var(--color-accent-700)">{{ st.n }}</span>
+<span style="display:flex;flex-direction:column;gap:5px">
+<span style="font-family:var(--font-heading);font-weight:600;font-size:16.5px;word-break:keep-all">{{ st.title }}</span>
+<span style="font-size:14px;line-height:1.6;color:var(--color-neutral-800);word-break:keep-all">{{ st.body }}</span>
+</span>
+</div>
+</sc-for>
+</div>
+
+</div>
+</sc-if>
+
+<sc-if value="{{ isFind }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:var(--space-3);padding-top:var(--space-4)">
+<div class="field"><input class="input" style="height:48px" placeholder="자료명·주제로 찾기" value="{{ query }}" onChange="{{ onQuery }}"></div>
+
+<div style="display:flex;align-items:center;gap:var(--space-2)">
+<button class="btn btn-secondary" style="height:44px;flex:1" onClick="{{ toggleFilter }}">{{ filterLabel }}</button>
+<button class="btn btn-ghost" style="height:44px" onClick="{{ resetFilter }}">초기화</button>
+</div>
+
+<sc-if value="{{ filterOpen }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:var(--space-4);border-top:1px solid var(--color-text);padding-top:var(--space-3)">
+<div style="display:flex;flex-direction:column;gap:var(--space-2)">
+<span style="font-size:12.5px;color:var(--color-neutral-700)"><em>1</em> 학교급 · 하나만</span>
+<div style="display:flex;flex-wrap:wrap;gap:var(--space-1)">
+<sc-for list="{{ levelChips }}" as="lc" hint-placeholder-count="3">
+<button class="tag {{ lc.cls }}" style="height:38px;border:0;cursor:pointer;font-size:13px" onClick="{{ lc.onPick }}">{{ lc.label }}</button>
+</sc-for>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:var(--space-2)">
+<span style="font-size:12.5px;color:var(--color-neutral-700)"><em>2</em> 학년 · 여러 개 가능</span>
+<div style="display:flex;flex-wrap:wrap;gap:var(--space-1)">
+<sc-for list="{{ gradeChips }}" as="gc" hint-placeholder-count="6">
+<button class="tag {{ gc.cls }}" style="height:38px;border:0;cursor:pointer;font-size:13px" onClick="{{ gc.onPick }}">{{ gc.label }}</button>
+</sc-for>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:var(--space-2)">
+<span style="font-size:12.5px;color:var(--color-neutral-700)"><em>3</em> 주제 · 여러 개 가능</span>
+<div style="display:flex;flex-wrap:wrap;gap:var(--space-1)">
+<sc-for list="{{ subjectChips }}" as="sc" hint-placeholder-count="8">
+<button class="tag {{ sc.cls }}" style="height:38px;border:0;cursor:pointer;font-size:13px" onClick="{{ sc.onPick }}">{{ sc.label }}</button>
+</sc-for>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:var(--space-2)">
+<span style="font-size:12.5px;color:var(--color-neutral-700)"><em>4</em> 판형 · 분량 · 필요할 때만</span>
+<div style="display:flex;flex-wrap:wrap;gap:var(--space-1)">
+<sc-for list="{{ specChips }}" as="pc" hint-placeholder-count="5">
+<button class="tag {{ pc.cls }}" style="height:38px;border:0;cursor:pointer;font-size:13px" onClick="{{ pc.onPick }}">{{ pc.label }}</button>
+</sc-for>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:var(--space-2)">
+<span style="font-size:12.5px;color:var(--color-neutral-700)"><em>+</em> 기타</span>
+<div style="display:flex;flex-wrap:wrap;gap:var(--space-1)">
+<sc-for list="{{ extraChips }}" as="ec" hint-placeholder-count="2">
+<button class="tag {{ ec.cls }}" style="height:38px;border:0;cursor:pointer;font-size:13px" onClick="{{ ec.onPick }}">{{ ec.label }}</button>
+</sc-for>
+</div>
+</div>
+</div>
+</sc-if>
+
+<div style="display:flex;align-items:baseline;justify-content:space-between;border-top:1px solid var(--color-text);padding-top:var(--space-2);gap:var(--space-2)">
+<h2 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:18px">검색 결과 {{ listCount }}</h2>
+<span style="font-size:12px;color:var(--color-neutral-700);text-align:right;word-break:keep-all">{{ filterSummary }}</span>
+</div>
+<div class="app-scroll" style="display:flex;gap:var(--space-1);overflow-x:auto;margin:0 calc(var(--space-4) * -1);padding:0 var(--space-4) 2px">
+<sc-for list="{{ sortChips }}" as="so" hint-placeholder-count="3">
+<button class="tag {{ so.cls }}" style="flex:none;height:34px;border:0;cursor:pointer;font-size:12.5px;white-space:nowrap" onClick="{{ so.onPick }}">{{ so.label }}</button>
+</sc-for>
+</div>
+
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ results }}" as="rs" hint-placeholder-count="6">
+<button style="border:0;border-bottom:1px solid var(--color-divider);background:transparent;display:flex;gap:var(--space-3);align-items:flex-start;padding:var(--space-3) 0;text-align:left;cursor:pointer;width:100%" onClick="{{ rs.onOpen }}">
+<span style="flex:none;width:46px;height:60px;border-radius:var(--radius-sm);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:#fff;background:{{ rs.fill }}">
+<span style="font-family:var(--font-heading);font-size:17px">{{ rs.glyph }}</span>
+<span style="font-size:9.5px;letter-spacing:.06em">{{ rs.format }}</span>
+</span>
+<span style="display:flex;flex-direction:column;gap:4px;min-width:0;flex:1">
+<span style="font-family:var(--font-heading);font-weight:600;font-size:16.5px;line-height:1.35;word-break:keep-all">{{ rs.title }}</span>
+<span style="font-size:12.5px;color:var(--color-neutral-700);word-break:keep-all">{{ rs.meta }}</span>
+<span style="font-size:12px;color:var(--color-accent-700)">{{ rs.access }}</span>
+</span>
+</button>
+</sc-for>
+</div>
+<sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+<p style="margin:0;font-size:15px;color:var(--color-neutral-700);word-break:keep-all">조건에 맞는 자료가 없습니다. 학년이나 주제를 넓혀 보세요.</p>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ isPass }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:var(--space-6);padding-top:var(--space-4)">
+<div style="display:flex;flex-direction:column;gap:var(--space-2)">
+<span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-accent-700)">학교 연간 이용권</span>
+<h1 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:29px;line-height:1.25;word-break:keep-all">학교 한 곳, 선생님 모두,<br>1년 무제한</h1>
+<div style="display:flex;align-items:baseline;gap:var(--space-2);margin-top:var(--space-1)">
+<span style="font-family:var(--font-heading);font-weight:600;font-size:34px;color:var(--color-accent-2-700)">240,000원</span>
+<span style="font-size:13px;color:var(--color-neutral-700)">/ 연 · 부가세 포함</span>
+</div>
+<span style="font-size:13px;color:var(--color-neutral-700)">세금계산서 또는 현금영수증 발행</span>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:var(--space-2)">
+<sc-for list="{{ passIncludes }}" as="pi" hint-placeholder-count="5">
+<div style="display:flex;gap:var(--space-2);border-top:1px solid var(--color-divider);padding-top:var(--space-2)">
+<span style="flex:none;color:var(--color-accent-700);font-size:15px">·</span>
+<span style="font-size:14.5px;line-height:1.6;word-break:keep-all">{{ pi }}</span>
+</div>
+</sc-for>
+<p style="margin:var(--space-2) 0 0;font-size:14px;line-height:1.6;color:var(--color-accent-2-700);word-break:keep-all">자료 나눔에 참여해 주신 선생님의 학교는 첫 1년 무료 이용권을 드립니다. 신청서의 나눔 참여 코드에 안내받은 코드를 입력해 주세요.</p>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:var(--space-3)">
+<h2 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:19px;word-break:keep-all">신청 후 진행 순서 — 결제 방법에 따라 두 갈래</h2>
+<sc-for list="{{ flows }}" as="fl" hint-placeholder-count="2">
+<div style="display:flex;flex-direction:column;gap:var(--space-2);border-top:1px solid var(--color-text);padding-top:var(--space-2)">
+<span style="display:flex;align-items:baseline;gap:var(--space-2)">
+<span style="font-family:var(--font-heading);font-weight:600;font-size:16px">{{ fl.name }}</span>
+<span style="font-size:12px;color:var(--color-neutral-700)">{{ fl.sub }}</span>
+</span>
+<span style="font-size:14px;line-height:1.7;color:var(--color-neutral-800);word-break:keep-all">{{ fl.chain }}</span>
+</div>
+</sc-for>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:var(--space-2)">
+<h2 style="margin:0 0 var(--space-1);font-family:var(--font-heading);font-weight:600;font-size:19px">자주 묻는 질문</h2>
+<sc-for list="{{ faqs }}" as="fq" hint-placeholder-count="5">
+<div style="border-top:1px solid var(--color-divider)">
+<button style="border:0;background:transparent;width:100%;min-height:52px;display:flex;align-items:center;gap:var(--space-2);padding:var(--space-2) 0;text-align:left;cursor:pointer" onClick="{{ fq.onToggle }}">
+<span style="font-family:var(--font-heading);font-size:15.5px;flex:1;word-break:keep-all">{{ fq.q }}</span>
+<span style="flex:none;font-size:18px;color:var(--color-accent-700)">{{ fq.sign }}</span>
+</button>
+<sc-if value="{{ fq.open }}" hint-placeholder-val="{{ false }}">
+<p style="margin:0 0 var(--space-3);font-size:14.5px;line-height:1.65;color:var(--color-neutral-800);word-break:keep-all">{{ fq.a }}</p>
+</sc-if>
+</div>
+</sc-for>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:var(--space-3);border-top:3px solid var(--color-text);padding-top:var(--space-3)">
+<h2 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:21px">학교 이용권 신청</h2>
+<div class="field"><label for="f-school">학교명</label><input class="input" id="f-school" style="height:48px" value="{{ schoolName }}" readonly></div>
+<div class="field"><label for="f-teacher">담당 선생님</label><input class="input" id="f-teacher" style="height:48px" value="{{ teacherName }}" readonly></div>
+<div class="field"><label for="f-mail">이메일 · 학교 코드를 받을 주소</label><input class="input" id="f-mail" style="height:48px" placeholder="teacher@school.kr"></div>
+<div style="display:flex;flex-direction:column;gap:var(--space-2)">
+<span style="font-size:12.5px;color:var(--color-neutral-700)">결제 방법</span>
+<div style="display:flex;flex-wrap:wrap;gap:var(--space-1)">
+<sc-for list="{{ payChips }}" as="pay" hint-placeholder-count="4">
+<button class="tag {{ pay.cls }}" style="height:38px;border:0;cursor:pointer;font-size:13px" onClick="{{ pay.onPick }}">{{ pay.label }}</button>
+</sc-for>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:var(--space-2)">
+<span style="font-size:12.5px;color:var(--color-neutral-700)">증빙 서류</span>
+<div style="display:flex;flex-wrap:wrap;gap:var(--space-1)">
+<sc-for list="{{ docChips }}" as="doc" hint-placeholder-count="3">
+<button class="tag {{ doc.cls }}" style="height:38px;border:0;cursor:pointer;font-size:13px" onClick="{{ doc.onPick }}">{{ doc.label }}</button>
+</sc-for>
+</div>
+</div>
+<div class="field"><label for="f-share">나눔 참여 코드 (있는 경우)</label><input class="input" id="f-share" style="height:48px" placeholder="예: ST-C-2026-0007"></div>
+<div class="field"><label for="f-note">요청 사항</label><input class="input" id="f-note" style="height:48px" placeholder="예: 2학기 학급운영 자료 위주로 필요합니다"></div>
+<button class="btn btn-primary btn-block" style="height:50px" onClick="{{ onApply }}">이용권 신청서 보내기</button>
+<p style="margin:0;font-size:12.5px;color:var(--color-neutral-700)">문의 02-2269-1100 · tong2269@naver.com</p>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isBox }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:var(--space-4);padding-top:var(--space-4)">
+<div style="display:flex;flex-direction:column;gap:var(--space-1)">
+<span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-accent-700)">우리학교 자료함</span>
+<h1 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:26px;line-height:1.25;word-break:keep-all">{{ schoolName }}</h1>
+</div>
+<div class="app-scroll" style="display:flex;gap:var(--space-1);overflow-x:auto;margin:0 calc(var(--space-4) * -1);padding:0 var(--space-4) 2px">
+<sc-for list="{{ boxTabs }}" as="bt" hint-placeholder-count="4">
+<button class="tag {{ bt.cls }}" style="flex:none;height:36px;border:0;cursor:pointer;font-size:13px;white-space:nowrap" onClick="{{ bt.onPick }}">{{ bt.label }}</button>
+</sc-for>
+</div>
+
+<sc-if value="{{ boxIsPass }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:var(--space-2)">
+<sc-for list="{{ passRows }}" as="pr" hint-placeholder-count="5">
+<div style="display:flex;gap:var(--space-3);align-items:baseline;border-top:1px solid var(--color-divider);padding:var(--space-2) 0">
+<span style="flex:none;width:104px;font-size:12.5px;color:var(--color-neutral-700)">{{ pr.k }}</span>
+<span style="font-family:var(--font-heading);font-size:15.5px;word-break:keep-all">{{ pr.v }}</span>
+</div>
+</sc-for>
+<button class="btn btn-primary" style="height:48px;align-self:flex-start;margin-top:var(--space-2)" onClick="{{ goPass }}">{{ passCta }}</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ boxIsDown }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ downloads }}" as="dl" hint-placeholder-count="2">
+<div style="border-top:1px solid var(--color-divider);padding:var(--space-3) 0;display:flex;gap:var(--space-3);align-items:flex-start">
+<span style="flex:none;width:38px;height:50px;border-radius:var(--radius-sm);background:var(--color-neutral-800);color:#fff;font-family:var(--font-heading);font-size:15px;display:flex;align-items:center;justify-content:center">{{ dl.glyph }}</span>
+<span style="display:flex;flex-direction:column;gap:4px;min-width:0;flex:1">
+<span style="font-family:var(--font-heading);font-weight:600;font-size:16px;line-height:1.35;word-break:keep-all">{{ dl.title }}</span>
+<span style="font-size:12.5px;color:var(--color-neutral-700);word-break:keep-all">{{ dl.stamp }}</span>
+</span>
+<button class="btn btn-ghost" style="height:44px;flex:none" onClick="{{ dl.onOrder }}">인쇄 주문</button>
+</div>
+</sc-for>
+<sc-if value="{{ downEmpty }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:var(--space-3);align-items:flex-start;padding-top:var(--space-2)">
+<p style="margin:0;font-size:15px;line-height:1.6;color:var(--color-neutral-800);word-break:keep-all">내려받은 자료가 없습니다. 다운로드한 PDF에는 학교명과 일시가 자동 표기되고, 이력은 학교 전체가 함께 봅니다.</p>
+<button class="btn btn-primary" style="height:48px" onClick="{{ goSamples }}">무료 샘플 3종 보기</button>
+</div>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ boxIsOrder }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ orders }}" as="od" hint-placeholder-count="1">
+<div style="border-top:1px solid var(--color-divider);padding:var(--space-3) 0;display:flex;flex-direction:column;gap:4px">
+<span style="font-family:var(--font-heading);font-weight:600;font-size:16px;word-break:keep-all">{{ od.title }}</span>
+<span style="font-size:12.5px;color:var(--color-neutral-700);word-break:keep-all">{{ od.detail }}</span>
+<span style="font-size:12.5px;color:var(--color-accent-700)">{{ od.status }}</span>
+</div>
+</sc-for>
+<sc-if value="{{ orderEmpty }}" hint-placeholder-val="{{ true }}">
+<p style="margin:var(--space-2) 0 0;font-size:15px;line-height:1.6;color:var(--color-neutral-800);word-break:keep-all">인쇄 주문 이력이 없습니다. 자료 상세에서 「이 자료로 인쇄 주문」을 누르면 판형·쪽수가 자동으로 채워집니다.</p>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ boxIsTeachers }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ teachers }}" as="tc" hint-placeholder-count="4">
+<div style="border-top:1px solid var(--color-divider);padding:var(--space-3) 0;display:flex;align-items:baseline;gap:var(--space-2)">
+<span style="font-family:var(--font-heading);font-size:16px;flex:1">{{ tc.name }}</span>
+<span style="font-size:12.5px;color:var(--color-neutral-700)">{{ tc.note }}</span>
+</div>
+</sc-for>
+<p style="margin:var(--space-3) 0 0;font-size:13px;color:var(--color-neutral-700);word-break:keep-all">코드 하나로 선생님 5명까지 등록됩니다. 추가 계정은 관리자에게 요청하세요.</p>
+</div>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ isMy }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:var(--space-6);padding-top:var(--space-4)">
+<div style="display:flex;flex-direction:column;gap:var(--space-1)">
+<h1 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:27px">{{ teacherName }}</h1>
+<span style="font-size:14px;color:var(--color-neutral-700)">{{ myLine }}</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:var(--space-2);border-top:3px solid var(--color-text);padding-top:var(--space-3)">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-2)">
+<span style="font-family:var(--font-heading);font-size:17px">회원 등급</span>
+<span class="tag {{ tierCls }}">{{ tierName }}</span>
+</div>
+<sc-for list="{{ tierRows }}" as="tr" hint-placeholder-count="3">
+<div style="display:flex;gap:var(--space-3);align-items:baseline;border-top:1px solid var(--color-divider);padding:var(--space-2) 0">
+<span style="flex:none;width:96px;font-size:12.5px;color:var(--color-neutral-700)">{{ tr.k }}</span>
+<span style="font-family:var(--font-heading);font-size:15.5px;word-break:keep-all">{{ tr.v }}</span>
+</div>
+</sc-for>
+<button class="btn btn-primary" style="height:48px;align-self:flex-start;margin-top:var(--space-1)" onClick="{{ goPass }}">{{ passCta }}</button>
+</div>
+<div style="display:flex;flex-direction:column">
+<span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-neutral-600);margin-bottom:var(--space-2)">학교인쇄통 바로가기</span>
+<sc-for list="{{ menu }}" as="mn" hint-placeholder-count="6">
+<a href="{{ mn.href }}" target="_blank" rel="noopener" style="border-top:1px solid var(--color-divider);display:flex;align-items:center;min-height:52px;padding:var(--space-2) 0;text-decoration:none;color:inherit">
+<span style="font-family:var(--font-heading);font-size:16px;word-break:keep-all">{{ mn.label }}</span>
+<svg style="margin-left:auto;flex:none" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-neutral-600)" stroke-width="1.5"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg>
+</a>
+</sc-for>
+</div>
+<div style="display:flex;flex-direction:column;gap:var(--space-2)">
+<span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-neutral-600)">문의 · 상담</span>
+<a href="tel:0222691100" style="font-family:var(--font-heading);font-size:16px;text-decoration:none">전화 02-2269-1100</a>
+<a href="tel:01085806454" style="font-family:var(--font-heading);font-size:16px;text-decoration:none">모바일 010-8580-6454</a>
+<a href="mailto:tong2269@naver.com" style="font-family:var(--font-heading);font-size:16px;text-decoration:none">이메일 tong2269@naver.com</a>
+</div>
+</div>
+</sc-if>
+
+</div>
+
+<div style="position:absolute;left:0;right:0;bottom:0;background:var(--color-bg);border-top:1px solid var(--color-text);padding:var(--space-1) var(--space-1) var(--space-2);display:flex">
+<sc-for list="{{ tabs }}" as="tb" hint-placeholder-count="5">
+<button style="flex:1;border:0;background:transparent;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;color:{{ tb.ink }}" onClick="{{ tb.onPick }}">
+<span style="display:flex" dangerouslySetInnerHTML="{{ tb.icon }}"></span>
+<span style="font-family:var(--font-heading);font-size:11px;white-space:nowrap">{{ tb.label }}</span>
+</button>
+</sc-for>
+</div>
+
+<sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;left:var(--space-4);right:var(--space-4);bottom:94px;background:var(--color-neutral-900);color:var(--color-neutral-100);padding:var(--space-3);border-radius:var(--radius-md);font-size:14px;line-height:1.5;box-shadow:var(--shadow-lg);word-break:keep-all">{{ toast }}</div>
+</sc-if>
+
+<sc-if value="{{ sheet }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;left:0;right:0;top:0;bottom:73px;background:color-mix(in srgb, var(--color-neutral-900) 42%, transparent);display:flex;align-items:flex-end" onClick="{{ closeSheet }}">
+<div class="app-scroll" style="width:100%;max-height:100%;overflow-y:auto;background:var(--color-bg);border-top:3px solid var(--color-text);padding:0 var(--space-4) var(--space-6);box-sizing:border-box;box-shadow:var(--shadow-lg)" onClick="{{ stop }}">
+<div style="position:sticky;top:0;z-index:2;background:var(--color-bg);display:flex;align-items:center;gap:var(--space-2);padding:var(--space-1) 0 var(--space-2);border-bottom:1px solid var(--color-divider);margin-bottom:var(--space-3)">
+<button style="border:0;background:transparent;display:flex;align-items:center;gap:4px;min-height:44px;padding:0;cursor:pointer;color:var(--color-neutral-700);font-family:var(--font-heading);font-size:14px" onClick="{{ goBack }}">
+<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"></path></svg>
+뒤로가기
+</button>
+<button style="margin-left:auto;border:0;background:transparent;display:flex;align-items:center;gap:5px;min-height:44px;padding:0;cursor:pointer;color:var(--color-accent-700);font-family:var(--font-heading);font-size:14px" onClick="{{ goHome }}">
+<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 10.5 12 4l8 6.5V20H4z"></path><path d="M10 20v-6h4v6"></path></svg>
+홈으로
+</button>
+</div>
+
+<sc-if value="{{ sheetIsItem }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:var(--space-3)">
+<span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-accent-700)">{{ item.crumb }}</span>
+<h2 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:25px;line-height:1.25;word-break:keep-all">{{ item.title }}</h2>
+<span style="font-size:13.5px;color:var(--color-neutral-700);word-break:keep-all">{{ item.meta }}</span>
+<div style="display:flex;gap:var(--space-2)">
+<sc-for list="{{ item.preview }}" as="pv" hint-placeholder-count="3">
+<div style="flex:1;aspect-ratio:.72;background:var(--color-neutral-200);border-radius:var(--radius-sm);display:flex;align-items:flex-end;padding:var(--space-2);box-sizing:border-box;font-size:11.5px;color:var(--color-neutral-600)">{{ pv }}</div>
+</sc-for>
+</div>
+<span style="font-size:12px;color:var(--color-neutral-700);word-break:keep-all">미리보기는 앞 3쪽만 제공되며 워터마크가 표시됩니다.</span>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-2);border-top:1px solid var(--color-text);padding-top:var(--space-2)">
+<sc-for list="{{ item.specs }}" as="sp" hint-placeholder-count="4">
+<span style="display:flex;flex-direction:column;gap:2px">
+<span style="font-size:11.5px;color:var(--color-neutral-600)">{{ sp.k }}</span>
+<span style="font-family:var(--font-heading);font-size:15px">{{ sp.v }}</span>
+</span>
+</sc-for>
+</div>
+<p style="margin:0;font-size:14.5px;line-height:1.65;color:var(--color-neutral-800);word-break:keep-all">{{ item.body }}</p>
+<div style="display:flex;flex-direction:column;gap:var(--space-1);border-top:1px solid var(--color-divider);padding-top:var(--space-2)">
+<span style="font-family:var(--font-heading);font-size:15px">이용 범위</span>
+<span style="font-size:13.5px;line-height:1.6;color:var(--color-neutral-800);word-break:keep-all">이용권을 보유한 학교의 교육 목적 인쇄·배부에 한해 이용할 수 있습니다. 다운로드한 PDF에는 학교명과 다운로드 일시가 자동으로 표기됩니다. 외부 공유·재판매·온라인 게시는 금지됩니다.</span>
+</div>
+<div style="display:flex;flex-direction:column;gap:var(--space-2);margin-top:var(--space-1)">
+<button class="btn btn-primary btn-block" style="height:50px" onClick="{{ item.onDownload }}">{{ item.downloadLabel }}</button>
+<button class="btn btn-secondary btn-block" style="height:50px" onClick="{{ item.onOrder }}">이 자료로 인쇄 주문</button>
+<a class="btn btn-ghost btn-block" href="{{ item.href }}" target="_blank" rel="noopener" style="height:50px">홈페이지에서 표지·내지 보기</a>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ sheetIsOrder }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:var(--space-3)">
+<span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-accent-700)">제본 인쇄 주문</span>
+<h2 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:23px;line-height:1.3;word-break:keep-all">{{ order.title }}</h2>
+<p style="margin:0;font-size:14px;line-height:1.6;color:var(--color-neutral-800);word-break:keep-all">판형·쪽수는 자동으로 채워집니다. 부수와 제본만 고르세요.</p>
+<div style="display:flex;gap:var(--space-3);border-top:1px solid var(--color-text);padding-top:var(--space-2)">
+<span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:11.5px;color:var(--color-neutral-600)">판형 · 쪽수</span><span style="font-family:var(--font-heading);font-size:15px">{{ order.spec }}</span></span>
+<span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:11.5px;color:var(--color-neutral-600)">할인</span><span style="font-family:var(--font-heading);font-size:15px">{{ order.discount }}</span></span>
+</div>
+<div style="display:flex;flex-direction:column;gap:var(--space-2)">
+<span style="font-size:12.5px;color:var(--color-neutral-700)">부수</span>
+<div style="display:flex;align-items:center;gap:var(--space-3)">
+<button class="btn btn-secondary btn-icon" style="width:48px;height:48px" onClick="{{ order.dec }}">−</button>
+<span style="font-family:var(--font-heading);font-size:22px;min-width:74px;text-align:center">{{ order.qty }}부</span>
+<button class="btn btn-secondary btn-icon" style="width:48px;height:48px" onClick="{{ order.inc }}">+</button>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:var(--space-2)">
+<span style="font-size:12.5px;color:var(--color-neutral-700)">제본</span>
+<div style="display:flex;flex-wrap:wrap;gap:var(--space-1)">
+<sc-for list="{{ order.bindings }}" as="bd" hint-placeholder-count="3">
+<button class="tag {{ bd.cls }}" style="height:40px;border:0;cursor:pointer;font-size:13px" onClick="{{ bd.onPick }}">{{ bd.label }}</button>
+</sc-for>
+</div>
+</div>
+<button class="btn btn-primary btn-block" style="height:50px;margin-top:var(--space-1)" onClick="{{ order.onSubmit }}">인쇄 주문 신청</button>
+<a class="btn btn-ghost btn-block" href="https://school-tong.com/bbs/board.php?bo_table=item07" target="_blank" rel="noopener" style="height:50px">학교부교재 주문 화면 열기</a>
+</div>
+</sc-if>
+
+<sc-if value="{{ sheetIsNotice }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:var(--space-3)">
+<h2 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:23px">공지사항</h2>
+<sc-for list="{{ notices }}" as="nt" hint-placeholder-count="4">
+<a href="{{ nt.href }}" target="_blank" rel="noopener" style="border-top:1px solid var(--color-divider);padding:var(--space-3) 0;display:flex;flex-direction:column;gap:4px;text-decoration:none;color:inherit">
+<span style="font-family:var(--font-heading);font-size:16px;line-height:1.4;word-break:keep-all">{{ nt.title }}</span>
+<span style="font-size:12.5px;color:var(--color-neutral-700)">{{ nt.stamp }}</span>
+</a>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ sheetIsMenu }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:var(--space-6)">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-2)">
+<h2 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:23px">전체 카테고리</h2>
+<button class="btn btn-ghost" style="height:36px;font-size:13px" onClick="{{ goAll }}">전체 자료 보기 →</button>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:var(--space-2)">
+<span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-accent-700)">주제별 자료</span>
+<sc-for list="{{ menuSubjects }}" as="ms" hint-placeholder-count="8">
+<button style="border:0;border-top:1px solid var(--color-divider);background:transparent;display:flex;align-items:center;gap:var(--space-3);min-height:52px;padding:var(--space-2) 0;text-align:left;cursor:pointer;width:100%" onClick="{{ ms.onPick }}">
+<span style="flex:none;font-family:var(--font-heading);font-size:19px;color:var(--color-accent-700);width:24px">{{ ms.glyph }}</span>
+<span style="font-family:var(--font-heading);font-size:16px;flex:1;word-break:keep-all">{{ ms.name }}</span>
+<span style="font-size:12px;color:var(--color-neutral-600)">{{ ms.count }}</span>
+</button>
+</sc-for>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:var(--space-2)">
+<span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-accent-2-700)">학교인쇄통 제품</span>
+<sc-for list="{{ menuProducts }}" as="mp" hint-placeholder-count="8">
+<a href="{{ mp.href }}" target="_blank" rel="noopener" style="border-top:1px solid var(--color-divider);display:flex;align-items:center;gap:var(--space-2);min-height:52px;padding:var(--space-2) 0;text-decoration:none;color:inherit">
+<span style="font-family:var(--font-heading);font-size:16px;flex:1;word-break:keep-all">{{ mp.label }}</span>
+<svg style="flex:none" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-neutral-600)" stroke-width="1.5"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg>
+</a>
+</sc-for>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:var(--space-2)">
+<span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-neutral-600)">고객 지원</span>
+<sc-for list="{{ menu }}" as="mm" hint-placeholder-count="6">
+<a href="{{ mm.href }}" target="_blank" rel="noopener" style="border-top:1px solid var(--color-divider);display:flex;align-items:center;gap:var(--space-2);min-height:50px;padding:var(--space-2) 0;text-decoration:none;color:inherit">
+<span style="font-family:var(--font-heading);font-size:15.5px;flex:1;word-break:keep-all">{{ mm.label }}</span>
+<svg style="flex:none" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-neutral-600)" stroke-width="1.5"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg>
+</a>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ sheetIsCart }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:var(--space-3)">
+<h2 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:23px">인쇄 주문 내역</h2>
+<sc-for list="{{ orders }}" as="oc" hint-placeholder-count="1">
+<div style="border-top:1px solid var(--color-divider);padding:var(--space-2) 0;display:flex;flex-direction:column;gap:3px">
+<span style="font-family:var(--font-heading);font-size:16px;word-break:keep-all">{{ oc.title }}</span>
+<span style="font-size:12.5px;color:var(--color-neutral-700);word-break:keep-all">{{ oc.detail }}</span>
+</div>
+</sc-for>
+<sc-if value="{{ orderEmpty }}" hint-placeholder-val="{{ true }}">
+<p style="margin:0;font-size:15px;color:var(--color-neutral-700)">주문 내역이 없습니다.</p>
+</sc-if>
+<a class="btn btn-ghost btn-block" href="https://school-tong.com/shop/cart.php" target="_blank" rel="noopener" style="height:50px">홈페이지 장바구니 열기</a>
+</div>
+</sc-if>
+
+</div>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:402,&quot;height&quot;:840},&quot;schoolName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;서울한강초등학교&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;teacherName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;박선희 선생님&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;hasPass&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;totalCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:190,&quot;min&quot;:1,&quot;max&quot;:999,&quot;tsType&quot;:&quot;number&quot;}}">
+const ICONS = {
+  home: '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 10.5 12 4l8 6.5V20H4z"></path><path d="M10 20v-6h4v6"></path></svg>',
+  find: '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="6.2"></circle><path d="M15.6 15.6 20 20"></path></svg>',
+  pass: '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3.5" y="6" width="17" height="12" rx="1.5"></rect><path d="M3.5 10.5h17"></path><path d="M7 14.5h4"></path></svg>',
+  box: '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3.5 7.5h6l1.8 2.2h9.2V19h-17z"></path><path d="M3.5 7.5V5h5.2l1.6 2.5"></path></svg>',
+  my: '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="9" r="3.4"></circle><path d="M5.5 20c.8-3.4 3.3-5 6.5-5s5.7 1.6 6.5 5"></path></svg>',
+};
+
+const B = 'https://school-tong.com/bbs/board.php?bo_table=';
+const C = 'https://school-tong.com/bbs/content.php?co_id=';
+
+const SUBJECTS = [
+  { key: '학교자율시간', glyph: '自', desc: '2022 개정 교육과정 자율시간 워크북', count: 42 },
+  { key: '독서·글쓰기', glyph: '讀', desc: '독서기록장, 한 학기 한 권 읽기', count: 31 },
+  { key: '진로·인성', glyph: '進', desc: '진로탐색, 감정·관계 활동지', count: 27 },
+  { key: '학급운영', glyph: '學', desc: '학습플래너, 알림장, 생활지도', count: 24 },
+  { key: '안전·환경', glyph: '安', desc: '안전교육, 생태환경 프로젝트', count: 18 },
+  { key: '행사·기록', glyph: '行', desc: '운동회, 졸업, 학교요람 서식', count: 15 },
+  { key: '창체·생활기록', glyph: '記', desc: '창체기록장, 생활본, 감사기록장', count: 12 },
+  { key: '표지·디자인 서식', glyph: '表', desc: '교지·문집 표지 템플릿', count: 20 },
+];
+
+const INK = ['var(--color-accent-700)', 'var(--color-accent-2-700)', 'var(--color-neutral-800)'];
+const LEVELS = ['초등', '중등', '고등'];
+const SPECS = ['B5', 'A4', '32쪽 이하', '33~64쪽', '65쪽 이상'];
+const SORTS = ['최신순', '다운로드 많은순', '쪽수 적은순'];
+const PAYS = ['계좌이체 (학교 행정실)', '학교 법인카드', '개인 신용·체크카드', '휴대폰 결제'];
+const DOCS = ['세금계산서', '현금영수증', '카드 매출전표만'];
+const BINDINGS = ['무선 제본 (기본)', '중철', '스프링'];
+const BOXTABS = ['이용권 현황', '다운로드 이력', '인쇄 주문 이력', '우리학교 선생님'];
+
+const DATA = [
+  { id: 'ST-D-0001', title: '학교자율시간 진로탐색 워크북', subject: '학교자율시간', level: '초등', grades: [5, 6], gradeLabel: '초등 5~6학년', format: 'B5', pages: 48, sessions: 12, downloads: 412, sample: true, badge: '', fresh: true, href: B + 'item25' },
+  { id: 'ST-D-0002', title: '한 학기 한 권 독서기록장', subject: '독서·글쓰기', level: '중등', grades: [1, 2, 3], gradeLabel: '중학 전학년', format: 'B5', pages: 64, sessions: 16, downloads: 388, sample: true, badge: '', fresh: true, href: B + 'item09' },
+  { id: 'ST-D-0003', title: '학급운영 생활지도 활동지', subject: '학급운영', level: '초등', grades: [3, 4], gradeLabel: '초등 3~4학년', format: 'A4', pages: 32, sessions: 8, downloads: 301, sample: true, badge: '', fresh: true, href: B + 'item21_1' },
+  { id: 'ST-D-0004', title: '감사기록장 4종', subject: '창체·생활기록', level: '초등', grades: [1, 2, 3, 4, 5, 6], gradeLabel: '초등 전학년', format: 'B5', pages: 28, sessions: 8, downloads: 274, sample: false, badge: 'HOT', fresh: true, href: B + 'item06' },
+  { id: 'ST-D-0005', title: '명문 필사노트', subject: '독서·글쓰기', level: '고등', grades: [1, 2, 3], gradeLabel: '중·고등', format: 'B5', pages: 40, sessions: 10, downloads: 233, sample: false, badge: 'NEW', fresh: true, href: B + 'item28_1' },
+  { id: 'ST-D-0006', title: '자유학기제 워크북', subject: '진로·인성', level: '중등', grades: [1], gradeLabel: '중학 1학년', format: 'B5', pages: 56, sessions: 14, downloads: 219, sample: false, badge: 'NEW', fresh: true, href: B + 'item25' },
+  { id: 'ST-D-0007', title: 'AI수업 워크북', subject: '학교자율시간', level: '초등', grades: [5, 6], gradeLabel: '초등 5~6학년', format: 'A4', pages: 44, sessions: 12, downloads: 0, sample: false, badge: '출시예정', fresh: false, href: B + 'item07' },
+  { id: 'ST-D-0008', title: '진로 포트폴리오', subject: '진로·인성', level: '중등', grades: [1, 2, 3], gradeLabel: '중학 전학년', format: 'A4', pages: 36, sessions: 9, downloads: 0, sample: false, badge: '출시예정', fresh: false, href: B + 'item06_2' },
+  { id: 'ST-D-0009', title: '학습플래너', subject: '학급운영', level: '초등', grades: [3, 4, 5, 6], gradeLabel: '초등 3~6학년', format: 'B5', pages: 60, sessions: 0, downloads: 196, sample: false, badge: '', fresh: false, href: B + 'item01_1' },
+  { id: 'ST-D-0010', title: '창의적 체험활동 기록장', subject: '창체·생활기록', level: '초등', grades: [1, 2, 3, 4, 5, 6], gradeLabel: '초등 전학년', format: 'B5', pages: 24, sessions: 6, downloads: 172, sample: false, badge: '', fresh: false, href: B + 'item21' },
+  { id: 'ST-D-0011', title: '생활안전 · 생태환경 프로젝트', subject: '안전·환경', level: '초등', grades: [3, 4], gradeLabel: '초등 3~4학년', format: 'A4', pages: 30, sessions: 8, downloads: 141, sample: false, badge: '', fresh: false, href: B + 'item07' },
+  { id: 'ST-D-0012', title: '운동회 · 졸업 행사 기록 서식', subject: '행사·기록', level: '초등', grades: [1, 2, 3, 4, 5, 6], gradeLabel: '초등 전학년', format: 'A4', pages: 20, sessions: 0, downloads: 118, sample: false, badge: '', fresh: false, href: B + 'item11' },
+  { id: 'ST-D-0013', title: '교지 · 문집 표지 템플릿', subject: '표지·디자인 서식', level: '고등', grades: [1, 2, 3], gradeLabel: '중·고등', format: 'A4', pages: 16, sessions: 0, downloads: 96, sample: false, badge: '', fresh: false, href: B + 'item04' },
+  { id: 'ST-D-0014', title: '알림장 · 생활지도 노트', subject: '학급운영', level: '초등', grades: [1, 2], gradeLabel: '초등 1~2학년', format: 'B5', pages: 20, sessions: 0, downloads: 88, sample: false, badge: '', fresh: false, href: B + 'item08' },
+];
+
+const MENU = [
+  { label: '교정센터', href: C + 'support' },
+  { label: '인쇄/제작가이드', href: C + 'print_guide' },
+  { label: '인쇄 네비게이션 — 규격·용지·제본', href: B + 'print_nav' },
+  { label: '제작후기', href: B + 'review' },
+  { label: '고객센터 · 자주묻는 Q&A', href: 'https://school-tong.com/bbs/faq.php' },
+  { label: '1:1 온라인 상담', href: B + 'online' },
+];
+
+const PRODUCTS = [
+  { label: '학교부교재 · 워크북', href: B + 'item07' },
+  { label: '교지 · 학급문집', href: B + 'item04' },
+  { label: '독서기록장 · 필사노트', href: B + 'item09' },
+  { label: '학습플래너 · 다이어리', href: B + 'item01_1' },
+  { label: '감사기록장 · 생활본', href: B + 'item06' },
+  { label: '창체기록장 · 활동지', href: B + 'item21' },
+  { label: '알림장 · 상담록', href: B + 'item08' },
+  { label: '학교요람 · 행사 인쇄물', href: B + 'item11' },
+];
+
+const NOTICES = [
+  { title: '학교인쇄통 주문 및 제작 관련 안내', stamp: '공지', href: B + 'notice&wr_id=70' },
+  { title: '디자인 직접 제공시 꼭 읽어주세요', stamp: '공지', href: B + 'notice&wr_id=71' },
+  { title: '2026년 2월 배송 일정', stamp: '배송', href: B + 'notice&wr_id=56' },
+  { title: '교지-학급문집 제작 및 편집안내', stamp: '제작', href: B + 'notice&wr_id=55' },
+];
+
+const FAQS = [
+  { q: '같은 학교 다른 선생님도 쓸 수 있나요?', a: '네. 담당 선생님이 받은 학교 코드를 회원가입 시 입력하면 같은 학교 소속으로 등록되어 바로 이용할 수 있습니다.' },
+  { q: '학교 행정실 계좌이체로 결제할 수 있나요?', a: '가능합니다. 신청서에서 계좌이체를 고르면 견적서가 바로 메일로 가고, 입금 확인 후 학교 코드와 세금계산서를 보내드립니다.' },
+  { q: '선생님 개인 카드나 휴대폰으로 결제해도 되나요?', a: '됩니다. 결제 즉시 학교 코드가 발급되고 카드전표 또는 현금영수증이 자동 발행됩니다. 학교 예산으로 정산할 때는 세금계산서를 함께 고르세요.' },
+  { q: '내려받은 PDF를 학교인쇄통에서 바로 인쇄할 수 있나요?', a: '자료 상세 화면의 「이 자료로 인쇄 주문」 버튼을 누르면 부수·제본 방식만 고르고 바로 주문됩니다.' },
+  { q: '이용권이 끝나면 내려받은 파일은 어떻게 되나요?', a: '이미 내려받은 파일은 계속 교육 목적으로 사용할 수 있습니다. 새 자료 다운로드만 중단됩니다.' },
+];
+
+const STEPS = [
+  { n: '1', title: '학교 이용권 신청', body: '학교 단위로 1년 이용권을 신청합니다. 세금계산서·학교 행정 계좌이체 가능.' },
+  { n: '2', title: '학교 코드로 선생님 등록', body: '담당 선생님이 받은 학교 코드를 동료 선생님께 공유하면 누구나 이용할 수 있습니다.' },
+  { n: '3', title: '내려받고, 인쇄 주문까지', body: 'PDF를 바로 내려받거나 「이 자료로 인쇄 주문」 버튼으로 학교인쇄통 제본 인쇄를 신청합니다.' },
+];
+
+class Component extends DCLogic {
+  state = {
+    tab: 'home', query: '', level: null, gradeSel: [], subjSel: [], specSel: [], sampleOnly: false, hangul: false,
+    sort: '최신순', filterOpen: false, sheet: null, itemId: null, faqOpen: null, boxTab: '이용권 현황',
+    pay: PAYS[0], doc: DOCS[0], qty: 30, binding: BINDINGS[0], orderId: null,
+    downloads: [], orders: [], toast: '', applied: false,
+  };
+
+  toast(msg) {
+    clearTimeout(this._t);
+    this.setState({ toast: msg });
+    this._t = setTimeout(() => this.setState({ toast: '' }), 2600);
+  }
+
+  tog(key, v) {
+    this.setState(s => {
+      const arr = s[key];
+      return { [key]: arr.includes(v) ? arr.filter(x => x !== v) : arr.concat([v]) };
+    });
+  }
+
+  hasPass() { return (this.props.hasPass ?? false) || this.state.applied; }
+
+  download(rec) {
+    if (rec.badge === '출시예정') { this.toast('아직 준비 중인 자료입니다.'); return; }
+    if (!rec.sample && !this.hasPass()) {
+      this.setState({ tab: 'pass', sheet: null });
+      this.toast('이용권 학교만 내려받을 수 있어요. 무료 샘플 3종은 누구나 가능합니다.');
+      return;
+    }
+    if (this.state.downloads.some(d => d.id === rec.id)) { this.toast('이미 자료함에 있는 자료입니다.'); return; }
+    const school = this.props.schoolName ?? '서울한강초등학교';
+    this.setState(s => ({
+      downloads: [{ id: rec.id, title: rec.title, glyph: (SUBJECTS.find(x => x.key === rec.subject) || {}).glyph || '通', stamp: rec.id + ' · PDF ' + rec.pages + '쪽 · 오늘 내려받음', onOrder: () => this.openOrder(rec.id) }, ...s.downloads],
+      sheet: null, boxTab: '다운로드 이력',
+    }));
+    this.toast(school + ' 자료함에 저장했습니다. 다운로드 링크는 10분간 유효합니다.');
+  }
+
+  openOrder(id) { this.setState({ sheet: 'order', orderId: id, qty: 30, binding: BINDINGS[0] }); }
+
+  submitOrder(rec) {
+    const s = this.state;
+    this.setState(st => ({
+      orders: [{ id: rec.id + '-' + st.orders.length, title: rec.title, detail: rec.format + ' · ' + rec.pages + '쪽 · ' + st.qty + '부 · ' + st.binding, status: '접수 · 인쇄비 5% 할인 적용' }, ...st.orders],
+      sheet: null, boxTab: '인쇄 주문 이력',
+    }));
+    this.toast('인쇄 주문이 접수되었습니다. 이용권 학교 인쇄비 5% 할인이 적용됩니다.');
+  }
+
+  renderVals() {
+    const s = this.state;
+    const schoolName = this.props.schoolName ?? '서울한강초등학교';
+    const teacherName = this.props.teacherName ?? '박선희 선생님';
+    const total = this.props.totalCount ?? 190;
+    const hasPass = this.hasPass();
+
+    const glyphOf = k => (SUBJECTS.find(x => x.key === k) || {}).glyph || '通';
+    const fillOf = k => INK[SUBJECTS.findIndex(x => x.key === k) % 3] || INK[2];
+    const metaOf = r => r.gradeLabel + ' · ' + r.format + ' · ' + r.pages + '쪽' + (r.downloads ? ' · 다운로드 ' + r.downloads : '');
+    const chip = (label, on, onPick) => ({ label, cls: on ? 'tag-accent' : 'tag-outline', onPick });
+
+    const q = s.query.trim();
+    const sizeOk = r => {
+      const picks = s.specSel.filter(x => x !== 'B5' && x !== 'A4');
+      if (!picks.length) return true;
+      return picks.some(p => (p === '32쪽 이하' && r.pages <= 32) || (p === '33~64쪽' && r.pages > 32 && r.pages <= 64) || (p === '65쪽 이상' && r.pages > 64));
+    };
+    const fmtOk = r => {
+      const picks = s.specSel.filter(x => x === 'B5' || x === 'A4');
+      return !picks.length || picks.includes(r.format);
+    };
+    let results = DATA
+      .filter(r => !s.level || r.level === s.level)
+      .filter(r => !s.gradeSel.length || r.grades.some(g => s.gradeSel.includes(g)))
+      .filter(r => !s.subjSel.length || s.subjSel.includes(r.subject))
+      .filter(r => fmtOk(r) && sizeOk(r))
+      .filter(r => !s.sampleOnly || r.sample)
+      .filter(r => !q || (r.title + r.gradeLabel + r.subject).includes(q));
+    if (s.sort === '다운로드 많은순') results = results.slice().sort((a, b) => b.downloads - a.downloads);
+    if (s.sort === '쪽수 적은순') results = results.slice().sort((a, b) => a.pages - b.pages);
+
+    const row = r => ({
+      title: r.title, meta: metaOf(r), glyph: glyphOf(r.subject), fill: fillOf(r.subject), format: r.format,
+      access: r.badge || (r.sample ? '무료 샘플 · 바로 내려받기' : '이용권 학교 자료'),
+      onOpen: () => this.setState({ sheet: 'item', itemId: r.id }),
+    });
+
+    const rec = DATA.find(r => r.id === s.itemId);
+    const item = rec ? {
+      crumb: '디지털자료실 › ' + rec.subject,
+      title: rec.title, meta: rec.id + ' · ' + metaOf(rec), href: rec.href,
+      preview: ['표지', '본문 2쪽', '본문 3쪽'],
+      specs: [
+        { k: '판형', v: rec.format }, { k: '분량', v: rec.pages + '쪽' },
+        { k: '차시', v: rec.sessions ? rec.sessions + '차시' : '해당 없음' }, { k: '파일', v: '인쇄용 PDF' },
+      ],
+      body: rec.sample
+        ? '무료 샘플로 공개된 자료입니다. 비회원도 인쇄용 PDF를 바로 내려받아 학급에서 사용할 수 있습니다.'
+        : '이용권 학교 자료입니다. 학교 코드로 등록된 선생님은 누구나 무제한으로 내려받을 수 있습니다.',
+      downloadLabel: rec.badge === '출시예정' ? '출시예정 자료' : (rec.sample || hasPass ? '인쇄용 PDF 내려받기' : '이용권 신청하고 내려받기'),
+      onDownload: () => this.download(rec),
+      onOrder: () => this.openOrder(rec.id),
+    } : null;
+
+    const orderRec = DATA.find(r => r.id === s.orderId);
+    const order = orderRec ? {
+      title: orderRec.title, spec: orderRec.format + ' · ' + orderRec.pages + '쪽',
+      discount: hasPass ? '이용권 학교 5%' : '이용권 신청 시 5%',
+      qty: s.qty,
+      inc: () => this.setState(st => ({ qty: st.qty + 10 })),
+      dec: () => this.setState(st => ({ qty: Math.max(10, st.qty - 10) })),
+      bindings: BINDINGS.map(b => chip(b, s.binding === b, () => this.setState({ binding: b }))),
+      onSubmit: () => this.submitOrder(orderRec),
+    } : null;
+
+    const gradeOptions = s.level === '초등' ? [1, 2, 3, 4, 5, 6] : [1, 2, 3];
+    const activeCount = (s.level ? 1 : 0) + s.gradeSel.length + s.subjSel.length + s.specSel.length + (s.sampleOnly ? 1 : 0) + (s.hangul ? 1 : 0);
+
+    return {
+      schoolName, teacherName,
+      myLine: schoolName + ' · 담임 선생님',
+      isHome: s.tab === 'home', isFind: s.tab === 'find', isPass: s.tab === 'pass', isBox: s.tab === 'box', isMy: s.tab === 'my',
+      orderCount: s.orders.length,
+      tierLabel: hasPass ? '유료 회원 · 이용중' : '일반 방문자',
+      tierName: hasPass ? '유료 회원' : '일반 방문자',
+      tierCls: hasPass ? 'tag-accent' : 'tag-outline',
+      tierRows: hasPass
+        ? [{ k: '자료실', v: '전체 무제한' }, { k: '인쇄 할인', v: '5% 자동 적용' }, { k: '이용권 코드', v: 'ST-P-2026-0417' }, { k: '유효기간', v: '결제일부터 1년' }]
+        : [{ k: '자료실', v: '무료 샘플 3종만' }, { k: '인쇄 할인', v: '없음' }, { k: '이용권 코드', v: '미발급' }, { k: '유효기간', v: '—' }],
+      passNotice: hasPass
+        ? schoolName + ' 이용권이 적용되어 전체 자료 ' + total + '종을 무제한 내려받을 수 있습니다.'
+        : schoolName + ' 는 아직 학교 이용권이 없습니다. 무료 샘플 3종은 바로 내려받을 수 있어요.',
+      passCta: hasPass ? '이용권 현황 보기' : '학교 이용권 신청',
+      covers: DATA.slice(0, 3).map((r, i) => ({
+        title: r.title, meta: r.gradeLabel + ' · ' + r.pages + '쪽', format: r.format, fill: INK[i],
+        onOpen: () => this.setState({ sheet: 'item', itemId: r.id }),
+      })),
+      subjects: SUBJECTS.map(x => ({
+        glyph: x.glyph, name: x.key, desc: x.desc, count: x.count + '종',
+        onPick: () => this.setState({ tab: 'find', subjSel: [x.key], level: null, gradeSel: [], specSel: [], query: '', filterOpen: true }),
+      })),
+      fresh: DATA.filter(r => r.fresh).map(r => ({
+        title: r.title, meta: r.subject + ' · ' + r.gradeLabel, tag: r.badge,
+        cls: r.badge === 'HOT' ? 'tag-accent-2' : r.badge === 'NEW' ? 'tag-accent' : 'tag-outline',
+        onOpen: () => this.setState({ sheet: 'item', itemId: r.id }),
+      })),
+      popular: DATA.slice().sort((a, b) => b.downloads - a.downloads).slice(0, 4).map((r, i) => ({
+        rank: i + 1, title: r.title, meta: r.subject + ' · 다운로드 ' + r.downloads,
+        onOpen: () => this.setState({ sheet: 'item', itemId: r.id }),
+      })),
+      steps: STEPS,
+      query: s.query,
+      onQuery: e => this.setState({ query: e.target.value }),
+      filterOpen: s.filterOpen,
+      filterLabel: activeCount ? '조건 ' + activeCount + '개 적용 중' : '조건으로 좁히기',
+      toggleFilter: () => this.setState(st => ({ filterOpen: !st.filterOpen })),
+      resetFilter: () => this.setState({ level: null, gradeSel: [], subjSel: [], specSel: [], sampleOnly: false, hangul: false, query: '' }),
+      levelChips: LEVELS.map(l => chip(l, s.level === l, () => this.setState({ level: s.level === l ? null : l, gradeSel: [] }))),
+      gradeChips: gradeOptions.map(g => chip(g + '학년', s.gradeSel.includes(g), () => this.tog('gradeSel', g))),
+      subjectChips: SUBJECTS.map(x => chip(x.key, s.subjSel.includes(x.key), () => this.tog('subjSel', x.key))),
+      specChips: SPECS.map(p => chip(p, s.specSel.includes(p), () => this.tog('specSel', p))),
+      extraChips: [
+        chip('무료 샘플만', s.sampleOnly, () => this.setState(st => ({ sampleOnly: !st.sampleOnly }))),
+        chip('편집 원본(한글) 포함', s.hangul, () => this.setState(st => ({ hangul: !st.hangul }))),
+      ],
+      sortChips: SORTS.map(o => chip(o, s.sort === o, () => this.setState({ sort: o }))),
+      listCount: results.length + '종',
+      filterSummary: [s.level, s.gradeSel.length ? s.gradeSel.join('·') + '학년' : '', s.subjSel.join(' · ')].filter(Boolean).join(' · ') || '전체 조건',
+      results: results.map(row), noResults: results.length === 0,
+      passIncludes: [
+        '전체 자료 ' + total + '종+ 무제한 다운로드 (매월 신규 추가)',
+        '학교 코드 하나로 선생님 5명까지 등록 (추가 계정은 관리자 요청)',
+        '교육 목적 인쇄·배부 이용 허락 포함',
+        '학교인쇄통 제본 인쇄 주문 시 인쇄비 5% 할인',
+        '계좌이체 · 학교 법인카드 · 개인 카드 · 휴대폰 결제 / 세금계산서·현금영수증 발행',
+      ],
+      flows: [
+        { name: '계좌이체', sub: '학교 행정실 · 에듀파인', chain: '신청서 → 견적서 자동 메일(즉시) → 행정실 입금 → 입금 확인 → 학교 코드 메일 → 세금계산서(홈택스)' },
+        { name: '카드 · 휴대폰', sub: '법인카드 · 개인 카드 · 휴대폰', chain: '신청서 → 온라인 결제(즉시) → 학교 코드 메일(즉시) → 카드전표 · 현금영수증(자동)' },
+      ],
+      faqs: FAQS.map((f, i) => ({
+        q: f.q, a: f.a, open: s.faqOpen === i, sign: s.faqOpen === i ? '−' : '+',
+        onToggle: () => this.setState(st => ({ faqOpen: st.faqOpen === i ? null : i })),
+      })),
+      payChips: PAYS.map(p => chip(p, s.pay === p, () => this.setState({ pay: p }))),
+      docChips: DOCS.map(d => chip(d, s.doc === d, () => this.setState({ doc: d }))),
+      onApply: () => { this.setState({ applied: true, tab: 'box', boxTab: '이용권 현황' }); this.toast('신청서가 접수되었습니다. ' + s.pay + ' · ' + s.doc + ' 기준으로 안내 메일을 보냈습니다.'); },
+      boxTabs: BOXTABS.map(t => chip(t, s.boxTab === t, () => this.setState({ boxTab: t }))),
+      boxIsPass: s.boxTab === '이용권 현황', boxIsDown: s.boxTab === '다운로드 이력',
+      boxIsOrder: s.boxTab === '인쇄 주문 이력', boxIsTeachers: s.boxTab === '우리학교 선생님',
+      passRows: hasPass
+        ? [{ k: '상태', v: '이용중' }, { k: '이용권 코드', v: 'ST-P-2026-0417' }, { k: '만료일', v: '2027-03-31' }, { k: '등록 선생님', v: '3명 / 5명' }, { k: '인쇄 할인', v: '5% 자동 적용' }]
+        : [{ k: '상태', v: '미신청' }, { k: '이용권 코드', v: '미발급' }, { k: '이용 범위', v: '무료 샘플 3종' }, { k: '연간 이용료', v: '240,000원 (부가세 포함)' }],
+      downloads: s.downloads, downEmpty: s.downloads.length === 0,
+      orders: s.orders, orderEmpty: s.orders.length === 0,
+      teachers: [
+        { name: teacherName, note: '담당 · 코드 등록' },
+        { name: '김도현 선생님', note: '5학년' },
+        { name: '이수민 선생님', note: '3학년' },
+        { name: '빈 자리 2', note: '5명까지 등록' },
+      ],
+      menu: MENU, notices: NOTICES,
+      tabs: [
+        { key: 'home', label: '홈', icon: { __html: ICONS.home } },
+        { key: 'find', label: '자료 찾기', icon: { __html: ICONS.find } },
+        { key: 'pass', label: '이용권', icon: { __html: ICONS.pass } },
+        { key: 'box', label: '자료함', icon: { __html: ICONS.box } },
+        { key: 'my', label: '마이', icon: { __html: ICONS.my } },
+      ].map(t => ({
+        label: t.label, icon: t.icon,
+        ink: s.tab === t.key ? 'var(--color-accent-700)' : 'var(--color-neutral-600)',
+        onPick: () => this.setState({ tab: t.key, sheet: null }),
+      })),
+      goPass: () => this.setState({ tab: hasPass ? 'box' : 'pass', boxTab: '이용권 현황', sheet: null }),
+      goSamples: () => this.setState({ tab: 'find', sampleOnly: true, level: null, gradeSel: [], subjSel: [], specSel: [], query: '', sheet: null }),
+      goAll: () => this.setState({ tab: 'find', level: null, gradeSel: [], subjSel: [], specSel: [], sampleOnly: false, query: '' }),
+      goHome: () => this.setState({ tab: 'home', sheet: null }),
+      openMenu: () => this.setState({ sheet: 'menu' }),
+      menuSubjects: SUBJECTS.map(x => ({
+        glyph: x.glyph, name: x.key, count: x.count + '종',
+        onPick: () => this.setState({ tab: 'find', subjSel: [x.key], level: null, gradeSel: [], specSel: [], query: '', filterOpen: false, sheet: null }),
+      })),
+      menuProducts: PRODUCTS,
+      openNotices: () => this.setState({ sheet: 'notice' }),
+      openCart: () => this.setState({ sheet: 'cart' }),
+      goBack: () => this.setState(st => (st.sheet === 'order' && st.orderId ? { sheet: 'item', itemId: st.orderId } : { sheet: null })),
+      closeSheet: () => this.setState({ sheet: null }),
+      stop: e => e.stopPropagation(),
+      sheet: s.sheet,
+      sheetIsItem: s.sheet === 'item' && !!item,
+      sheetIsOrder: s.sheet === 'order' && !!order,
+      sheetIsNotice: s.sheet === 'notice',
+      sheetIsCart: s.sheet === 'cart',
+      sheetIsMenu: s.sheet === 'menu',
+      item, order,
+      toast: s.toast,
+    };
+  }
+}
+</script>
+</body>
+</html>

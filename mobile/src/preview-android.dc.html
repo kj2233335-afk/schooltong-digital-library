@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/broadsheet-3e4f85c2-f386-4c50-bf57-4af842a8325d/styles.css">
+<script src="_ds/broadsheet-3e4f85c2-f386-4c50-bf57-4af842a8325d/_ds_bundle.js"></script>
+<style>body{margin:0;background:var(--color-neutral-200);font-family:var(--font-body)}
+a{color:var(--color-accent-700)}a:hover{color:var(--color-accent-600)}</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column;align-items:center;gap:var(--space-4);padding:32px 16px;box-sizing:border-box">
+<div style="max-width:520px;text-align:center;display:flex;flex-direction:column;gap:var(--space-1)">
+<span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-accent-700)">school-tong.com · 모바일 디지털자료실</span>
+<p style="margin:0;font-size:13.5px;line-height:1.6;color:var(--color-neutral-700);word-break:keep-all">기기 프레임은 미리보기용 껍데기입니다. 안쪽 화면이 홈페이지에 붙일 실제 모바일 페이지이며, 바로가기·공지·장바구니는 school-tong.com 주소로 연결됩니다.</p>
+</div>
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" hint-size="412px,892px">
+<div style="height:100%;overflow:hidden">
+<dc-import name="디지털자료실 모바일 v2" hint-size="100%,100%" style="width:100%;height:100%"></dc-import>
+</div>
+</x-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}"></script>
+</body>
+</html>

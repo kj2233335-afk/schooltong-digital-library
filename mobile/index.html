@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="_ds/broadsheet-3e4f85c2-f386-4c50-bf57-4af842a8325d/styles.css">
 <script src="_ds/broadsheet-3e4f85c2-f386-4c50-bf57-4af842a8325d/_ds_bundle.js"></script>
 <style>.app-scroll::-webkit-scrollbar{width:0;height:0}
+.pick{border:1px solid var(--color-neutral-400)!important;background:#fff}
+.pick.tag-accent{border:1.5px solid var(--color-accent)!important;font-weight:600}
+
 .btn{white-space:nowrap}</style>
 </helmet>
 <div style="height:100%;min-height:100%;display:grid;grid-template-rows:minmax(0,1fr);grid-template-columns:100%">
@@ -310,7 +313,7 @@
 <span style="font-size:12.5px;color:var(--color-neutral-700)">결제 방법</span>
 <div style="display:flex;flex-wrap:wrap;gap:var(--space-1)">
 <sc-for list="{{ payChips }}" as="pay" hint-placeholder-count="4">
-<button class="tag {{ pay.cls }}" style="height:38px;border:0;cursor:pointer;font-size:13px" onClick="{{ pay.onPick }}">{{ pay.label }}</button>
+<button class="tag pick {{ pay.cls }}" style="height:38px;cursor:pointer;font-size:13px" onClick="{{ pay.onPick }}">{{ pay.label }}</button>
 </sc-for>
 </div>
 </div>
@@ -318,7 +321,7 @@
 <span style="font-size:12.5px;color:var(--color-neutral-700)">증빙 서류</span>
 <div style="display:flex;flex-wrap:wrap;gap:var(--space-1)">
 <sc-for list="{{ docChips }}" as="doc" hint-placeholder-count="3">
-<button class="tag {{ doc.cls }}" style="height:38px;border:0;cursor:pointer;font-size:13px" onClick="{{ doc.onPick }}">{{ doc.label }}</button>
+<button class="tag pick {{ doc.cls }}" style="height:38px;cursor:pointer;font-size:13px" onClick="{{ doc.onPick }}">{{ doc.label }}</button>
 </sc-for>
 </div>
 </div>

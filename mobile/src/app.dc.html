@@ -13,8 +13,7 @@
 <style>.app-scroll::-webkit-scrollbar{width:0;height:0}
 .btn{white-space:nowrap}</style>
 </helmet>
-<div style="height:100%;min-height:100%;display:grid;grid-template-rows:minmax(0,1fr);grid-template-columns:100%">
-<div data-app-shell="1" style="min-height:0;display:flex;flex-direction:column;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);position:relative;overflow:hidden">
+<div style="height:100%;min-height:100%;display:flex;flex-direction:column;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);position:relative;overflow:hidden">
 
 <div style="flex:none;padding:var(--space-3) var(--space-4) 0;background:var(--color-bg)">
 <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:var(--space-3)">
@@ -72,34 +71,20 @@
 </div>
 </div>
 
-<div class="app-scroll" style="display:flex;gap:var(--space-4);overflow-x:auto;scroll-snap-type:x proximity;scroll-padding-left:var(--space-4);scroll-padding-right:var(--space-4);padding:2px var(--space-4) var(--space-2);margin:0 calc(var(--space-4) * -1)">
+<div style="position:relative;margin:0 calc(var(--space-4) * -1)">
+<div style="position:absolute;top:0;bottom:0;right:0;width:4px;background:#fff;z-index:2;pointer-events:none"></div>
+<div style="position:absolute;top:0;bottom:0;left:0;width:4px;background:#fff;z-index:2;pointer-events:none"></div>
+<div class="app-scroll" style="display:flex;gap:var(--space-3);overflow-x:auto;scroll-snap-type:x mandatory;padding:2px var(--space-4) var(--space-2)">
 <sc-for list="{{ covers }}" as="bk" hint-placeholder-count="3">
-<button style="flex:none;width:158px;scroll-snap-align:start;border:0;background:transparent;padding:0;display:flex;flex-direction:column;gap:var(--space-2);text-align:left;cursor:pointer" onClick="{{ bk.onOpen }}">
+<button style="flex:none;width:196px;scroll-snap-align:start;border:0;background:transparent;padding:0;display:flex;flex-direction:column;gap:var(--space-2);text-align:left;cursor:pointer" onClick="{{ bk.onOpen }}">
 <span style="height:3px;background:{{ bk.fill }}"></span>
-<span style="height:186px;background:var(--color-surface);display:flex;align-items:center;justify-content:center;padding:var(--space-3);box-sizing:border-box">
-<span style="width:106px;height:100%;background:#fff;box-shadow:var(--shadow-sm);display:flex;flex-direction:column;box-sizing:border-box">
-<span style="height:5px;background:{{ bk.fill }};flex:none"></span>
-<span style="flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:12px 11px 11px;box-sizing:border-box">
-<span style="display:flex;flex-direction:column;gap:7px">
-<span style="font-size:8.5px;letter-spacing:.12em;color:{{ bk.fill }}">{{ bk.subject }}</span>
-<span style="font-family:var(--font-heading);font-weight:600;font-size:11.5px;line-height:1.5;color:var(--color-text);word-break:keep-all;overflow-wrap:break-word">{{ bk.title }}</span>
-</span>
-<span style="display:flex;flex-direction:column;gap:5px">
-<span style="height:1px;background:var(--color-neutral-300)"></span>
-<span style="height:1px;background:var(--color-neutral-300);width:72%"></span>
-<span style="display:flex;align-items:center;justify-content:space-between;margin-top:5px">
-<span style="width:26px;height:26px;flex:none;background:{{ bk.fill }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:13px;line-height:1.4">{{ bk.glyph }}</span>
-<span style="font-size:8.5px;letter-spacing:.06em;color:var(--color-neutral-600)">{{ bk.format }}</span>
-</span>
-</span>
-</span>
-</span>
-</span>
-<span style="width:100%;font-family:var(--font-heading);font-weight:600;font-size:16px;line-height:1.5;word-break:keep-all;overflow-wrap:break-word;min-height:48px">{{ bk.title }}</span>
-<span style="width:100%;font-size:12.5px;line-height:1.5;color:var(--color-neutral-700);word-break:keep-all;overflow-wrap:break-word">{{ bk.meta }}</span>
+<span style="height:158px;background:var(--color-surface);display:flex;align-items:flex-end;padding:var(--space-2);box-sizing:border-box;font-size:11px;letter-spacing:.1em;color:var(--color-neutral-600)">{{ bk.format }}</span>
+<span style="font-family:var(--font-heading);font-weight:600;font-size:17px;line-height:1.35;word-break:keep-all">{{ bk.title }}</span>
+<span style="font-size:12.5px;line-height:1.5;color:var(--color-neutral-700);word-break:keep-all">{{ bk.meta }}</span>
 </button>
 </sc-for>
-<div style="flex:none;width:1px"></div>
+<div style="flex:none;width:2px"></div>
+</div>
 </div>
 
 <div style="display:flex;flex-direction:column;gap:var(--space-3)">
@@ -110,9 +95,9 @@
 <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-3)">
 <sc-for list="{{ subjects }}" as="sj" hint-placeholder-count="8">
 <button style="border:0;background:var(--color-surface);border-radius:var(--radius-md);padding:var(--space-3);min-height:132px;display:flex;flex-direction:column;gap:var(--space-1);align-items:flex-start;text-align:left;cursor:pointer" onClick="{{ sj.onPick }}">
-<span style="display:flex;align-items:flex-start;justify-content:space-between;width:100%">
-<span style="width:36px;height:36px;flex:none;background:{{ sj.fill }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:19px;line-height:1">{{ sj.glyph }}</span>
-<span style="font-size:11.5px;color:var(--color-neutral-600);line-height:1.7">{{ sj.count }}</span>
+<span style="display:flex;align-items:baseline;justify-content:space-between;width:100%">
+<span style="font-family:var(--font-heading);font-size:22px;line-height:1;color:var(--color-accent-700)">{{ sj.glyph }}</span>
+<span style="font-size:11.5px;color:var(--color-neutral-600)">{{ sj.count }}</span>
 </span>
 <span style="font-family:var(--font-heading);font-weight:600;font-size:16px;word-break:keep-all;margin-top:var(--space-1)">{{ sj.name }}</span>
 <span style="font-size:12.5px;line-height:1.45;color:var(--color-neutral-700);word-break:keep-all">{{ sj.desc }}</span>
@@ -603,7 +588,7 @@
 </div>
 </div>
 </sc-if>
-</div>
+
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:402,&quot;height&quot;:840},&quot;schoolName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;서울한강초등학교&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;teacherName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;박선희 선생님&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;hasPass&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;totalCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:190,&quot;min&quot;:1,&quot;max&quot;:999,&quot;tsType&quot;:&quot;number&quot;}}">
@@ -831,11 +816,11 @@ class Component extends DCLogic {
         : schoolName + ' 는 아직 학교 이용권이 없습니다. 무료 샘플 3종은 바로 내려받을 수 있어요.',
       passCta: hasPass ? '이용권 현황 보기' : '학교 이용권 신청',
       covers: DATA.slice(0, 3).map((r, i) => ({
-        title: r.title, meta: r.gradeLabel + ' · ' + r.pages + '쪽', format: r.format, fill: INK[i], glyph: glyphOf(r.subject), subject: r.subject,
+        title: r.title, meta: r.gradeLabel + ' · ' + r.pages + '쪽', format: r.format, fill: INK[i],
         onOpen: () => this.setState({ sheet: 'item', itemId: r.id }),
       })),
-      subjects: SUBJECTS.map((x, i) => ({
-        glyph: x.glyph, name: x.key, desc: x.desc, count: x.count + '종', fill: INK[i % 3],
+      subjects: SUBJECTS.map(x => ({
+        glyph: x.glyph, name: x.key, desc: x.desc, count: x.count + '종',
         onPick: () => this.setState({ tab: 'find', subjSel: [x.key], level: null, gradeSel: [], specSel: [], query: '', filterOpen: true }),
       })),
       fresh: DATA.filter(r => r.fresh).map(r => ({

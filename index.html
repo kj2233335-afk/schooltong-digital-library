@@ -577,7 +577,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
       <p>학교자율시간·창의적 체험활동·학급운영에 바로 쓰는 인쇄용 PDF 워크북. 학교 연간 이용권 하나로 선생님 모두가 무제한 다운로드하고, 클릭 한 번으로 학교인쇄통 제본 인쇄까지 이어집니다.</p>
       <div class="cta">
         <button class="btn gold lg" data-s="plan">학교 이용권 알아보기</button>
-        <button class="btn ghost lg" data-s="list">무료 샘플 3종 보기</button>
+        <button class="btn ghost lg" onclick="showFree()">무료 샘플 3종 보기</button>
       </div>
     </div>
     <div class="stack" aria-hidden="true">
@@ -642,7 +642,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
         <thead><tr><th class="th-thumb"></th><th>자료명</th><th class="th-act">다운로드</th><th>주제</th><th>학교급·학년</th><th>판형·쪽수·차시</th><th>형식</th><th class="th-date">등록일</th><th class="th-num">내려받기</th></tr></thead>
         <tbody id="listBody"></tbody>
       </table></div>
-      <div class="tbl-foot"><span class="muted">1 – 12 / 42종</span><span class="pager"><b>1</b><a>2</a><a>3</a><a>4</a><a>›</a></span></div></div>
+      <div class="tbl-foot"><span class="muted"></span><span class="pager"></span></div></div>
     </div>
   </div>
 </section>
@@ -830,7 +830,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
         </div></div>
       <div class="tbl-wrap"><table class="rtbl adm-tbl">
         <thead><tr><th>학교</th><th>담당교사</th><th>구분</th><th>코드</th><th>발급</th><th>만료</th><th class="th-num">교사</th><th>상태</th><th>결제</th><th>증빙</th><th>메일</th></tr></thead><tbody id="admRows"></tbody></table></div>
-      <div class="tbl-foot"><span class="muted" id="admCount">1 – 6 / 37교</span><span class="pager"><b>1</b><a>2</a><a>3</a><a>…</a><a>7</a><a>›</a></span></div>
+      <div class="tbl-foot"><span class="muted" id="admCount"></span><span class="pager"></span></div>
       <table style="display:none"><tr><th>학교</th><th>코드</th><th>만료</th><th>교사</th><th>상태</th></tr>
         <tr><td>서울한강초</td><td class="tnum">ST-P-2026-0417</td><td class="tnum">2027-03-31</td><td class="tnum">14</td><td><span class="chip ok">이용중</span></td></tr>
         <tr><td>부천중앙중</td><td class="tnum">BC-2026-0402</td><td class="tnum">2026-09-30</td><td class="tnum">9</td><td><span class="chip warn">30일 내 만료</span></td></tr>
@@ -994,11 +994,11 @@ const R=[
   toc:["나는 어떤 사람일까","흥미·강점 탐색 카드","우리 동네 직업 지도","직업 인터뷰 준비","인터뷰 기록지","변화하는 직업의 세계","AI 시대에 남는 일","진로 롤모델 찾기","10년 후 나의 하루","미래 명함 만들기","진로 발표회 준비","한 학기 돌아보기"]},
  {id:2,t:"한 학기 한 권 읽기 독서기록장",lv:"중학 전학년",th:"독서·글쓰기",sz:"B5",pg:64,ls:"16차시",c:"#2E7D5B",tag:"인기",dl:987,
   d:"읽기 전·중·후 활동을 한 권에 담아 학기 내내 쓰는 독서기록장입니다.",toc:["책 고르기","읽기 계획표","인물 관계도","장면 스케치","질문 만들기","토론 준비","서평 쓰기","독서 발표"]},
- {id:3,t:"감정 온도계 인성 활동지",lv:"초등 3~4학년",th:"진로·인성",sz:"A4",pg:32,ls:"8차시",c:"#B4541B",tag:"",dl:531,
+ {id:3,t:"감정 온도계 인성 활동지",lv:"초등 3~4학년",th:"진로·인성",sz:"A4",pg:32,ls:"8차시",c:"#B4541B",tag:"무료 샘플",dl:531,
   d:"감정을 이름 붙이고 조절하는 8차시 인성 활동지입니다.",toc:["감정 이름 찾기","오늘의 감정 온도","화가 날 때 나는","친구의 마음 읽기","고마움 편지","우리 반 약속","감정 일기","마무리 활동"]},
  {id:4,t:"생태환경 프로젝트 탐구노트",lv:"초등 5~6학년",th:"안전·환경",sz:"B5",pg:40,ls:"10차시",c:"#3B6E8F",tag:"NEW",dl:126,
   d:"학교 텃밭과 동네 하천을 관찰하는 10차시 프로젝트 탐구노트입니다.",toc:["탐구 주제 정하기","관찰 기록 1","관찰 기록 2","자료 조사","실천 계획","캠페인 만들기","결과 정리","발표"]},
- {id:5,t:"학급 생활지도 활동지 모음",lv:"초등 1~2학년",th:"학급운영",sz:"A4",pg:36,ls:"12차시",c:"#6A4C93",tag:"",dl:844,
+ {id:5,t:"학급 생활지도 활동지 모음",lv:"초등 1~2학년",th:"학급운영",sz:"A4",pg:36,ls:"12차시",c:"#6A4C93",tag:"무료 샘플",dl:844,
   d:"학기 초 규칙 세우기부터 학기 말 상장 서식까지 학급운영에 필요한 활동지 모음입니다.",toc:["우리 반 규칙","자기소개 카드","1인 1역","칭찬 릴레이","자리 바꾸기 판","학기 말 상장"]},
  {id:6,t:"안전교육 7대 영역 학습지",lv:"중학 전학년",th:"안전·환경",sz:"A4",pg:28,ls:"7차시",c:"#8A6210",tag:"무료 샘플",dl:1203,
   d:"학교 안전교육 7대 표준안 영역별로 1차시씩 구성한 학습지입니다.",toc:["생활안전","교통안전","폭력·신변보호","약물·사이버","재난안전","직업안전","응급처치"]},
@@ -1031,9 +1031,10 @@ function fRenderGrades(keep){
 function fVals(id){return [...document.querySelectorAll(`#${id} input:checked`)].map(i=>i.value)}
 function fApply(){
   const gr=fVals("fGrade"), tp=fVals("fTopic"), sz=fVals("fSize"), et=fVals("fEtc");
+  const onlyFree=et.includes("free");
   let rows=R.filter(r=>{
-    if(!r.lv.startsWith(LVMAP[fLv])&&!r.lv.startsWith("전 "))return false;
-    if(gr.length&&!gr.some(g=>r.lv.includes(g.replace("학년",""))||r.lv.includes("전학년")||r.lv.includes("전 학교급")))return false;
+    if(!onlyFree&&!r.lv.startsWith(LVMAP[fLv])&&!r.lv.startsWith("전 "))return false;
+    if(!onlyFree&&gr.length&&!gr.some(g=>r.lv.includes(g.replace("학년",""))||r.lv.includes("전학년")||r.lv.includes("전 학교급")))return false;
     if(tp.length&&!tp.includes(r.th))return false;
     const sizes=sz.filter(v=>!v.startsWith("s")), pages=sz.filter(v=>v.startsWith("s"));
     if(sizes.length&&!sizes.some(v=>r.sz.includes(v)))return false;
@@ -1043,11 +1044,21 @@ function fApply(){
     return true;
   });
   const body=$("#listBody");if(body)body.innerHTML=rows.length?rows.map(row).join(""):`<tr><td colspan="9" class="muted" style="text-align:center;padding:30px">조건에 맞는 자료가 없습니다. 아래쪽 조건부터 하나씩 풀어보세요.</td></tr>`;
-  const n=rows.length?rows.length*5+2:0;
+  const n=rows.length;
   $("#fCount").textContent=`검색 결과 ${n}종`;
-  const parts=[fLv].concat(gr.length?[gr.join(",")]:[]).concat(tp.length?[tp.join(",")]:[]).concat(sz.length?[sz.map(v=>({s32:"32쪽 이하",s64:"33~64쪽",s128:"65쪽 이상"})[v]||v).join(",")]:[]);
+  const parts=[onlyFree?"무료 샘플":fLv].concat(onlyFree?[]:gr.length?[gr.join(",")]:[]).concat(tp.length?[tp.join(",")]:[]).concat(sz.length?[sz.map(v=>({s32:"32쪽 이하",s64:"33~64쪽",s128:"65쪽 이상"})[v]||v).join(",")]:[]);
   $("#fSummary").textContent=parts.join(" · ");
-  const foot=document.querySelector("#s-list .tbl-foot .muted");if(foot)foot.textContent=`1 – ${Math.min(rows.length,12)} / ${n}종`;
+  const foot=document.querySelector("#s-list .tbl-foot .muted");if(foot)foot.textContent=n?`1 – ${n} / ${n}종`:"0종";
+  pager("#s-list .tbl-foot .pager",n);
+}
+function pager(sel,total,per){
+  const box=document.querySelector(sel);if(!box)return;
+  const pages=Math.max(1,Math.ceil(total/(per||12)));
+  box.innerHTML=pages<2?"":Array.from({length:pages},(_,i)=>i===0?"<b>1</b>":`<a>${i+1}</a>`).join("");
+}
+function showFree(){
+  document.querySelectorAll("#fTopic input,#fSize input,#fEtc input").forEach(i=>i.checked=i.value==="free");
+  fRenderGrades([]);fApply();show("list");
 }
 function fReset(){
   fLv="초등";document.querySelectorAll("#fLevel button").forEach(b=>b.classList.toggle("on",b.dataset.v==="초등"));
@@ -1128,7 +1139,8 @@ function myFilter(){
   else if(so==="선생님순")rows=[...rows].sort((a,b)=>a.w.localeCompare(b.w,"ko"));
   const body=$("#myRows");if(!body)return;
   body.innerHTML=rows.map(r=>`<tr class="rrow" data-id="${r.id}"><td class="tnum">${r.d}</td><td class="td-title"><b>${r.t}</b></td><td>${r.th}</td><td>${r.w}</td><td>${r.f}</td><td class="td-act"><button class="btn pri dlbtn" onclick="event.stopPropagation();toast('${r.t} 다운로드','같은 파일을 다시 내려받습니다. 다운로드 수는 늘지 않음','홈페이지')"><i></i>다운로드</button></td></tr>`).join("")||`<tr><td colspan="6" class="muted" style="text-align:center;padding:26px">검색 결과가 없습니다</td></tr>`;
-  $("#myCount").textContent=q||tc?`${rows.length}건 검색됨`:`1 – ${rows.length} / 63건`;
+  $("#myCount").textContent=q||tc?`${rows.length}건 검색됨`:`1 – ${rows.length} / ${DL.length}건`;
+  pager("#s-my .tbl-foot .pager",rows.length);
 }
 const LIC=[
  {sc:"서울한강초등학교",tc:"박선희",ty:"유료",code:"ST-P-2026-0417",iss:"2026-04-01",exp:"2027-03-31",n:14,st:"이용중",pay:"계좌이체",doc:"세금계산서",docSt:"발행",m:"발송"},
@@ -1147,20 +1159,21 @@ function admFilter(){
   else rows=[...rows].sort((a,b)=>(a.exp==="—"?"9":a.exp).localeCompare(b.exp==="—"?"9":b.exp));
   const body=$("#admRows");if(!body)return;
   body.innerHTML=rows.map(r=>`<tr><td><b>${r.sc}</b></td><td>${r.tc}</td><td>${r.ty}</td><td class="tnum">${r.code}</td><td class="tnum">${r.iss}</td><td class="tnum">${r.exp}</td><td class="tnum td-num">${r.n}</td><td><span class="chip ${STCHIP[r.st]||""}">${r.st}</span></td><td>${r.pay}</td><td>${r.doc==="—"?"—":r.doc+" · "}${r.doc==="—"?"":`<span class="chip ${r.docSt==="미발행"?"warn":(r.docSt==="발행"||r.docSt==="자동")?"ok":""}">${r.docSt}</span>`}</td><td>${r.m==="발송"?'<span class="chip ok">발송</span>':'<span class="chip">미발송</span>'}</td></tr>`).join("")||`<tr><td colspan="11" class="muted" style="text-align:center;padding:26px">검색 결과가 없습니다</td></tr>`;
-  $("#admCount").textContent=q||st?`${rows.length}교 검색됨`:`1 – ${rows.length} / 37교`;
+  $("#admCount").textContent=q||st?`${rows.length}교 검색됨`:`1 – ${rows.length} / ${LIC.length}교`;
+  pager("#s-admin .tbl-foot .pager",rows.length);
 }
 function my(){
   $("#myBody").innerHTML=lic?`
    <div class="grid stat">
      <div class="card"><small>이용권 상태</small><b><span class="chip ok" style="font-size:14px;vertical-align:middle">이용 중</span></b><span class="muted" style="font-size:12px">2026-04-01 ~ 2027-03-31 · 남은 기간 207일</span><div class="bar"><i></i></div></div>
-     <div class="card"><small>우리학교 다운로드</small><b class="tnum">63건</b><span class="muted" style="font-size:12px">이달 11건 · 내 다운로드 8건</span></div>
+     <div class="card"><small>우리학교 다운로드</small><b class="tnum">${DL.length}건</b><span class="muted" style="font-size:12px">이달 ${DL.filter(x=>x.d.slice(0,7)===new Date().toISOString().slice(0,7)).length}건 · 내 다운로드 ${DL.filter(x=>x.w==="박선희").length}건</span></div>
      <div class="card"><small>인쇄 주문</small><b class="tnum">4건</b><span class="muted" style="font-size:12px">최근: 진로탐색 워크북 120부 (배송 중)</span></div>
    </div>
    <div class="card" style="padding:22px;margin-top:18px">
      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap"><div><div class="eyebrow">우리학교 코드</div><div class="muted" style="font-size:13px">동료 선생님께 이 코드를 알려주세요. 회원가입 시 입력하면 바로 이용됩니다.</div></div><span class="code" style="margin-left:auto">ST-P-2026-0417</span><button class="btn ghost" onclick="toast('학교 코드 복사','동료 선생님께 카톡·메신저로 붙여넣어 전달할 수 있습니다','홈페이지')">복사</button><button class="btn pri" onclick="toast('메일로 초대','동료 선생님 이메일을 입력하면 학교 코드가 담긴 가입 안내 메일이 갑니다','메일')">메일로 초대</button></div>
    </div>
    <div class="card" style="padding:22px;margin-top:18px">
-     <div class="tb-head"><h3 style="font-family:'Noto Sans KR';font-size:16px">다운로드 이력 <span class="muted" style="font-size:13px;font-weight:400">63건</span></h3>
+     <div class="tb-head"><h3 style="font-family:'Noto Sans KR';font-size:16px">다운로드 이력 <span class="muted" style="font-size:13px;font-weight:400">${DL.length}건</span></h3>
        <div class="tb-tools">
          <input class="tb-search" placeholder="자료명 · 선생님 검색" oninput="myFilter()" id="mySearch">
          <select id="myTeacher" onchange="myFilter()"><option value="">선생님 전체</option><option>박선희</option><option>이정민</option><option>최유진</option><option>김도윤</option></select>
@@ -1168,7 +1181,7 @@ function my(){
          <select id="mySort" onchange="myFilter()"><option>최신순</option><option>자료명순</option><option>선생님순</option></select>
        </div></div>
      <div class="tbl-wrap"><table class="rtbl" id="myTable"><thead><tr><th>일시</th><th>자료</th><th>주제</th><th>선생님</th><th>형식</th><th class="th-act">다운로드</th></tr></thead><tbody id="myRows"></tbody></table></div>
-     <div class="tbl-foot"><span class="muted" id="myCount">1 – 8 / 63건</span><span class="pager"><b>1</b><a>2</a><a>3</a><a>…</a><a>8</a><a>›</a></span></div>
+     <div class="tbl-foot"><span class="muted" id="myCount"></span><span class="pager"></span></div>
    </div>
    <div class="card" style="padding:22px;margin-top:18px">
      <h3 style="font-family:'Noto Sans KR';font-size:16px;margin-bottom:4px">우리학교 선생님 14명</h3>

@@ -1082,7 +1082,7 @@ function render(){
   const on=lic;
   $("#licHome").className="lic-bar"+(on?" ok":"");
   $("#licHome").innerHTML=on
-   ?`<span class="dot"></span><b>서울한강초등학교</b> 이용권 이용 중 · 만료 <span class="tnum">2027-03-31</span> · 등록 교사 14명<span class="sp"></span><button class="btn ghost" data-s="my" style="padding:7px 12px">우리학교 자료함</button>`
+   ?`<span class="dot"></span><b>서울한강초등학교</b> 이용권 이용 중 · 만료 <span class="tnum">2027-03-31</span> · 등록 교사 5명<span class="sp"></span><button class="btn ghost" data-s="my" style="padding:7px 12px">우리학교 자료함</button>`
    :`<span class="dot"></span><b>서울한강초등학교</b>는 아직 학교 이용권이 없습니다. 무료 샘플 3종은 바로 내려받을 수 있어요.<span class="sp"></span><button class="btn gold" data-s="plan" style="padding:7px 12px">학교 이용권 신청</button>`;
   $("#swLic").textContent=on?"이용권 있는 학교 교사":"이용권 없는 학교 교사";
   $("#swLic").className=on?"lic":"";
@@ -1143,11 +1143,11 @@ function myFilter(){
   pager("#s-my .tbl-foot .pager",rows.length);
 }
 const LIC=[
- {sc:"서울한강초등학교",tc:"박선희",ty:"유료",code:"ST-P-2026-0417",iss:"2026-04-01",exp:"2027-03-31",n:14,st:"이용중",pay:"계좌이체",doc:"세금계산서",docSt:"발행",m:"발송"},
- {sc:"부천중앙중학교",tc:"김민수",ty:"자료제공단",code:"ST-C-2026-0402",iss:"2025-09-30",exp:"2026-09-30",n:9,st:"30일 내 만료",pay:"무료",doc:"—",docSt:"—",m:"발송"},
- {sc:"대전유성고등학교",tc:"정수아",ty:"유료",code:"ST-P-2026-0388",iss:"2026-02-28",exp:"2027-02-28",n:21,st:"이용중",pay:"법인카드",doc:"세금계산서",docSt:"미발행",m:"발송"},
+ {sc:"서울한강초등학교",tc:"박선희",ty:"유료",code:"ST-P-2026-0417",iss:"2026-04-01",exp:"2027-03-31",n:5,st:"이용중",pay:"계좌이체",doc:"세금계산서",docSt:"발행",m:"발송"},
+ {sc:"부천중앙중학교",tc:"김민수",ty:"자료제공단",code:"ST-C-2026-0402",iss:"2025-09-30",exp:"2026-09-30",n:5,st:"30일 내 만료",pay:"무료",doc:"—",docSt:"—",m:"발송"},
+ {sc:"대전유성고등학교",tc:"정수아",ty:"유료",code:"ST-P-2026-0388",iss:"2026-02-28",exp:"2027-02-28",n:5,st:"이용중",pay:"법인카드",doc:"세금계산서",docSt:"미발행",m:"발송"},
  {sc:"광주송정초등학교",tc:"오세진",ty:"유료",code:"—",iss:"—",exp:"—",n:1,st:"신청 접수",pay:"계좌이체",doc:"세금계산서",docSt:"견적서 발송",m:"미발송"},
- {sc:"수원영통초등학교",tc:"한지원",ty:"유료",code:"ST-P-2025-0211",iss:"2025-08-31",exp:"2026-08-31",n:11,st:"만료",pay:"개인카드",doc:"현금영수증",docSt:"발행",m:"발송"},
+ {sc:"수원영통초등학교",tc:"한지원",ty:"유료",code:"ST-P-2025-0211",iss:"2025-08-31",exp:"2026-08-31",n:4,st:"만료",pay:"개인카드",doc:"현금영수증",docSt:"발행",m:"발송"},
  {sc:"인천부평중학교",tc:"류현서",ty:"체험",code:"ST-T-2026-0451",iss:"2026-08-20",exp:"2026-09-20",n:3,st:"30일 내 만료",pay:"휴대폰",doc:"카드전표",docSt:"자동",m:"발송"},
 ];
 const STCHIP={"이용중":"ok","30일 내 만료":"warn","만료":"","신청 접수":""};
@@ -1176,7 +1176,7 @@ function my(){
      <div class="tb-head"><h3 style="font-family:'Noto Sans KR';font-size:16px">다운로드 이력 <span class="muted" style="font-size:13px;font-weight:400">${DL.length}건</span></h3>
        <div class="tb-tools">
          <input class="tb-search" placeholder="자료명 · 선생님 검색" oninput="myFilter()" id="mySearch">
-         <select id="myTeacher" onchange="myFilter()"><option value="">선생님 전체</option><option>박선희</option><option>이정민</option><option>최유진</option><option>김도윤</option></select>
+         <select id="myTeacher" onchange="myFilter()"><option value="">선생님 전체</option><option>박선희</option><option>이정민</option><option>최유진</option><option>김도윤</option><option>한서우</option></select>
          <select id="myPeriod" onchange="myFilter()"><option value="">기간 전체</option><option>이번 주</option><option>이번 달</option><option>3개월</option></select>
          <select id="mySort" onchange="myFilter()"><option>최신순</option><option>자료명순</option><option>선생님순</option></select>
        </div></div>
@@ -1184,10 +1184,12 @@ function my(){
      <div class="tbl-foot"><span class="muted" id="myCount"></span><span class="pager"></span></div>
    </div>
    <div class="card" style="padding:22px;margin-top:18px">
-     <h3 style="font-family:'Noto Sans KR';font-size:16px;margin-bottom:4px">우리학교 선생님 14명</h3>
+     <h3 style="font-family:'Noto Sans KR';font-size:16px;margin-bottom:4px">우리학교 선생님 5명 <span class="muted" style="font-size:13px;font-weight:400">(학교당 등록 상한 5명)</span></h3>
      <div class="member"><span class="av">박</span><span>박선희 <span class="chip gold">담당</span></span><span class="sp muted" style="font-size:12px">5학년 · 가입 04-01</span></div>
      <div class="member"><span class="av">이</span><span>이정민</span><span class="sp muted" style="font-size:12px">6학년 · 가입 04-03</span></div>
      <div class="member"><span class="av">최</span><span>최유진</span><span class="sp muted" style="font-size:12px">3학년 · 가입 04-15</span></div>
+     <div class="member"><span class="av">김</span><span>김도윤</span><span class="sp muted" style="font-size:12px">4학년 · 가입 05-02</span></div>
+     <div class="member"><span class="av">한</span><span>한서우</span><span class="sp muted" style="font-size:12px">2학년 · 가입 06-11</span></div>
    </div>`
   :`<div class="card" style="padding:34px;text-align:center">
      <div class="eyebrow">우리학교 자료함</div>

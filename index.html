@@ -602,7 +602,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
     <div>
       <div class="eyebrow">학교인쇄통 디지털자료실</div>
       <h1>우리 학교 <em>교재·워크북</em>,<br>이제 내려받아 바로 인쇄합니다</h1>
-      <p>AI교육·교과교재·워크북·인성·진로기록물·필사노트·학습플래너까지 <b>132권 · 9,902쪽</b>의 인쇄용 PDF. 학교 연간 이용권 하나로 선생님 모두가 무제한 다운로드하고, 클릭 한 번으로 학교인쇄통 제본 인쇄까지 이어집니다.</p>
+      <p>AI교육·교과교재·워크북·인성·진로기록물·필사노트·학습플래너까지 <b>132권 · 9,902쪽</b>의 인쇄용 PDF. 학교 연간 이용권 하나로 선생님 5명까지 무제한 다운로드하고, 클릭 한 번으로 학교인쇄통 제본 인쇄까지 이어집니다.</p>
       <div class="cta">
         <button class="btn gold lg" data-s="plan">학교 이용권 알아보기</button>
         <button class="btn ghost lg" onclick="showFree()">무료 샘플 3종 보기</button>
@@ -634,7 +634,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
   <div class="sec-h"><h2>이용 방법</h2></div>
   <div class="grid how">
     <div class="card"><div class="k">1</div><h3>학교 이용권 신청</h3><p>학교 단위로 1년 이용권을 신청합니다. 세금계산서·학교 행정 계좌이체 가능.</p></div>
-    <div class="card"><div class="k">2</div><h3>학교 코드로 선생님 등록</h3><p>담당 선생님이 받은 학교 코드를 동료 선생님께 공유하면 누구나 이용할 수 있습니다.</p></div>
+    <div class="card"><div class="k">2</div><h3>학교 코드로 선생님 등록</h3><p>담당 선생님이 받은 학교 코드를 동료 선생님께 공유하면 학교당 5명까지 함께 이용할 수 있습니다.</p></div>
     <div class="card"><div class="k">3</div><h3>내려받고, 인쇄 주문까지</h3><p>PDF를 바로 내려받거나 "이 자료로 인쇄 주문" 버튼으로 학교인쇄통 제본 인쇄를 신청합니다.</p></div>
   </div>
 </section>
@@ -656,7 +656,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
       </div>
       <h4><i>4</i>판형 · 분량 <small>필요할 때만</small></h4>
       <div id="fSize">
-        <label><input type="checkbox" value="B5">B5</label><label><input type="checkbox" value="A4">A4</label><label><input type="checkbox" value="s32">32쪽 이하</label><label><input type="checkbox" value="s64">33~64쪽</label><label><input type="checkbox" value="s128">65쪽 이상</label>
+        <label><input type="checkbox" value="B5">B5</label><label><input type="checkbox" value="A4">A4</label><label><input type="checkbox" value="s32">32쪽 이하</label><label><input type="checkbox" value="s64">33~64쪽</label><label><input type="checkbox" value="s128">65~128쪽</label><label><input type="checkbox" value="s999">129쪽 이상</label>
       </div>
       <h4><i>+</i>기타</h4>
       <div id="fEtc"><label><input type="checkbox" value="free">무료 샘플만</label><label><input type="checkbox" value="src">편집 원본(한글) 포함</label></div>
@@ -739,7 +739,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
     <div>
       <div class="pricecard">
         <div class="eyebrow">학교 연간 이용권</div>
-        <h2>학교 한 곳, 선생님 모두, 1년 무제한</h2>
+        <h2>학교 한 곳, 선생님 5명, 1년 무제한</h2>
         <div class="price tnum">연 240,000<small>원 (부가세 포함)</small></div>
         <div style="font-size:13px;opacity:.85">부가세 포함 · 세금계산서 또는 현금영수증 발행</div>
         <ul>
@@ -1048,7 +1048,7 @@ function fApply(){
     if(tp.length&&!tp.includes(r.th))return false;
     const sizes=sz.filter(v=>!v.startsWith("s")), pages=sz.filter(v=>v.startsWith("s"));
     if(sizes.length&&!sizes.some(v=>r.sz.includes(v)))return false;
-    if(pages.length&&!pages.some(v=>v==="s32"?r.pg<=32:v==="s64"?(r.pg>32&&r.pg<=64):r.pg>64))return false;
+    if(pages.length&&!pages.some(v=>v==="s32"?r.pg<=32:v==="s64"?(r.pg>32&&r.pg<=64):v==="s128"?(r.pg>64&&r.pg<=128):r.pg>128))return false;
     if(et.includes("free")&&r.tag!=="무료 샘플")return false;
     if(et.includes("src")&&r.id%3!==0)return false;
     return true;
@@ -1056,7 +1056,7 @@ function fApply(){
   const body=$("#listBody");if(body)body.innerHTML=rows.length?rows.map(row).join(""):`<tr><td colspan="9" class="muted" style="text-align:center;padding:30px">조건에 맞는 자료가 없습니다. 아래쪽 조건부터 하나씩 풀어보세요.</td></tr>`;
   const n=rows.length;
   $("#fCount").textContent=`검색 결과 ${n}권`;
-  const parts=[onlyFree?"무료 샘플":fLv].concat(onlyFree?[]:gr.length?[gr.join(",")]:[]).concat(tp.length?[tp.join(",")]:[]).concat(sz.length?[sz.map(v=>({s32:"32쪽 이하",s64:"33~64쪽",s128:"65쪽 이상"})[v]||v).join(",")]:[]);
+  const parts=[onlyFree?"무료 샘플":fLv].concat(onlyFree?[]:gr.length?[gr.join(",")]:[]).concat(tp.length?[tp.join(",")]:[]).concat(sz.length?[sz.map(v=>({s32:"32쪽 이하",s64:"33~64쪽",s128:"65~128쪽",s999:"129쪽 이상"})[v]||v).join(",")]:[]);
   $("#fSummary").textContent=parts.join(" · ");
   const foot=document.querySelector("#s-list .tbl-foot .muted");if(foot)foot.textContent=n?`1 – ${n} / ${n}권`:"0권";
   pager("#s-list .tbl-foot .pager",n);

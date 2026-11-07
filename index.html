@@ -462,6 +462,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
     <button data-s="my">⑤ 우리학교 자료함</button>
     <button data-s="admin">⑥ 관리자</button>
     <button data-s="tier">⑦ 회원 등급·혜택</button>
+    <button data-s="share">⑧ 자료 나눔</button>
   </div>
   <div class="sw">
     <span class="lbl">보는 사람</span>
@@ -518,7 +519,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
       <button class="si" data-topic="학습플래너">학습플래너 <span class="tg" style="background:#eef1f7;color:#4a5568">3권</span></button>
       <button class="si" data-s="plan">이용권 안내·신청</button>
       <button class="si" data-s="my">우리학교 자료함</button>
-      <button class="si" data-soon="자료 나눔(자료제공단)">자료 나눔 (자료제공단)</button>
+      <button class="si" data-s="share">자료 나눔 (자료제공단)</button>
     </div>
   </div>
   <div class="ag">
@@ -640,6 +641,28 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 </section>
 
 <!-- ② 목록 -->
+<!-- ⑧ 자료 나눔 접수 -->
+<section class="screen" id="s-share">
+  <div class="crumb">디지털자료실 › <b>자료 나눔 (자료제공단)</b></div>
+  <div class="sec-h"><h2>선생님 자료를 나눠 주시면, 학교에 1년 이용권을 드립니다</h2></div>
+  <div class="grid how">
+    <div class="card"><div class="k">1</div><h3>자료 올리기</h3><p>수업에 쓰던 활동지·워크북 파일을 올려 주세요. 1건당 최대 100MB, 여러 개 가능.</p></div>
+    <div class="card"><div class="k">2</div><h3>검수·편집</h3><p>학교인쇄통 디자인팀이 검수하고 인쇄용으로 다듬습니다. 접수번호로 진행 상황을 안내합니다.</p></div>
+    <div class="card"><div class="k">3</div><h3>이용권 코드 발송</h3><p>승인되면 <b>ST-C</b> 코드가 메일로 갑니다. 승인일부터 1년, 학교 선생님 5명까지 자료실 전체 무제한 + 인쇄비 5% 할인.</p></div>
+  </div>
+  <form class="card form" style="margin-top:18px" onsubmit="event.preventDefault();toast('자료 나눔 접수 완료','접수번호 SHARE-2026-0133 자동 부여 → 관리자 알림 메일. 관리자가 검수·승인하면 ST-C 이용권 코드가 선생님께 자동 발송됩니다.','홈페이지 + 구글 시트')">
+    <h3>자료 나눔 신청서</h3>
+    <p class="muted" style="font-size:13px;margin:0">지금 구글 폼으로 받는 신청을 이 화면으로 옮깁니다.</p>
+    <div class="two"><div class="f"><label>성함</label><input placeholder="예: 박선희"></div><div class="f"><label>학교명</label><input placeholder="예: 서울한강초등학교"></div></div>
+    <div class="two"><div class="f"><label>이메일</label><input placeholder="코드를 받을 메일"></div><div class="f"><label>연락처</label><input placeholder="010-0000-0000"></div></div>
+    <div class="f"><label>제공 자료 분류</label><select><option>AI교육</option><option>교과교재·부교재</option><option>워크북·활동지</option><option>인성·진로기록물</option><option>필사노트</option><option>학습플래너</option><option>기타</option></select></div>
+    <div class="f"><label>파일 올리기 <span class="muted" style="font-weight:400">(1건당 최대 100MB · 여러 개 가능)</span></label><input type="file" multiple></div>
+    <div class="f"><label>자료 소개 (선택)</label><textarea rows="3" placeholder="학년·차시·활용 방법을 짧게 적어 주세요"></textarea></div>
+    <div class="radios" style="margin-top:14px"><label><input type="checkbox" required> (필수) 제공한 자료를 학교인쇄통이 편집·재배포하는 데 동의합니다</label></div>
+    <div class="f" style="margin-top:18px"><button class="btn pri lg" type="submit">자료 나눔 신청하기</button></div>
+  </form>
+</section>
+
 <section class="screen" id="s-list">
   <div class="crumb">디지털자료실 › <b>전체 자료</b></div>
   <div class="list">

@@ -285,7 +285,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 .book.b2{left:100px;top:10px;background:#2E7D5B;transform:rotate(2deg)}
 .book.b3{left:200px;top:40px;background:#B4541B;transform:rotate(7deg)}
 .book .b5{position:absolute;right:10px;bottom:10px;font-size:10px;font-family:"Noto Sans KR";font-weight:700;background:rgba(255,255,255,.18);padding:2px 6px;border-radius:4px}
-.cats{grid-template-columns:repeat(4,1fr)}
+.cats{grid-template-columns:repeat(5,1fr)}
 .cat{padding:20px;border-radius:14px;background:var(--paper);border:1px solid var(--line);cursor:pointer;transition:border-color .15s,transform .12s}
 .cat:hover{border-color:var(--navy);transform:translateY(-2px)}
 .cat .ic{width:40px;height:40px;border-radius:10px;background:var(--navy-soft);color:var(--navy);display:grid;place-items:center;font-weight:900;font-size:16px;margin-bottom:12px;font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif}
@@ -484,9 +484,12 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 <div class="gnb"><div class="in">
   <div class="allbtn">전체상품 카테고리</div>
   <nav class="nav">
-    <span data-href="https://www.school-tong.com/bbs/content.php?co_id=support">교정센터</span><span data-href="https://www.school-tong.com/bbs/content.php?co_id=print_guide">인쇄/제작가이드</span>
-    <span class="cur" data-s="home">디지털자료실<b class="new">NEW</b></span>
-    <span data-href="https://www.school-tong.com/bbs/board.php?bo_table=notice">고객센터</span><span data-href="https://www.school-tong.com/bbs/board.php?bo_table=review">제작후기</span>
+    <span class="cur" data-s="home">디지털자료실<b class="new">구독</b></span>
+    <span data-href="https://www.school-tong.com/">인쇄 주문</span>
+    <span data-href="https://www.school-tong.com/bbs/content.php?co_id=support">교정·주문</span>
+    <span data-href="https://www.school-tong.com/bbs/content.php?co_id=print_guide">가이드</span>
+    <span data-href="https://www.school-tong.com/bbs/board.php?bo_table=review">제작후기</span>
+    <span data-href="https://www.school-tong.com/bbs/board.php?bo_table=notice">고객센터</span>
   </nav>
   <div class="notice" data-href="https://www.school-tong.com/bbs/board.php?bo_table=notice"><b>Notice</b> 학교인쇄통 주문 및 제작 관련 ···</div>
 </div></div>
@@ -497,13 +500,18 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
   <div class="sb-cap">학교인쇄통 전체 카테고리 <small>↗ 표시 = 기존 홈페이지 페이지로 이동 · 없으면 신규</small></div>
   <div class="print-nav" data-href="https://www.school-tong.com/bbs/board.php?bo_table=print_nav">인쇄 네비게이션 — 규격·용지·제본<span class="arr">›</span></div>
   <div class="ag">
-    <button class="ah digital open"><span class="nm">디지털자료실 <span class="tg gold">NEW</span></span><span class="cnt">5</span><span class="chev"></span></button>
+    <button class="ah digital open"><span class="nm">디지털자료실 <span class="tg gold">구독</span></span><span class="cnt">10</span><span class="chev"></span></button>
     <div class="ab open">
       <button class="si on" data-s="home">자료 둘러보기</button>
-      <button class="si" data-s="list">전체 자료 <span class="tg hot">190종</span></button>
-      <button class="si" data-s="plan">학교 이용권 안내</button>
+      <button class="si" data-topic="">전체 자료 <span class="tg hot">132권</span></button>
+      <button class="si" data-topic="교과교재·부교재">교과교재·부교재 <span class="tg" style="background:#eef1f7;color:#4a5568">37권</span></button>
+      <button class="si" data-topic="워크북·활동지">워크북·활동지 <span class="tg" style="background:#eef1f7;color:#4a5568">58권</span></button>
+      <button class="si" data-topic="인성·진로기록물">인성·진로기록물 <span class="tg" style="background:#eef1f7;color:#4a5568">18권</span></button>
+      <button class="si" data-topic="필사노트">필사노트 <span class="tg" style="background:#eef1f7;color:#4a5568">16권</span></button>
+      <button class="si" data-topic="학습플래너">학습플래너 <span class="tg" style="background:#eef1f7;color:#4a5568">3권</span></button>
+      <button class="si" data-s="plan">이용권 안내·신청</button>
       <button class="si" data-s="my">우리학교 자료함</button>
-      <button class="si" data-s="guide">이용 가이드</button>
+      <button class="si" data-soon="자료 나눔(자료제공단)">자료 나눔 (자료제공단)</button>
     </div>
   </div>
   <div class="ag">
@@ -516,35 +524,48 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
       <button class="si" data-soon="진로 포트폴리오">진로 포트폴리오<span class="tg soon">출시예정</span></button>
     </div>
   </div>
+  <div class="sb-cap" style="margin-top:6px">인쇄 주문 <small>기존 학교인쇄통 제작 상품</small></div>
   <div class="ag">
-    <button class="ah open"><span class="nm">학습·교육 교재</span><span class="cnt">5</span><span class="chev"></span></button>
+    <button class="ah open"><span class="nm">교재·학습</span><span class="cnt">6</span><span class="chev"></span></button>
     <div class="ab open">
-      <button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item01_1" title="실제 페이지로 이동">학습플래너<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item27_1" title="실제 페이지로 이동">뉴-스터디플래너<span class="ext">↗</span></button>
-      <button class="si" data-s="list">재량교재 <span class="tg gold">자료실</span></button>
-      <button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item07" title="실제 페이지로 이동">학교부교재<span class="ext">↗</span></button><button class="si" data-soon="학급경영노트">학급경영노트<span class="tg soon">준비중</span></button>
+      <button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item01_1" title="실제 페이지로 이동">학습플래너<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item07" title="실제 페이지로 이동">재량교재·바인더<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item25" title="실제 페이지로 이동">자유학기 워크북<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item28_1" title="실제 페이지로 이동">명문 필사노트<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item09" title="실제 페이지로 이동">독서기록장<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item10_3" title="실제 페이지로 이동">독서통장<span class="ext">↗</span></button>
     </div>
   </div>
   <div class="ag">
-    <button class="ah open"><span class="nm">독서·필사 활동</span><span class="cnt">4</span><span class="chev"></span></button>
+    <button class="ah open"><span class="nm">노트·수첩</span><span class="cnt">6</span><span class="chev"></span></button>
     <div class="ab open">
-      <button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item28_1" title="실제 페이지로 이동">명문 필사노트<span class="tg new">NEW</span><span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item09" title="실제 페이지로 이동">독서기록장<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item10_3" title="실제 페이지로 이동">독서통장<span class="ext">↗</span></button><button class="si" data-soon="성경필사노트">성경필사노트<span class="tg soon">준비중</span></button>
+      <button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item12" title="실제 페이지로 이동">스프링노트<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item13_1" title="실제 페이지로 이동">독판노트<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item08" title="실제 페이지로 이동">종합장 / 알림장<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item14" title="실제 페이지로 이동">스케치북<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item11" title="실제 페이지로 이동">운동회노트<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item22_1" title="실제 페이지로 이동">원아수첩<span class="ext">↗</span></button>
     </div>
   </div>
   <div class="ag">
-    <button class="ah open"><span class="nm">노트·수첩 제작</span><span class="cnt">7</span><span class="chev"></span></button>
+    <button class="ah open"><span class="nm">학교 행정·출판</span><span class="cnt">7</span><span class="chev"></span></button>
     <div class="ab open">
-      <button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item12" title="실제 페이지로 이동">스프링노트 제작<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item13_1" title="실제 페이지로 이동">독판노트 제작<span class="ext">↗</span></button><button class="si" data-soon="노트내지 300종">노트내지 300종<span class="tg soon">준비중</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item11" title="실제 페이지로 이동">운동회노트<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item14" title="실제 페이지로 이동">스케치북<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item08" title="실제 페이지로 이동">알림장 / 종합장<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item22_1" title="실제 페이지로 이동">원아수첩 / 애견수첩<span class="ext">↗</span></button>
+      <button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item04" title="실제 페이지로 이동">교지 · 문집<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item17" title="실제 페이지로 이동">요람<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item18" title="실제 페이지로 이동">교육계획서<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item19_1" title="실제 페이지로 이동">교무수첩<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item02_5" title="실제 페이지로 이동">학사력<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item16" title="실제 페이지로 이동">신문 · 소식지<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item03" title="실제 페이지로 이동">홍보물 · 브로슈어<span class="ext">↗</span></button>
     </div>
   </div>
   <div class="ag">
-    <button class="ah open"><span class="nm">학교 행정·출판</span><span class="cnt">8</span><span class="chev"></span></button>
+    <button class="ah open"><span class="nm">학교 기프트</span><span class="cnt">1</span><span class="chev"></span></button>
     <div class="ab open">
-      <button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item04" title="실제 페이지로 이동">학교교지 &amp; 문집<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item17" title="실제 페이지로 이동">학교요람<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item18" title="실제 페이지로 이동">교육계획서<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item19_1" title="실제 페이지로 이동">교무수첩<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item02_5" title="실제 페이지로 이동">학교달력(학사력)<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item16" title="실제 페이지로 이동">학교신문 &amp; 소식지<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item03" title="실제 페이지로 이동">학교홍보물 &amp; 브로슈어<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=item21_1" title="실제 페이지로 이동">창체기록장 · 생활본<span class="ext">↗</span></button>
+      <button class="si" data-href="https://www.ddak-joa.com/" title="실제 페이지로 이동">기프트 몰<span class="ext">↗</span></button>
     </div>
   </div>
   <div class="ag">
-    <button class="ah open"><span class="nm">기프트·기타</span><span class="cnt">1</span><span class="chev"></span></button>
-    <div class="ab open"><button class="si" data-href="https://www.ddak-joa.com/" title="실제 페이지로 이동">학교 기프트 몰<span class="ext">↗</span></button></div>
+    <button class="ah open"><span class="nm">교정·주문</span><span class="cnt">3</span><span class="chev"></span></button>
+    <div class="ab open">
+      <button class="si" data-href="https://www.school-tong.com/bbs/content.php?co_id=support" title="실제 페이지로 이동">교정센터<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/shop/cart.php" title="실제 페이지로 이동">장바구니<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/shop/orderinquiry.php" title="실제 페이지로 이동">주문 조회<span class="ext">↗</span></button>
+    </div>
+  </div>
+  <div class="ag">
+    <button class="ah open"><span class="nm">가이드</span><span class="cnt">2</span><span class="chev"></span></button>
+    <div class="ab open">
+      <button class="si" data-href="https://www.school-tong.com/bbs/content.php?co_id=print_guide" title="실제 페이지로 이동">인쇄·제작 가이드<span class="ext">↗</span></button><button class="si" data-s="guide">자료실 이용 가이드</button>
+    </div>
+  </div>
+  <div class="ag">
+    <button class="ah open"><span class="nm">고객센터</span><span class="cnt">3</span><span class="chev"></span></button>
+    <div class="ab open">
+      <button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=notice" title="실제 페이지로 이동">공지<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/bbs/board.php?bo_table=online" title="실제 페이지로 이동">1:1 문의<span class="ext">↗</span></button><button class="si" data-href="https://www.school-tong.com/page/?pid=aboutus" title="실제 페이지로 이동">회사소개<span class="ext">↗</span></button>
+    </div>
   </div>
   <div class="ag">
     <button class="ah open"><span class="nm">블로그·SNS 채널</span><span class="cnt">5</span><span class="chev"></span></button>
@@ -573,30 +594,27 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
   <div class="hero">
     <div>
       <div class="eyebrow">학교인쇄통 디지털자료실</div>
-      <h1>우리 학교 <em>재량교재</em>,<br>이제 내려받아 바로 인쇄합니다</h1>
-      <p>학교자율시간·창의적 체험활동·학급운영에 바로 쓰는 인쇄용 PDF 워크북. 학교 연간 이용권 하나로 선생님 모두가 무제한 다운로드하고, 클릭 한 번으로 학교인쇄통 제본 인쇄까지 이어집니다.</p>
+      <h1>우리 학교 <em>교재·워크북</em>,<br>이제 내려받아 바로 인쇄합니다</h1>
+      <p>교과교재·워크북·인성·진로기록물·필사노트·학습플래너까지 <b>132권 · 9,902쪽</b>의 인쇄용 PDF. 학교 연간 이용권 하나로 선생님 모두가 무제한 다운로드하고, 클릭 한 번으로 학교인쇄통 제본 인쇄까지 이어집니다.</p>
       <div class="cta">
         <button class="btn gold lg" data-s="plan">학교 이용권 알아보기</button>
         <button class="btn ghost lg" onclick="showFree()">무료 샘플 3종 보기</button>
       </div>
     </div>
     <div class="stack" aria-hidden="true">
-      <div class="book b1">학교자율시간<br>진로탐색 워크북<small>초등 5~6학년 · 48쪽</small><span class="b5">B5</span></div>
-      <div class="book b2">한 학기 한 권<br>독서기록장<small>중학 전학년 · 64쪽</small><span class="b5">B5</span></div>
-      <div class="book b3">학급운영<br>생활지도 활동지<small>초등 3~4학년 · 32쪽</small><span class="b5">A4</span></div>
+      <div class="book b1">워크북·활동지<br>진로탐색 워크북<small>초등 5~6학년 · 48쪽</small><span class="b5">B5</span></div>
+      <div class="book b2">필사노트<br>명문 필사노트<small>중학 전학년 · 104쪽</small><span class="b5">B5</span></div>
+      <div class="book b3">인성·진로기록물<br>감정 온도계 활동지<small>초등 3~4학년 · 32쪽</small><span class="b5">A4</span></div>
     </div>
   </div>
 
-  <div class="sec-h"><h2>주제별로 찾기</h2><a data-s="list">전체 자료 보기 →</a></div>
+  <div class="sec-h"><h2>분류별로 찾기 <small class="muted" style="font-size:14px;font-weight:500">전체 132권 · 9,902쪽</small></h2><a data-topic="">전체 자료 보기 →</a></div>
   <div class="grid cats">
-    <div class="cat" data-s="list"><div class="ic">自</div><h3>학교자율시간</h3><p>2022 개정 교육과정 자율시간 워크북</p><div class="n">42종</div></div>
-    <div class="cat" data-s="list"><div class="ic">讀</div><h3>독서·글쓰기</h3><p>독서기록장, 한 학기 한 권 읽기</p><div class="n">31종</div></div>
-    <div class="cat" data-s="list"><div class="ic">進</div><h3>진로·인성</h3><p>진로탐색, 감정·관계 활동지</p><div class="n">27종</div></div>
-    <div class="cat" data-s="list"><div class="ic">學</div><h3>학급운영</h3><p>학습플래너, 알림장, 생활지도</p><div class="n">24종</div></div>
-    <div class="cat" data-s="list"><div class="ic">安</div><h3>안전·환경</h3><p>안전교육, 생태환경 프로젝트</p><div class="n">18종</div></div>
-    <div class="cat" data-s="list"><div class="ic">行</div><h3>행사·기록</h3><p>운동회, 졸업, 학교요람 서식</p><div class="n">15종</div></div>
-    <div class="cat" data-s="list"><div class="ic">記</div><h3>창체·생활기록</h3><p>창체기록장, 생활본, 감사기록장</p><div class="n">12종</div></div>
-    <div class="cat" data-s="list"><div class="ic">表</div><h3>표지·디자인 서식</h3><p>교지·문집 표지 템플릿</p><div class="n">20종</div></div>
+    <div class="cat" data-topic="교과교재·부교재"><div class="ic">教</div><h3>교과교재·부교재</h3><p>교과 연계 교재와 부교재<br><small class="muted">초 10 · 중 11 · 고 16</small></p><div class="n">37권 · 2,914쪽</div></div>
+    <div class="cat" data-topic="워크북·활동지"><div class="ic">活</div><h3>워크북·활동지</h3><p>수업·자율시간 워크북, 활동지<br><small class="muted">초 26 · 중 23 · 고 9</small></p><div class="n">58권 · 2,642쪽</div></div>
+    <div class="cat" data-topic="인성·진로기록물"><div class="ic">進</div><h3>인성·진로기록물</h3><p>인성 활동, 진로 포트폴리오<br><small class="muted">초 4 · 중 5 · 고 9</small></p><div class="n">18권 · 1,546쪽</div></div>
+    <div class="cat" data-topic="필사노트"><div class="ic">筆</div><h3>필사노트</h3><p>명문 필사, 성경필사 시리즈<br><small class="muted">초 2 · 중 5 · 고 3 · 시리즈 6</small></p><div class="n">16권 · 1,450쪽</div></div>
+    <div class="cat" data-topic="학습플래너"><div class="ic">計</div><h3>학습플래너</h3><p>학교급별 1년 학습플래너<br><small class="muted">초 1 · 중 1 · 고 1</small></p><div class="n">3권 · 1,350쪽</div></div>
   </div>
 
   <div class="sec-h"><h2>이번 주 새로 올라온 자료</h2><a data-s="list">더보기 →</a></div>
@@ -624,9 +642,9 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
       <div class="f-seg" id="fLevel"><button class="on" data-v="초등">초등</button><button data-v="중등">중등</button><button data-v="고등">고등</button></div>
       <h4><i>2</i>학년 <small>여러 개 가능</small></h4>
       <div id="fGrade"></div>
-      <h4><i>3</i>주제 <small>여러 개 가능</small></h4>
+      <h4><i>3</i>분류 <small>여러 개 가능</small></h4>
       <div id="fTopic">
-        <label><input type="checkbox" value="학교자율시간">학교자율시간</label><label><input type="checkbox" value="독서·글쓰기">독서·글쓰기</label><label><input type="checkbox" value="진로·인성">진로·인성</label><label><input type="checkbox" value="학급운영">학급운영</label><label><input type="checkbox" value="안전·환경">안전·환경</label><label><input type="checkbox" value="행사·기록">행사·기록</label><label><input type="checkbox" value="창체·생활기록">창체·생활기록</label><label><input type="checkbox" value="표지·디자인 서식">표지·디자인 서식</label>
+        <label><input type="checkbox" value="교과교재·부교재">교과교재·부교재</label><label><input type="checkbox" value="워크북·활동지">워크북·활동지</label><label><input type="checkbox" value="인성·진로기록물">인성·진로기록물</label><label><input type="checkbox" value="필사노트">필사노트</label><label><input type="checkbox" value="학습플래너">학습플래너</label>
       </div>
       <h4><i>4</i>판형 · 분량 <small>필요할 때만</small></h4>
       <div id="fSize">
@@ -636,10 +654,10 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
       <div id="fEtc"><label><input type="checkbox" value="free">무료 샘플만</label><label><input type="checkbox" value="src">편집 원본(한글) 포함</label></div>
     </aside>
     <div>
-      <div class="list-top"><span class="cnt tnum" id="fCount">검색 결과 42종</span><span class="muted" id="fSummary">초등 · 5~6학년 · 학교자율시간</span>
+      <div class="list-top"><span class="cnt tnum" id="fCount">검색 결과 132권</span><span class="muted" id="fSummary">초등</span>
         <select><option>최신순</option><option>다운로드 많은순</option><option>쪽수 적은순</option></select></div>
       <div class="card tblcard"><div class="tbl-wrap"><table class="rtbl" id="listTable">
-        <thead><tr><th class="th-thumb"></th><th>자료명</th><th class="th-act">다운로드</th><th>주제</th><th>학교급·학년</th><th>판형·쪽수·차시</th><th>형식</th><th class="th-date">등록일</th><th class="th-num">내려받기</th></tr></thead>
+        <thead><tr><th class="th-thumb"></th><th>자료명</th><th class="th-act">다운로드</th><th>분류</th><th>학교급·학년</th><th>판형·쪽수·차시</th><th>형식</th><th class="th-date">등록일</th><th class="th-num">내려받기</th></tr></thead>
         <tbody id="listBody"></tbody>
       </table></div>
       <div class="tbl-foot"><span class="muted"></span><span class="pager"></span></div></div>
@@ -649,7 +667,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 
 <!-- ③ 상세 -->
 <section class="screen" id="s-detail">
-  <div class="crumb">디지털자료실 › 학교자율시간 › <b id="dCrumb"></b></div>
+  <div class="crumb">디지털자료실 › <span id="dCat">워크북·활동지</span> › <b id="dCrumb"></b></div>
   <div class="detail">
     <div>
       <div class="cover big" id="dCover"></div>
@@ -657,7 +675,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
       <p class="muted" style="font-size:12px;margin-top:8px">미리보기는 앞 3쪽만 제공되며 워터마크가 표시됩니다.</p>
     </div>
     <div>
-      <div class="eyebrow" id="dTag">학교자율시간 · 초등 5~6학년</div>
+      <div class="eyebrow" id="dTag">워크북·활동지 · 초등 5~6학년</div>
       <h1 id="dTitle"></h1>
       <p class="muted" id="dDesc"></p>
       <div class="spec">
@@ -680,12 +698,12 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
         <div class="dl-head"><b>이 자료의 파일</b><span class="muted" id="dFileSum">자료 ID ST-D-0001 · 서버 폴더 /library/ST-D-0001/</span></div>
         <div class="tbl-wrap"><table class="rtbl ftbl"><thead><tr><th>파일</th><th class="th-num">용량</th><th>등록</th><th>권한</th><th class="th-act">다운로드</th></tr></thead><tbody id="dFiles"></tbody></table></div>
         <div class="dl-rule">
-          <b>개발자 참고 — 파일 저장·다운로드 규칙 (자료 1,000종 기준)</b>
+          <b>개발자 참고 — 파일 저장·다운로드 규칙 (자료 132권 · 9,902쪽 기준)</b>
           <table class="kvt">
             <tr><th>저장 서버</th><td>기존 학교인쇄통 서버(카페24 megaplus1100) 그대로 사용. 별도 스토리지 없음</td></tr>
             <tr><th>폴더 규칙</th><td><code>/library/{자료ID}/</code> 한 자료 = 한 폴더. 자료ID는 <code>ST-D-0001</code>부터 4자리 순번 (9,999종까지)</td></tr>
             <tr><th>파일명 규칙</th><td><code>{자료ID}_{종류}_v{버전}.{확장자}</code> — 종류: 본문 / 표지 / 원본 / 미리보기1~3. 예) <code>ST-D-0001_본문_v2.pdf</code></td></tr>
-            <tr><th>용량 추정</th><td>자료당 평균 15MB(본문 PDF 12MB + 표지 1MB + 원본 2MB) × 1,000종 = 약 15GB. 미리보기 이미지는 등록 시 자동 생성</td></tr>
+            <tr><th>용량 추정</th><td>자료당 평균 15MB(본문 PDF 12MB + 표지 1MB + 원본 2MB) × 132권 = 약 2GB (권당 평균 75쪽). 미리보기 이미지는 등록 시 자동 생성</td></tr>
             <tr><th>다운로드 처리</th><td>① 로그인·이용권 코드 검사 → ② PDF 전 쪽 하단에 「학교명 · 코드 · 일시」 워터마크 삽입 → ③ 10분 유효 1회용 링크 발급 → ④ 로그 기록(자료ID·학교코드·계정·일시·IP). 원본 파일 경로는 절대 노출하지 않음</td></tr>
             <tr><th>권한</th><td>본문·표지·원본 = 이용권 학교(유료·자료제공단) / 미리보기 3장 = 누구나 / 무료 샘플 자료는 본문도 누구나</td></tr>
             <tr><th>버전 관리</th><td>새 버전 업로드 시 이전 파일은 <code>/library/{자료ID}/old/</code>로 이동, 목록에는 최신만 표시. 이미 받은 학교에는 「새 버전」 표시</td></tr>
@@ -717,7 +735,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
         <div class="price tnum">연 240,000<small>원 (부가세 포함)</small></div>
         <div style="font-size:13px;opacity:.85">부가세 포함 · 세금계산서 또는 현금영수증 발행</div>
         <ul>
-          <li>전체 자료 190종+ 무제한 다운로드 (매월 신규 추가)</li>
+          <li>전체 자료 132권(9,902쪽) 무제한 다운로드 (매월 신규 추가)</li>
           <li>학교 코드 하나로 선생님 5명까지 등록 (추가 계정은 관리자 요청)</li>
           <li>교육 목적 인쇄·배부 이용 허락 포함</li>
           <li>학교인쇄통 제본 인쇄 주문 시 인쇄비 5% 할인</li>
@@ -804,7 +822,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
   <div class="grid stat" style="margin-bottom:22px">
     <div class="card"><small>이용 중인 학교</small><b class="tnum">37교</b><span class="muted" style="font-size:12px">이달 신규 6교 · 30일 내 만료 4교</span></div>
     <div class="card"><small>이달 다운로드</small><b class="tnum">1,284건</b><span class="muted" style="font-size:12px">인쇄 주문 전환 92건 (7.2%)</span></div>
-    <div class="card"><small>등록 자료</small><b class="tnum">189종</b><span class="muted" style="font-size:12px">검수 대기 7종</span></div>
+    <div class="card"><small>등록 자료</small><b class="tnum">132권</b><span class="muted" style="font-size:12px">총 9,902쪽</span></div>
   </div>
   <div class="adm">
     <div class="card">
@@ -812,7 +830,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
       <div class="drop"><b>구글 드라이브 '재량교재_완성본' 폴더</b>에서 PDF를 고르거나<br>파일을 여기에 끌어다 놓으세요</div>
       <div class="f" style="margin-top:14px"><dl class="kv">
         <dt>제목</dt><dd>학교자율시간 진로탐색 워크북</dd>
-        <dt>주제 / 학교급</dt><dd>학교자율시간 / 초등 5~6학년</dd>
+        <dt>분류 / 학교급</dt><dd>워크북·활동지 / 초등 5~6학년</dd>
         <dt>판형 · 쪽수</dt><dd>B5 · 48쪽 (자동 인식)</dd>
         <dt>미리보기</dt><dd>앞 3쪽 자동 생성 · 워터마크 적용</dd>
         <dt>상태</dt><dd><span class="chip warn">검수 대기</span> → 검수 완료 시 공개</dd>
@@ -989,25 +1007,29 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
 
 <script>
 const R=[
- {id:1,t:"학교자율시간 진로탐색 워크북",lv:"초등 5~6학년",th:"학교자율시간",sz:"B5",pg:48,ls:"12차시",c:"#1E3F82",tag:"NEW",dl:412,
+ {id:1,t:"학교자율시간 진로탐색 워크북",lv:"초등 5~6학년",th:"워크북·활동지",sz:"B5",pg:48,ls:"12차시",c:"#1E3F82",tag:"NEW",dl:412,
   d:"나를 알아보는 활동에서 시작해 직업 인터뷰, 미래 명함 만들기까지 12차시로 구성한 학교자율시간용 워크북입니다.",
   toc:["나는 어떤 사람일까","흥미·강점 탐색 카드","우리 동네 직업 지도","직업 인터뷰 준비","인터뷰 기록지","변화하는 직업의 세계","AI 시대에 남는 일","진로 롤모델 찾기","10년 후 나의 하루","미래 명함 만들기","진로 발표회 준비","한 학기 돌아보기"]},
- {id:2,t:"한 학기 한 권 읽기 독서기록장",lv:"중학 전학년",th:"독서·글쓰기",sz:"B5",pg:64,ls:"16차시",c:"#2E7D5B",tag:"인기",dl:987,
+ {id:2,t:"한 학기 한 권 읽기 독서기록장",lv:"중학 전학년",th:"워크북·활동지",sz:"B5",pg:64,ls:"16차시",c:"#2E7D5B",tag:"인기",dl:987,
   d:"읽기 전·중·후 활동을 한 권에 담아 학기 내내 쓰는 독서기록장입니다.",toc:["책 고르기","읽기 계획표","인물 관계도","장면 스케치","질문 만들기","토론 준비","서평 쓰기","독서 발표"]},
- {id:3,t:"감정 온도계 인성 활동지",lv:"초등 3~4학년",th:"진로·인성",sz:"A4",pg:32,ls:"8차시",c:"#B4541B",tag:"무료 샘플",dl:531,
+ {id:3,t:"감정 온도계 인성 활동지",lv:"초등 3~4학년",th:"인성·진로기록물",sz:"A4",pg:32,ls:"8차시",c:"#B4541B",tag:"무료 샘플",dl:531,
   d:"감정을 이름 붙이고 조절하는 8차시 인성 활동지입니다.",toc:["감정 이름 찾기","오늘의 감정 온도","화가 날 때 나는","친구의 마음 읽기","고마움 편지","우리 반 약속","감정 일기","마무리 활동"]},
- {id:4,t:"생태환경 프로젝트 탐구노트",lv:"초등 5~6학년",th:"안전·환경",sz:"B5",pg:40,ls:"10차시",c:"#3B6E8F",tag:"NEW",dl:126,
+ {id:4,t:"생태환경 프로젝트 탐구노트",lv:"초등 5~6학년",th:"교과교재·부교재",sz:"B5",pg:40,ls:"10차시",c:"#3B6E8F",tag:"NEW",dl:126,
   d:"학교 텃밭과 동네 하천을 관찰하는 10차시 프로젝트 탐구노트입니다.",toc:["탐구 주제 정하기","관찰 기록 1","관찰 기록 2","자료 조사","실천 계획","캠페인 만들기","결과 정리","발표"]},
- {id:5,t:"학급 생활지도 활동지 모음",lv:"초등 1~2학년",th:"학급운영",sz:"A4",pg:36,ls:"12차시",c:"#6A4C93",tag:"무료 샘플",dl:844,
+ {id:5,t:"학급 생활지도 활동지 모음",lv:"초등 1~2학년",th:"워크북·활동지",sz:"A4",pg:36,ls:"12차시",c:"#6A4C93",tag:"무료 샘플",dl:844,
   d:"학기 초 규칙 세우기부터 학기 말 상장 서식까지 학급운영에 필요한 활동지 모음입니다.",toc:["우리 반 규칙","자기소개 카드","1인 1역","칭찬 릴레이","자리 바꾸기 판","학기 말 상장"]},
- {id:6,t:"안전교육 7대 영역 학습지",lv:"중학 전학년",th:"안전·환경",sz:"A4",pg:28,ls:"7차시",c:"#8A6210",tag:"무료 샘플",dl:1203,
+ {id:6,t:"안전교육 7대 영역 학습지",lv:"중학 전학년",th:"교과교재·부교재",sz:"A4",pg:28,ls:"7차시",c:"#8A6210",tag:"무료 샘플",dl:1203,
   d:"학교 안전교육 7대 표준안 영역별로 1차시씩 구성한 학습지입니다.",toc:["생활안전","교통안전","폭력·신변보호","약물·사이버","재난안전","직업안전","응급처치"]},
- {id:7,t:"고교 학점제 진로설계 플래너",lv:"고등 1학년",th:"진로·인성",sz:"B5",pg:56,ls:"14차시",c:"#1E3F82",tag:"NEW",dl:88,
+ {id:7,t:"고교 학점제 진로설계 플래너",lv:"고등 1학년",th:"인성·진로기록물",sz:"B5",pg:56,ls:"14차시",c:"#1E3F82",tag:"NEW",dl:88,
   d:"과목 선택과 3년 로드맵을 스스로 설계하는 고교학점제용 플래너입니다.",toc:["나의 흥미·적성","계열 탐색","과목 선택 가이드","3년 로드맵","학기별 목표","진로 상담 기록"]},
- {id:8,t:"교지·문집 표지 템플릿 20종",lv:"전 학교급",th:"표지·디자인 서식",sz:"B5/A4",pg:20,ls:"—",c:"#2F5D50",tag:"인기",dl:702,
-  d:"학교명과 연도만 바꿔 쓰는 교지·문집 표지 템플릿 20종(PDF+편집 원본).",toc:["봄·여름 시리즈","가을·겨울 시리즈","기념호 시리즈","졸업문집 시리즈"]},
+ {id:8,t:"명문 필사노트 — 중등",lv:"중학 전학년",th:"필사노트",sz:"B5",pg:104,ls:"1년",c:"#2F5D50",tag:"인기",dl:702,
+  d:"시·고전·명연설 속 명문장을 매일 한 쪽씩 따라 쓰며 문해력과 바른 글씨를 함께 기르는 필사노트입니다.",toc:["시 필사","고전 명문장","명연설","속담·격언","나만의 문장 쓰기"]},
+ {id:9,t:"초등 1년 학습플래너",lv:"초등 전학년",th:"학습플래너",sz:"B5",pg:450,ls:"1년",c:"#3B6E8F",tag:"",dl:356,
+  d:"월간·주간·일간 계획과 돌아보기를 한 권에 담은 초등 1년 학습플래너입니다.",toc:["연간 목표","월간 계획","주간 계획","일일 기록","방학 계획","한 해 돌아보기"]},
 ];
 let lic=false, cur=1;
+function goTopic(t){show("list");const m=t&&R.find(x=>x.th===t);if(m){const v=m.lv.startsWith("중")?"중등":m.lv.startsWith("고")?"고등":"초등";const lb=document.querySelector(`#fLevel button[data-v="${v}"]`);if(lb&&v!==fLv)lb.click();}document.querySelectorAll("#fTopic input").forEach(i=>i.checked=!!t&&i.value===t);if(typeof fApply==="function")fApply();}
+document.addEventListener("click",e=>{const t=e.target.closest("[data-topic]");if(!t)return;e.stopPropagation();goTopic(t.dataset.topic);},true);
 const $=s=>document.querySelector(s);
 function card(r){return `<div class="rc" data-id="${r.id}"><div class="cover" style="background:${r.c}">${r.tag?`<span class="tag">${r.tag}</span>`:""}${r.t}</div>
 <div class="bd"><div class="meta"><b>${r.lv}</b><span>${r.th}</span></div><div class="meta"><span>${r.sz} · ${r.pg}쪽 · ${r.ls}</span><span class="tnum">↓ ${r.dl.toLocaleString()}</span></div></div></div>`}
@@ -1045,10 +1067,10 @@ function fApply(){
   });
   const body=$("#listBody");if(body)body.innerHTML=rows.length?rows.map(row).join(""):`<tr><td colspan="9" class="muted" style="text-align:center;padding:30px">조건에 맞는 자료가 없습니다. 아래쪽 조건부터 하나씩 풀어보세요.</td></tr>`;
   const n=rows.length;
-  $("#fCount").textContent=`검색 결과 ${n}종`;
+  $("#fCount").textContent=`검색 결과 ${n}권`;
   const parts=[onlyFree?"무료 샘플":fLv].concat(onlyFree?[]:gr.length?[gr.join(",")]:[]).concat(tp.length?[tp.join(",")]:[]).concat(sz.length?[sz.map(v=>({s32:"32쪽 이하",s64:"33~64쪽",s128:"65쪽 이상"})[v]||v).join(",")]:[]);
   $("#fSummary").textContent=parts.join(" · ");
-  const foot=document.querySelector("#s-list .tbl-foot .muted");if(foot)foot.textContent=n?`1 – ${n} / ${n}종`:"0종";
+  const foot=document.querySelector("#s-list .tbl-foot .muted");if(foot)foot.textContent=n?`1 – ${n} / ${n}권`:"0권";
   pager("#s-list .tbl-foot .pager",n);
 }
 function pager(sel,total,per){
@@ -1108,7 +1130,7 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-dt]");if(!
 function detail(id){
   cur=id;const r=R.find(x=>x.id===id);
   $("#dCrumb").textContent=r.t;$("#dTitle").textContent=r.t;$("#dDesc").textContent=r.d;
-  $("#dTag").textContent=r.th+" · "+r.lv;$("#dSize").textContent=r.sz;$("#dPages").textContent=r.pg+"쪽";$("#dLessons").textContent=r.ls;
+  $("#dTag").textContent=r.th+" · "+r.lv;const dc=$("#dCat");if(dc)dc.textContent=r.th;$("#dSize").textContent=r.sz;$("#dPages").textContent=r.pg+"쪽";$("#dLessons").textContent=r.ls;
   $("#dCover").style.background=r.c;$("#dCover").innerHTML=(r.tag?`<span class="tag">${r.tag}</span>`:"")+r.t;
   $("#dToc").innerHTML=r.toc.map(x=>`<li>${x}</li>`).join("");
   $("#dRel").innerHTML=R.filter(x=>x.id!==id).slice(0,3).map(card).join("");
@@ -1123,14 +1145,14 @@ function detail(id){
      <div class="hint">이미 우리 학교가 이용권을 갖고 있다면, 회원정보에서 학교 코드를 입력해 주세요.</div>`;
 }
 const DL=[
- {d:"2026-09-04 15:20",id:1,t:"학교자율시간 진로탐색 워크북",th:"학교자율시간",w:"박선희",f:"PDF"},
- {d:"2026-09-03 10:02",id:4,t:"생태환경 프로젝트 탐구노트",th:"안전·환경",w:"이정민",f:"PDF"},
- {d:"2026-09-01 09:41",id:3,t:"감정 온도계 인성 활동지",th:"진로·인성",w:"최유진",f:"PDF+원본"},
- {d:"2026-08-28 14:12",id:2,t:"한 학기 한 권 읽기 독서기록장",th:"독서·글쓰기",w:"박선희",f:"PDF"},
- {d:"2026-08-26 11:05",id:6,t:"안전교육 7대 영역 학습지",th:"안전·환경",w:"김도윤",f:"PDF+원본"},
- {d:"2026-08-20 16:48",id:5,t:"학급 생활지도 활동지 모음",th:"학급운영",w:"이정민",f:"PDF"},
- {d:"2026-08-19 09:30",id:8,t:"교지·문집 표지 템플릿 20종",th:"표지·디자인 서식",w:"박선희",f:"PDF+원본"},
- {d:"2026-08-12 13:55",id:7,t:"고교 학점제 진로설계 플래너",th:"진로·인성",w:"최유진",f:"PDF"},
+ {d:"2026-09-04 15:20",id:1,t:"학교자율시간 진로탐색 워크북",th:"워크북·활동지",w:"박선희",f:"PDF"},
+ {d:"2026-09-03 10:02",id:4,t:"생태환경 프로젝트 탐구노트",th:"교과교재·부교재",w:"이정민",f:"PDF"},
+ {d:"2026-09-01 09:41",id:3,t:"감정 온도계 인성 활동지",th:"인성·진로기록물",w:"최유진",f:"PDF+원본"},
+ {d:"2026-08-28 14:12",id:2,t:"한 학기 한 권 읽기 독서기록장",th:"워크북·활동지",w:"박선희",f:"PDF"},
+ {d:"2026-08-26 11:05",id:6,t:"안전교육 7대 영역 학습지",th:"교과교재·부교재",w:"김도윤",f:"PDF+원본"},
+ {d:"2026-08-20 16:48",id:5,t:"학급 생활지도 활동지 모음",th:"워크북·활동지",w:"이정민",f:"PDF"},
+ {d:"2026-08-19 09:30",id:8,t:"명문 필사노트 — 중등",th:"필사노트",w:"박선희",f:"PDF"},
+ {d:"2026-08-12 13:55",id:7,t:"고교 학점제 진로설계 플래너",th:"인성·진로기록물",w:"최유진",f:"PDF"},
 ];
 function myFilter(){
   const q=($("#mySearch")?.value||"").trim(), tc=$("#myTeacher")?.value||"", so=$("#mySort")?.value||"최신순";

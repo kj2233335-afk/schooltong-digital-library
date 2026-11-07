@@ -67,8 +67,8 @@
 
 <div style="display:flex;flex-direction:column;gap:var(--space-3)">
 <span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-accent-700)">학교인쇄통 디지털자료실</span>
-<h1 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:32px;line-height:1.2;letter-spacing:-.01em;word-break:keep-all">우리 학교 재량교재,<br>이제 내려받아<br>바로 인쇄합니다</h1>
-<p style="margin:0;font-size:15.5px;line-height:1.65;color:var(--color-neutral-800);word-break:keep-all">학교자율시간·창의적 체험활동·학급운영에 바로 쓰는 인쇄용 PDF 워크북. 학교 연간 이용권 하나로 선생님 모두가 무제한 다운로드하고, 클릭 한 번으로 학교인쇄통 제본 인쇄까지 이어집니다.</p>
+<h1 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:32px;line-height:1.2;letter-spacing:-.01em;word-break:keep-all">우리 학교 교재·워크북,<br>이제 내려받아<br>바로 인쇄합니다</h1>
+<p style="margin:0;font-size:15.5px;line-height:1.65;color:var(--color-neutral-800);word-break:keep-all">교과교재·워크북·인성·진로기록물·필사노트·학습플래너까지 132권 · 9,902쪽의 인쇄용 PDF. 학교 연간 이용권 하나로 선생님 모두가 무제한 다운로드하고, 클릭 한 번으로 학교인쇄통 제본 인쇄까지 이어집니다.</p>
 <div style="display:flex;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-1)">
 <button class="btn btn-secondary" style="height:48px" onClick="{{ goPass }}">학교 이용권 알아보기</button>
 <button class="btn btn-ghost" style="height:48px" onClick="{{ goSamples }}">무료 샘플 3종 보기</button>
@@ -107,11 +107,11 @@
 
 <div style="display:flex;flex-direction:column;gap:var(--space-3)">
 <div style="display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-2)">
-<h2 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:21px">주제별로 찾기</h2>
+<h2 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:21px">분류별로 찾기</h2>
 <button class="btn btn-ghost" style="height:36px;font-size:13px" onClick="{{ goAll }}">전체 자료 보기 →</button>
 </div>
 <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-3)">
-<sc-for list="{{ subjects }}" as="sj" hint-placeholder-count="8">
+<sc-for list="{{ subjects }}" as="sj" hint-placeholder-count="5">
 <button style="border:0;background:var(--color-surface);border-radius:var(--radius-md);padding:var(--space-3);min-height:132px;display:flex;flex-direction:column;gap:var(--space-1);align-items:flex-start;text-align:left;cursor:pointer" onClick="{{ sj.onPick }}">
 <span style="display:flex;align-items:flex-start;justify-content:space-between;width:100%">
 <span style="width:36px;height:36px;flex:none;background:{{ sj.fill }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:19px;line-height:1">{{ sj.glyph }}</span>
@@ -197,7 +197,7 @@
 </div>
 </div>
 <div style="display:flex;flex-direction:column;gap:var(--space-2)">
-<span style="font-size:12.5px;color:var(--color-neutral-700)"><em>3</em> 주제 · 여러 개 가능</span>
+<span style="font-size:12.5px;color:var(--color-neutral-700)"><em>3</em> 분류 · 여러 개 가능</span>
 <div style="display:flex;flex-wrap:wrap;gap:var(--space-1)">
 <sc-for list="{{ subjectChips }}" as="sc" hint-placeholder-count="8">
 <button class="tag {{ sc.cls }}" style="height:38px;border:0;cursor:pointer;font-size:13px" onClick="{{ sc.onPick }}">{{ sc.label }}</button>
@@ -609,7 +609,7 @@
 </div>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:402,&quot;height&quot;:840},&quot;schoolName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;서울한강초등학교&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;teacherName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;박선희 선생님&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;hasPass&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;totalCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:190,&quot;min&quot;:1,&quot;max&quot;:999,&quot;tsType&quot;:&quot;number&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:402,&quot;height&quot;:840},&quot;schoolName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;서울한강초등학교&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;teacherName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;박선희 선생님&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;hasPass&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;},&quot;totalCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:132,&quot;min&quot;:1,&quot;max&quot;:999,&quot;tsType&quot;:&quot;number&quot;}}">
 const ICONS = {
   home: '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 10.5 12 4l8 6.5V20H4z"></path><path d="M10 20v-6h4v6"></path></svg>',
   find: '<svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="6.2"></circle><path d="M15.6 15.6 20 20"></path></svg>',
@@ -622,14 +622,11 @@ const B = 'https://school-tong.com/bbs/board.php?bo_table=';
 const C = 'https://school-tong.com/bbs/content.php?co_id=';
 
 const SUBJECTS = [
-  { key: '학교자율시간', glyph: '自', desc: '2022 개정 교육과정 자율시간 워크북', count: 42 },
-  { key: '독서·글쓰기', glyph: '讀', desc: '독서기록장, 한 학기 한 권 읽기', count: 31 },
-  { key: '진로·인성', glyph: '進', desc: '진로탐색, 감정·관계 활동지', count: 27 },
-  { key: '학급운영', glyph: '學', desc: '학습플래너, 알림장, 생활지도', count: 24 },
-  { key: '안전·환경', glyph: '安', desc: '안전교육, 생태환경 프로젝트', count: 18 },
-  { key: '행사·기록', glyph: '行', desc: '운동회, 졸업, 학교요람 서식', count: 15 },
-  { key: '창체·생활기록', glyph: '記', desc: '창체기록장, 생활본, 감사기록장', count: 12 },
-  { key: '표지·디자인 서식', glyph: '表', desc: '교지·문집 표지 템플릿', count: 20 },
+  { key: '교과교재·부교재', glyph: '教', desc: '교과 연계 교재와 부교재 · 초10 중11 고16', count: 37, pages: 2914 },
+  { key: '워크북·활동지', glyph: '活', desc: '수업·자율시간 워크북, 활동지 · 초26 중23 고9', count: 58, pages: 2642 },
+  { key: '인성·진로기록물', glyph: '進', desc: '인성 활동, 진로 포트폴리오 · 초4 중5 고9', count: 18, pages: 1546 },
+  { key: '필사노트', glyph: '筆', desc: '명문 필사, 성경필사 시리즈 · 초2 중5 고3 시리즈6', count: 16, pages: 1450 },
+  { key: '학습플래너', glyph: '計', desc: '학교급별 1년 학습플래너 · 초1 중1 고1', count: 3, pages: 1350 },
 ];
 
 const INK = ['var(--color-accent-700)', 'var(--color-accent-2-700)', 'var(--color-neutral-800)'];
@@ -642,20 +639,20 @@ const BINDINGS = ['무선 제본 (기본)', '중철', '스프링'];
 const BOXTABS = ['이용권 현황', '다운로드 이력', '인쇄 주문 이력', '우리학교 선생님'];
 
 const DATA = [
-  { id: 'ST-D-0001', title: '학교자율시간 진로탐색 워크북', subject: '학교자율시간', level: '초등', grades: [5, 6], gradeLabel: '초등 5~6학년', format: 'B5', pages: 48, sessions: 12, downloads: 412, sample: true, badge: '', fresh: true, href: B + 'item25' },
-  { id: 'ST-D-0002', title: '한 학기 한 권 독서기록장', subject: '독서·글쓰기', level: '중등', grades: [1, 2, 3], gradeLabel: '중학 전학년', format: 'B5', pages: 64, sessions: 16, downloads: 388, sample: true, badge: '', fresh: true, href: B + 'item09' },
-  { id: 'ST-D-0003', title: '학급운영 생활지도 활동지', subject: '학급운영', level: '초등', grades: [3, 4], gradeLabel: '초등 3~4학년', format: 'A4', pages: 32, sessions: 8, downloads: 301, sample: true, badge: '', fresh: true, href: B + 'item21_1' },
-  { id: 'ST-D-0004', title: '감사기록장 4종', subject: '창체·생활기록', level: '초등', grades: [1, 2, 3, 4, 5, 6], gradeLabel: '초등 전학년', format: 'B5', pages: 28, sessions: 8, downloads: 274, sample: false, badge: 'HOT', fresh: true, href: B + 'item06' },
-  { id: 'ST-D-0005', title: '명문 필사노트', subject: '독서·글쓰기', level: '고등', grades: [1, 2, 3], gradeLabel: '중·고등', format: 'B5', pages: 40, sessions: 10, downloads: 233, sample: false, badge: 'NEW', fresh: true, href: B + 'item28_1' },
-  { id: 'ST-D-0006', title: '자유학기제 워크북', subject: '진로·인성', level: '중등', grades: [1], gradeLabel: '중학 1학년', format: 'B5', pages: 56, sessions: 14, downloads: 219, sample: false, badge: 'NEW', fresh: true, href: B + 'item25' },
-  { id: 'ST-D-0007', title: 'AI수업 워크북', subject: '학교자율시간', level: '초등', grades: [5, 6], gradeLabel: '초등 5~6학년', format: 'A4', pages: 44, sessions: 12, downloads: 0, sample: false, badge: '출시예정', fresh: false, href: B + 'item07' },
-  { id: 'ST-D-0008', title: '진로 포트폴리오', subject: '진로·인성', level: '중등', grades: [1, 2, 3], gradeLabel: '중학 전학년', format: 'A4', pages: 36, sessions: 9, downloads: 0, sample: false, badge: '출시예정', fresh: false, href: B + 'item06_2' },
-  { id: 'ST-D-0009', title: '학습플래너', subject: '학급운영', level: '초등', grades: [3, 4, 5, 6], gradeLabel: '초등 3~6학년', format: 'B5', pages: 60, sessions: 0, downloads: 196, sample: false, badge: '', fresh: false, href: B + 'item01_1' },
-  { id: 'ST-D-0010', title: '창의적 체험활동 기록장', subject: '창체·생활기록', level: '초등', grades: [1, 2, 3, 4, 5, 6], gradeLabel: '초등 전학년', format: 'B5', pages: 24, sessions: 6, downloads: 172, sample: false, badge: '', fresh: false, href: B + 'item21' },
-  { id: 'ST-D-0011', title: '생활안전 · 생태환경 프로젝트', subject: '안전·환경', level: '초등', grades: [3, 4], gradeLabel: '초등 3~4학년', format: 'A4', pages: 30, sessions: 8, downloads: 141, sample: false, badge: '', fresh: false, href: B + 'item07' },
-  { id: 'ST-D-0012', title: '운동회 · 졸업 행사 기록 서식', subject: '행사·기록', level: '초등', grades: [1, 2, 3, 4, 5, 6], gradeLabel: '초등 전학년', format: 'A4', pages: 20, sessions: 0, downloads: 118, sample: false, badge: '', fresh: false, href: B + 'item11' },
-  { id: 'ST-D-0013', title: '교지 · 문집 표지 템플릿', subject: '표지·디자인 서식', level: '고등', grades: [1, 2, 3], gradeLabel: '중·고등', format: 'A4', pages: 16, sessions: 0, downloads: 96, sample: false, badge: '', fresh: false, href: B + 'item04' },
-  { id: 'ST-D-0014', title: '알림장 · 생활지도 노트', subject: '학급운영', level: '초등', grades: [1, 2], gradeLabel: '초등 1~2학년', format: 'B5', pages: 20, sessions: 0, downloads: 88, sample: false, badge: '', fresh: false, href: B + 'item08' },
+  { id: 'ST-D-0001', title: '학교자율시간 진로탐색 워크북', subject: '워크북·활동지', level: '초등', grades: [5, 6], gradeLabel: '초등 5~6학년', format: 'B5', pages: 48, sessions: 12, downloads: 412, sample: true, badge: '', fresh: true, href: B + 'item25' },
+  { id: 'ST-D-0002', title: '한 학기 한 권 독서기록장', subject: '워크북·활동지', level: '중등', grades: [1, 2, 3], gradeLabel: '중학 전학년', format: 'B5', pages: 64, sessions: 16, downloads: 388, sample: true, badge: '', fresh: true, href: B + 'item09' },
+  { id: 'ST-D-0003', title: '학급운영 생활지도 활동지', subject: '워크북·활동지', level: '초등', grades: [3, 4], gradeLabel: '초등 3~4학년', format: 'A4', pages: 32, sessions: 8, downloads: 301, sample: true, badge: '', fresh: true, href: B + 'item21_1' },
+  { id: 'ST-D-0004', title: '감사기록장 4종', subject: '인성·진로기록물', level: '초등', grades: [1, 2, 3, 4, 5, 6], gradeLabel: '초등 전학년', format: 'B5', pages: 28, sessions: 8, downloads: 274, sample: false, badge: 'HOT', fresh: true, href: B + 'item06' },
+  { id: 'ST-D-0005', title: '명문 필사노트', subject: '필사노트', level: '고등', grades: [1, 2, 3], gradeLabel: '중·고등', format: 'B5', pages: 40, sessions: 10, downloads: 233, sample: false, badge: 'NEW', fresh: true, href: B + 'item28_1' },
+  { id: 'ST-D-0006', title: '자유학기제 워크북', subject: '인성·진로기록물', level: '중등', grades: [1], gradeLabel: '중학 1학년', format: 'B5', pages: 56, sessions: 14, downloads: 219, sample: false, badge: 'NEW', fresh: true, href: B + 'item25' },
+  { id: 'ST-D-0007', title: 'AI수업 워크북', subject: '워크북·활동지', level: '초등', grades: [5, 6], gradeLabel: '초등 5~6학년', format: 'A4', pages: 44, sessions: 12, downloads: 0, sample: false, badge: '출시예정', fresh: false, href: B + 'item07' },
+  { id: 'ST-D-0008', title: '진로 포트폴리오', subject: '인성·진로기록물', level: '중등', grades: [1, 2, 3], gradeLabel: '중학 전학년', format: 'A4', pages: 36, sessions: 9, downloads: 0, sample: false, badge: '출시예정', fresh: false, href: B + 'item06_2' },
+  { id: 'ST-D-0009', title: '학습플래너', subject: '학습플래너', level: '초등', grades: [3, 4, 5, 6], gradeLabel: '초등 3~6학년', format: 'B5', pages: 60, sessions: 0, downloads: 196, sample: false, badge: '', fresh: false, href: B + 'item01_1' },
+  { id: 'ST-D-0010', title: '창의적 체험활동 기록장', subject: '인성·진로기록물', level: '초등', grades: [1, 2, 3, 4, 5, 6], gradeLabel: '초등 전학년', format: 'B5', pages: 24, sessions: 6, downloads: 172, sample: false, badge: '', fresh: false, href: B + 'item21' },
+  { id: 'ST-D-0011', title: '생활안전 · 생태환경 프로젝트', subject: '교과교재·부교재', level: '초등', grades: [3, 4], gradeLabel: '초등 3~4학년', format: 'A4', pages: 30, sessions: 8, downloads: 141, sample: false, badge: '', fresh: false, href: B + 'item07' },
+  { id: 'ST-D-0012', title: '운동회 · 졸업 행사 기록 서식', subject: '워크북·활동지', level: '초등', grades: [1, 2, 3, 4, 5, 6], gradeLabel: '초등 전학년', format: 'A4', pages: 20, sessions: 0, downloads: 118, sample: false, badge: '', fresh: false, href: B + 'item11' },
+  { id: 'ST-D-0013', title: '고등 국어 문학 부교재', subject: '교과교재·부교재', level: '고등', grades: [1, 2, 3], gradeLabel: '중·고등', format: 'A4', pages: 16, sessions: 0, downloads: 96, sample: false, badge: '', fresh: false, href: B + 'item04' },
+  { id: 'ST-D-0014', title: '알림장 · 생활지도 노트', subject: '워크북·활동지', level: '초등', grades: [1, 2], gradeLabel: '초등 1~2학년', format: 'B5', pages: 20, sessions: 0, downloads: 88, sample: false, badge: '', fresh: false, href: B + 'item08' },
 ];
 
 const MENU = [
@@ -753,7 +750,7 @@ class Component extends DCLogic {
     const s = this.state;
     const schoolName = this.props.schoolName ?? '서울한강초등학교';
     const teacherName = this.props.teacherName ?? '박선희 선생님';
-    const total = this.props.totalCount ?? 190;
+    const total = this.props.totalCount ?? 132;
     const hasPass = this.hasPass();
 
     const glyphOf = k => (SUBJECTS.find(x => x.key === k) || {}).glyph || '通';
@@ -830,7 +827,7 @@ class Component extends DCLogic {
         ? [{ k: '자료실', v: '전체 무제한' }, { k: '인쇄 할인', v: '5% 자동 적용' }, { k: '이용권 코드', v: 'ST-P-2026-0417' }, { k: '유효기간', v: '결제일부터 1년' }]
         : [{ k: '자료실', v: '무료 샘플 3종만' }, { k: '인쇄 할인', v: '없음' }, { k: '이용권 코드', v: '미발급' }, { k: '유효기간', v: '—' }],
       passNotice: hasPass
-        ? schoolName + ' 이용권이 적용되어 전체 자료 ' + total + '종을 무제한 내려받을 수 있습니다.'
+        ? schoolName + ' 이용권이 적용되어 전체 자료 ' + total + '권(9,902쪽)을 무제한 내려받을 수 있습니다.'
         : schoolName + ' 는 아직 학교 이용권이 없습니다. 무료 샘플 3종은 바로 내려받을 수 있어요.',
       passCta: hasPass ? '이용권 현황 보기' : '학교 이용권 신청',
       covers: DATA.slice(0, 3).map((r, i) => ({
@@ -838,7 +835,7 @@ class Component extends DCLogic {
         onOpen: () => this.setState({ sheet: 'item', itemId: r.id }),
       })),
       subjects: SUBJECTS.map((x, i) => ({
-        glyph: x.glyph, name: x.key, desc: x.desc, count: x.count + '종', fill: INK[i % 3],
+        glyph: x.glyph, name: x.key, desc: x.desc, count: x.count + '권 · ' + x.pages.toLocaleString() + '쪽', fill: INK[i % 3],
         onPick: () => this.setState({ tab: 'find', subjSel: [x.key], level: null, gradeSel: [], specSel: [], query: '', filterOpen: true }),
       })),
       fresh: DATA.filter(r => r.fresh).map(r => ({
@@ -919,7 +916,7 @@ class Component extends DCLogic {
       goHome: () => this.setState({ tab: 'home', sheet: null }),
       openMenu: () => this.setState({ sheet: 'menu' }),
       menuSubjects: SUBJECTS.map(x => ({
-        glyph: x.glyph, name: x.key, count: x.count + '종',
+        glyph: x.glyph, name: x.key, count: x.count + '권 · ' + x.pages.toLocaleString() + '쪽',
         onPick: () => this.setState({ tab: 'find', subjSel: [x.key], level: null, gradeSel: [], specSel: [], query: '', filterOpen: false, sheet: null }),
       })),
       menuProducts: PRODUCTS,

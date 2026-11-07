@@ -68,7 +68,7 @@
 <div style="display:flex;flex-direction:column;gap:var(--space-3)">
 <span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-accent-700)">학교인쇄통 디지털자료실</span>
 <h1 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:32px;line-height:1.2;letter-spacing:-.01em;word-break:keep-all">우리 학교 교재·워크북,<br>이제 내려받아<br>바로 인쇄합니다</h1>
-<p style="margin:0;font-size:15.5px;line-height:1.65;color:var(--color-neutral-800);word-break:keep-all">교과교재·워크북·인성·진로기록물·필사노트·학습플래너까지 132권 · 9,902쪽의 인쇄용 PDF. 학교 연간 이용권 하나로 선생님 모두가 무제한 다운로드하고, 클릭 한 번으로 학교인쇄통 제본 인쇄까지 이어집니다.</p>
+<p style="margin:0;font-size:15.5px;line-height:1.65;color:var(--color-neutral-800);word-break:keep-all">AI교육·교과교재·워크북·인성·진로기록물·필사노트·학습플래너까지 132권 · 9,902쪽의 인쇄용 PDF. 학교 연간 이용권 하나로 선생님 5명까지 무제한 다운로드하고, 클릭 한 번으로 학교인쇄통 제본 인쇄까지 이어집니다.</p>
 <div style="display:flex;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-1)">
 <button class="btn btn-secondary" style="height:48px" onClick="{{ goPass }}">학교 이용권 알아보기</button>
 <button class="btn btn-ghost" style="height:48px" onClick="{{ goSamples }}">무료 샘플 3종 보기</button>
@@ -111,7 +111,7 @@
 <button class="btn btn-ghost" style="height:36px;font-size:13px" onClick="{{ goAll }}">전체 자료 보기 →</button>
 </div>
 <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-3)">
-<sc-for list="{{ subjects }}" as="sj" hint-placeholder-count="5">
+<sc-for list="{{ subjects }}" as="sj" hint-placeholder-count="6">
 <button style="border:0;background:var(--color-surface);border-radius:var(--radius-md);padding:var(--space-3);min-height:132px;display:flex;flex-direction:column;gap:var(--space-1);align-items:flex-start;text-align:left;cursor:pointer" onClick="{{ sj.onPick }}">
 <span style="display:flex;align-items:flex-start;justify-content:space-between;width:100%">
 <span style="width:36px;height:36px;flex:none;background:{{ sj.fill }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:19px;line-height:1">{{ sj.glyph }}</span>
@@ -207,7 +207,7 @@
 <div style="display:flex;flex-direction:column;gap:var(--space-2)">
 <span style="font-size:12.5px;color:var(--color-neutral-700)"><em>4</em> 판형 · 분량 · 필요할 때만</span>
 <div style="display:flex;flex-wrap:wrap;gap:var(--space-1)">
-<sc-for list="{{ specChips }}" as="pc" hint-placeholder-count="5">
+<sc-for list="{{ specChips }}" as="pc" hint-placeholder-count="6">
 <button class="tag {{ pc.cls }}" style="height:38px;border:0;cursor:pointer;font-size:13px" onClick="{{ pc.onPick }}">{{ pc.label }}</button>
 </sc-for>
 </div>
@@ -258,7 +258,7 @@
 <div style="display:flex;flex-direction:column;gap:var(--space-6);padding-top:var(--space-4)">
 <div style="display:flex;flex-direction:column;gap:var(--space-2)">
 <span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-accent-700)">학교 연간 이용권</span>
-<h1 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:29px;line-height:1.25;word-break:keep-all">학교 한 곳, 선생님 모두,<br>1년 무제한</h1>
+<h1 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:29px;line-height:1.25;word-break:keep-all">학교 한 곳, 선생님 5명,<br>1년 무제한</h1>
 <div style="display:flex;align-items:baseline;gap:var(--space-2);margin-top:var(--space-1)">
 <span style="font-family:var(--font-heading);font-weight:600;font-size:34px;color:var(--color-accent-2-700)">240,000원</span>
 <span style="font-size:13px;color:var(--color-neutral-700)">/ 연 · 부가세 포함</span>
@@ -267,7 +267,7 @@
 </div>
 
 <div style="display:flex;flex-direction:column;gap:var(--space-2)">
-<sc-for list="{{ passIncludes }}" as="pi" hint-placeholder-count="5">
+<sc-for list="{{ passIncludes }}" as="pi" hint-placeholder-count="6">
 <div style="display:flex;gap:var(--space-2);border-top:1px solid var(--color-divider);padding-top:var(--space-2)">
 <span style="flex:none;color:var(--color-accent-700);font-size:15px">·</span>
 <span style="font-size:14.5px;line-height:1.6;word-break:keep-all">{{ pi }}</span>
@@ -291,7 +291,7 @@
 
 <div style="display:flex;flex-direction:column;gap:var(--space-2)">
 <h2 style="margin:0 0 var(--space-1);font-family:var(--font-heading);font-weight:600;font-size:19px">자주 묻는 질문</h2>
-<sc-for list="{{ faqs }}" as="fq" hint-placeholder-count="5">
+<sc-for list="{{ faqs }}" as="fq" hint-placeholder-count="6">
 <div style="border-top:1px solid var(--color-divider)">
 <button style="border:0;background:transparent;width:100%;min-height:52px;display:flex;align-items:center;gap:var(--space-2);padding:var(--space-2) 0;text-align:left;cursor:pointer" onClick="{{ fq.onToggle }}">
 <span style="font-family:var(--font-heading);font-size:15.5px;flex:1;word-break:keep-all">{{ fq.q }}</span>
@@ -347,7 +347,7 @@
 
 <sc-if value="{{ boxIsPass }}" hint-placeholder-val="{{ true }}">
 <div style="display:flex;flex-direction:column;gap:var(--space-2)">
-<sc-for list="{{ passRows }}" as="pr" hint-placeholder-count="5">
+<sc-for list="{{ passRows }}" as="pr" hint-placeholder-count="6">
 <div style="display:flex;gap:var(--space-3);align-items:baseline;border-top:1px solid var(--color-divider);padding:var(--space-2) 0">
 <span style="flex:none;width:104px;font-size:12.5px;color:var(--color-neutral-700)">{{ pr.k }}</span>
 <span style="font-family:var(--font-heading);font-size:15.5px;word-break:keep-all">{{ pr.v }}</span>
@@ -447,7 +447,7 @@
 </div>
 
 <div style="position:absolute;left:0;right:0;bottom:0;background:var(--color-bg);border-top:1px solid var(--color-text);padding:var(--space-1) var(--space-1) var(--space-2);display:flex">
-<sc-for list="{{ tabs }}" as="tb" hint-placeholder-count="5">
+<sc-for list="{{ tabs }}" as="tb" hint-placeholder-count="6">
 <button style="flex:1;border:0;background:transparent;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer;color:{{ tb.ink }}" onClick="{{ tb.onPick }}">
 <span style="display:flex" dangerouslySetInnerHTML="{{ tb.icon }}"></span>
 <span style="font-family:var(--font-heading);font-size:11px;white-space:nowrap">{{ tb.label }}</span>
@@ -555,7 +555,7 @@
 </div>
 
 <div style="display:flex;flex-direction:column;gap:var(--space-2)">
-<span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-accent-700)">주제별 자료</span>
+<span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-accent-700)">디지털자료실 6분류</span>
 <sc-for list="{{ menuSubjects }}" as="ms" hint-placeholder-count="8">
 <button style="border:0;border-top:1px solid var(--color-divider);background:transparent;display:flex;align-items:center;gap:var(--space-3);min-height:52px;padding:var(--space-2) 0;text-align:left;cursor:pointer;width:100%" onClick="{{ ms.onPick }}">
 <span style="flex:none;font-family:var(--font-heading);font-size:19px;color:var(--color-accent-700);width:24px">{{ ms.glyph }}</span>
@@ -566,7 +566,7 @@
 </div>
 
 <div style="display:flex;flex-direction:column;gap:var(--space-2)">
-<span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-accent-2-700)">학교인쇄통 제품</span>
+<span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-accent-2-700)">스페셜 · 인쇄 주문</span>
 <sc-for list="{{ menuProducts }}" as="mp" hint-placeholder-count="8">
 <a href="{{ mp.href }}" target="_blank" rel="noopener" style="border-top:1px solid var(--color-divider);display:flex;align-items:center;gap:var(--space-2);min-height:52px;padding:var(--space-2) 0;text-decoration:none;color:inherit">
 <span style="font-family:var(--font-heading);font-size:16px;flex:1;word-break:keep-all">{{ mp.label }}</span>
@@ -576,7 +576,7 @@
 </div>
 
 <div style="display:flex;flex-direction:column;gap:var(--space-2)">
-<span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-neutral-600)">고객 지원</span>
+<span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-neutral-600)">교정·주문 · 고객센터</span>
 <sc-for list="{{ menu }}" as="mm" hint-placeholder-count="6">
 <a href="{{ mm.href }}" target="_blank" rel="noopener" style="border-top:1px solid var(--color-divider);display:flex;align-items:center;gap:var(--space-2);min-height:50px;padding:var(--space-2) 0;text-decoration:none;color:inherit">
 <span style="font-family:var(--font-heading);font-size:15.5px;flex:1;word-break:keep-all">{{ mm.label }}</span>
@@ -622,16 +622,17 @@ const B = 'https://school-tong.com/bbs/board.php?bo_table=';
 const C = 'https://school-tong.com/bbs/content.php?co_id=';
 
 const SUBJECTS = [
-  { key: '교과교재·부교재', glyph: '教', desc: '교과 연계 교재와 부교재 · 초10 중11 고16', count: 37, pages: 2914 },
-  { key: '워크북·활동지', glyph: '活', desc: '수업·자율시간 워크북, 활동지 · 초26 중23 고9', count: 58, pages: 2642 },
+  { key: 'AI교육', glyph: 'AI', desc: 'AI수업 워크북, 디지털리터러시 · 초3 중6 고3', count: 12, pages: 424 },
+  { key: '교과교재·부교재', glyph: '教', desc: '교과 연계 교재와 부교재 · 초7 중7 고13', count: 27, pages: 2562 },
+  { key: '워크북·활동지', glyph: '活', desc: '수업·자율시간 워크북, 활동지 · 초26 중21 고9', count: 56, pages: 2570 },
   { key: '인성·진로기록물', glyph: '進', desc: '인성 활동, 진로 포트폴리오 · 초4 중5 고9', count: 18, pages: 1546 },
-  { key: '필사노트', glyph: '筆', desc: '명문 필사, 성경필사 시리즈 · 초2 중5 고3 시리즈6', count: 16, pages: 1450 },
+  { key: '필사노트', glyph: '筆', desc: '명문 필사, 성경필사 시리즈 · 초2 중5 고3 성경6', count: 16, pages: 1450 },
   { key: '학습플래너', glyph: '計', desc: '학교급별 1년 학습플래너 · 초1 중1 고1', count: 3, pages: 1350 },
 ];
 
 const INK = ['var(--color-accent-700)', 'var(--color-accent-2-700)', 'var(--color-neutral-800)'];
 const LEVELS = ['초등', '중등', '고등'];
-const SPECS = ['B5', 'A4', '32쪽 이하', '33~64쪽', '65쪽 이상'];
+const SPECS = ['B5', 'A4', '32쪽 이하', '33~64쪽', '65~128쪽', '129쪽 이상'];
 const SORTS = ['최신순', '다운로드 많은순', '쪽수 적은순'];
 const PAYS = ['계좌이체 (학교 행정실)', '학교 법인카드', '개인 신용·체크카드', '휴대폰 결제'];
 const DOCS = ['세금계산서', '현금영수증', '카드 매출전표만'];
@@ -645,7 +646,7 @@ const DATA = [
   { id: 'ST-D-0004', title: '감사기록장 4종', subject: '인성·진로기록물', level: '초등', grades: [1, 2, 3, 4, 5, 6], gradeLabel: '초등 전학년', format: 'B5', pages: 28, sessions: 8, downloads: 274, sample: false, badge: 'HOT', fresh: true, href: B + 'item06' },
   { id: 'ST-D-0005', title: '명문 필사노트', subject: '필사노트', level: '고등', grades: [1, 2, 3], gradeLabel: '중·고등', format: 'B5', pages: 40, sessions: 10, downloads: 233, sample: false, badge: 'NEW', fresh: true, href: B + 'item28_1' },
   { id: 'ST-D-0006', title: '자유학기제 워크북', subject: '인성·진로기록물', level: '중등', grades: [1], gradeLabel: '중학 1학년', format: 'B5', pages: 56, sessions: 14, downloads: 219, sample: false, badge: 'NEW', fresh: true, href: B + 'item25' },
-  { id: 'ST-D-0007', title: 'AI수업 워크북', subject: '워크북·활동지', level: '초등', grades: [5, 6], gradeLabel: '초등 5~6학년', format: 'A4', pages: 44, sessions: 12, downloads: 0, sample: false, badge: '출시예정', fresh: false, href: B + 'item07' },
+  { id: 'ST-D-0007', title: 'AI수업 워크북', subject: 'AI교육', level: '초등', grades: [5, 6], gradeLabel: '초등 5~6학년', format: 'A4', pages: 44, sessions: 12, downloads: 0, sample: false, badge: '출시예정', fresh: false, href: B + 'item07' },
   { id: 'ST-D-0008', title: '진로 포트폴리오', subject: '인성·진로기록물', level: '중등', grades: [1, 2, 3], gradeLabel: '중학 전학년', format: 'A4', pages: 36, sessions: 9, downloads: 0, sample: false, badge: '출시예정', fresh: false, href: B + 'item06_2' },
   { id: 'ST-D-0009', title: '학습플래너', subject: '학습플래너', level: '초등', grades: [3, 4, 5, 6], gradeLabel: '초등 3~6학년', format: 'B5', pages: 60, sessions: 0, downloads: 196, sample: false, badge: '', fresh: false, href: B + 'item01_1' },
   { id: 'ST-D-0010', title: '창의적 체험활동 기록장', subject: '인성·진로기록물', level: '초등', grades: [1, 2, 3, 4, 5, 6], gradeLabel: '초등 전학년', format: 'B5', pages: 24, sessions: 6, downloads: 172, sample: false, badge: '', fresh: false, href: B + 'item21' },
@@ -657,22 +658,21 @@ const DATA = [
 
 const MENU = [
   { label: '교정센터', href: C + 'support' },
-  { label: '인쇄/제작가이드', href: C + 'print_guide' },
-  { label: '인쇄 네비게이션 — 규격·용지·제본', href: B + 'print_nav' },
+  { label: '장바구니', href: 'https://www.school-tong.com/shop/cart.php' },
+  { label: '주문 조회', href: 'https://www.school-tong.com/shop/orderinquiry.php' },
+  { label: '인쇄·제작 가이드', href: C + 'print_guide' },
   { label: '제작후기', href: B + 'review' },
-  { label: '고객센터 · 자주묻는 Q&A', href: 'https://school-tong.com/bbs/faq.php' },
-  { label: '1:1 온라인 상담', href: B + 'online' },
+  { label: '공지', href: B + 'notice' },
+  { label: '1:1 문의', href: B + 'online' },
 ];
 
 const PRODUCTS = [
-  { label: '학교부교재 · 워크북', href: B + 'item07' },
-  { label: '교지 · 학급문집', href: B + 'item04' },
-  { label: '독서기록장 · 필사노트', href: B + 'item09' },
-  { label: '학습플래너 · 다이어리', href: B + 'item01_1' },
-  { label: '감사기록장 · 생활본', href: B + 'item06' },
-  { label: '창체기록장 · 활동지', href: B + 'item21' },
-  { label: '알림장 · 상담록', href: B + 'item08' },
-  { label: '학교요람 · 행사 인쇄물', href: B + 'item11' },
+  { label: '학습플래너', href: B + 'item01_1' },
+  { label: '독서기록장', href: B + 'item09' },
+  { label: '학교 캘린더', href: B + 'item02_5' },
+  { label: '학교신문', href: B + 'item16' },
+  { label: '독판노트 제작', href: B + 'item13_1' },
+  { label: '인쇄 주문 전체 보기 (교재·노트·행정·기프트)', href: 'https://www.school-tong.com/' },
 ];
 
 const NOTICES = [
@@ -692,7 +692,7 @@ const FAQS = [
 
 const STEPS = [
   { n: '1', title: '학교 이용권 신청', body: '학교 단위로 1년 이용권을 신청합니다. 세금계산서·학교 행정 계좌이체 가능.' },
-  { n: '2', title: '학교 코드로 선생님 등록', body: '담당 선생님이 받은 학교 코드를 동료 선생님께 공유하면 누구나 이용할 수 있습니다.' },
+  { n: '2', title: '학교 코드로 선생님 등록', body: '담당 선생님이 받은 학교 코드를 동료 선생님께 공유하면 학교당 5명까지 함께 이용할 수 있습니다.' },
   { n: '3', title: '내려받고, 인쇄 주문까지', body: 'PDF를 바로 내려받거나 「이 자료로 인쇄 주문」 버튼으로 학교인쇄통 제본 인쇄를 신청합니다.' },
 ];
 
@@ -762,7 +762,7 @@ class Component extends DCLogic {
     const sizeOk = r => {
       const picks = s.specSel.filter(x => x !== 'B5' && x !== 'A4');
       if (!picks.length) return true;
-      return picks.some(p => (p === '32쪽 이하' && r.pages <= 32) || (p === '33~64쪽' && r.pages > 32 && r.pages <= 64) || (p === '65쪽 이상' && r.pages > 64));
+      return picks.some(p => (p === '32쪽 이하' && r.pages <= 32) || (p === '33~64쪽' && r.pages > 32 && r.pages <= 64) || (p === '65~128쪽' && r.pages > 64 && r.pages <= 128) || (p === '129쪽 이상' && r.pages > 128));
     };
     const fmtOk = r => {
       const picks = s.specSel.filter(x => x === 'B5' || x === 'A4');
@@ -795,7 +795,7 @@ class Component extends DCLogic {
       ],
       body: rec.sample
         ? '무료 샘플로 공개된 자료입니다. 비회원도 인쇄용 PDF를 바로 내려받아 학급에서 사용할 수 있습니다.'
-        : '이용권 학교 자료입니다. 학교 코드로 등록된 선생님은 누구나 무제한으로 내려받을 수 있습니다.',
+        : '이용권 학교 자료입니다. 학교 코드로 등록된 선생님(학교당 5명)은 무제한으로 내려받을 수 있습니다.',
       downloadLabel: rec.badge === '출시예정' ? '출시예정 자료' : (rec.sample || hasPass ? '인쇄용 PDF 내려받기' : '이용권 신청하고 내려받기'),
       onDownload: () => this.download(rec),
       onOrder: () => this.openOrder(rec.id),

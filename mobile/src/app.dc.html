@@ -125,7 +125,7 @@
 </div>
 
 <div style="display:flex;flex-direction:column;gap:var(--space-2)">
-<h2 style="margin:0 0 var(--space-1);font-family:var(--font-heading);font-weight:600;font-size:21px">이번 주 새로 올라온 자료</h2>
+<h2 style="margin:0 0 var(--space-1);font-family:var(--font-heading);font-weight:600;font-size:21px">무료 샘플 3종 · 누구나 바로 내려받기</h2>
 <sc-for list="{{ fresh }}" as="fr" hint-placeholder-count="4">
 <button style="border:0;border-top:1px solid var(--color-divider);background:transparent;display:flex;align-items:center;gap:var(--space-2);min-height:56px;padding:var(--space-2) 0;text-align:left;cursor:pointer;width:100%" onClick="{{ fr.onOpen }}">
 <span style="display:flex;flex-direction:column;gap:3px;min-width:0;flex:1">
@@ -141,7 +141,7 @@
 </div>
 
 <div style="display:flex;flex-direction:column;gap:var(--space-2)">
-<h2 style="margin:0 0 var(--space-1);font-family:var(--font-heading);font-weight:600;font-size:21px">가장 많이 내려받은 자료</h2>
+<h2 style="margin:0 0 var(--space-1);font-family:var(--font-heading);font-weight:600;font-size:21px">새로 생긴 AI교육 자료</h2>
 <sc-for list="{{ popular }}" as="pp" hint-placeholder-count="4">
 <button style="border:0;border-top:1px solid var(--color-divider);background:transparent;display:flex;align-items:center;gap:var(--space-3);min-height:56px;padding:var(--space-2) 0;text-align:left;cursor:pointer;width:100%" onClick="{{ pp.onOpen }}">
 <span style="flex:none;font-family:var(--font-heading);font-size:20px;color:var(--color-accent-2-700);width:22px">{{ pp.rank }}</span>
@@ -274,6 +274,7 @@
 </div>
 </sc-for>
 <p style="margin:var(--space-2) 0 0;font-size:14px;line-height:1.6;color:var(--color-accent-2-700);word-break:keep-all">자료 나눔에 참여해 주신 선생님의 학교는 첫 1년 무료 이용권을 드립니다. 신청서의 나눔 참여 코드에 안내받은 코드를 입력해 주세요.</p>
+<button class="btn btn-secondary" style="height:46px;align-self:flex-start" onClick="{{ openShare }}">자료 나눔 신청하기</button>
 </div>
 
 <div style="display:flex;flex-direction:column;gap:var(--space-3)">
@@ -426,6 +427,11 @@
 </sc-for>
 <button class="btn btn-primary" style="height:48px;align-self:flex-start;margin-top:var(--space-1)" onClick="{{ goPass }}">{{ passCta }}</button>
 </div>
+<div style="display:flex;flex-direction:column;gap:var(--space-2);border-top:1px solid var(--color-text);padding-top:var(--space-3)">
+<span style="font-family:var(--font-heading);font-size:17px">자료 나눔 (자료제공단)</span>
+<p style="margin:0;font-size:14px;line-height:1.6;color:var(--color-neutral-800);word-break:keep-all">수업에 쓰던 자료를 나눠 주시면 학교에 1년 이용권을 드립니다.</p>
+<button class="btn btn-secondary" style="height:46px;align-self:flex-start" onClick="{{ openShare }}">자료 나눔 신청하기</button>
+</div>
 <div style="display:flex;flex-direction:column">
 <span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-neutral-600);margin-bottom:var(--space-2)">학교인쇄통 바로가기</span>
 <sc-for list="{{ menu }}" as="mn" hint-placeholder-count="6">
@@ -500,7 +506,7 @@
 <div style="display:flex;flex-direction:column;gap:var(--space-2);margin-top:var(--space-1)">
 <button class="btn btn-primary btn-block" style="height:50px" onClick="{{ item.onDownload }}">{{ item.downloadLabel }}</button>
 <button class="btn btn-secondary btn-block" style="height:50px" onClick="{{ item.onOrder }}">이 자료로 인쇄 주문</button>
-<a class="btn btn-ghost btn-block" href="{{ item.href }}" target="_blank" rel="noopener" style="height:50px">홈페이지에서 표지·내지 보기</a>
+<a class="btn btn-ghost btn-block" href="{{ item.href }}" target="_blank" rel="noopener" style="height:50px">학교인쇄통 홈페이지 열기</a>
 </div>
 </div>
 </sc-if>
@@ -544,6 +550,43 @@
 <span style="font-size:12.5px;color:var(--color-neutral-700)">{{ nt.stamp }}</span>
 </a>
 </sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ sheetIsShare }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-direction:column;gap:var(--space-4)">
+<div style="display:flex;flex-direction:column;gap:var(--space-1)">
+<span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-accent-700)">디지털자료실 › 자료 나눔 (자료제공단)</span>
+<h2 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:23px;line-height:1.3;word-break:keep-all">선생님 자료를 나눠 주시면, 학교에 1년 이용권을 드립니다</h2>
+</div>
+<sc-for list="{{ shareSteps }}" as="ss" hint-placeholder-count="3">
+<div style="display:flex;gap:var(--space-3);align-items:flex-start;border-top:1px solid var(--color-divider);padding-top:var(--space-2)">
+<span style="flex:none;font-family:var(--font-heading);font-size:22px;line-height:1;color:var(--color-accent-700)">{{ ss.n }}</span>
+<span style="display:flex;flex-direction:column;gap:3px"><span style="font-family:var(--font-heading);font-size:16px">{{ ss.title }}</span><span style="font-size:13.5px;line-height:1.55;color:var(--color-neutral-800);word-break:keep-all">{{ ss.body }}</span></span>
+</div>
+</sc-for>
+<div style="display:flex;flex-direction:column;gap:var(--space-3);border-top:3px solid var(--color-text);padding-top:var(--space-3)">
+<span style="font-family:var(--font-heading);font-size:17px">자료 나눔 신청서</span>
+<div class="field"><label for="sh-name">성함</label><input class="input" id="sh-name" style="height:48px" placeholder="예: 박선희"></div>
+<div class="field"><label for="sh-school">학교명</label><input class="input" id="sh-school" style="height:48px" placeholder="예: 서울한강초등학교"></div>
+<div class="field"><label for="sh-mail">이메일</label><input class="input" id="sh-mail" type="email" style="height:48px" placeholder="이용권 코드를 받을 주소"></div>
+<div class="field"><label for="sh-tel">연락처</label><input class="input" id="sh-tel" type="tel" style="height:48px" placeholder="010-0000-0000"></div>
+<div style="display:flex;flex-direction:column;gap:var(--space-2)">
+<span style="font-size:12.5px;color:var(--color-neutral-700)">제공 자료 분류</span>
+<div style="display:flex;flex-wrap:wrap;gap:var(--space-1)">
+<sc-for list="{{ shareCatChips }}" as="sc" hint-placeholder-count="7">
+<button class="tag {{ sc.cls }}" style="height:40px;border:0;cursor:pointer;font-size:13px" onClick="{{ sc.onPick }}">{{ sc.label }}</button>
+</sc-for>
+</div>
+</div>
+<div class="field"><label for="sh-file">파일 올리기 (1건당 최대 100MB · 여러 개 가능)</label><input class="input" id="sh-file" type="file" multiple style="height:48px;padding-top:10px"></div>
+<div class="field"><label for="sh-memo">자료 소개 (선택)</label><textarea class="input" id="sh-memo" rows="3" style="padding-top:10px" placeholder="어떤 수업에서 어떻게 썼는지 적어 주세요"></textarea></div>
+<button style="border:0;background:transparent;display:flex;gap:var(--space-2);align-items:flex-start;text-align:left;cursor:pointer;padding:0" onClick="{{ toggleShareAgree }}">
+<span style="flex:none;width:22px;height:22px;border:1.5px solid var(--color-text);display:flex;align-items:center;justify-content:center;font-size:14px">{{ shareAgreeMark }}</span>
+<span style="font-size:14px;line-height:1.55;word-break:keep-all">(필수) 제공한 자료를 학교인쇄통이 편집·재배포하는 데 동의합니다</span>
+</button>
+<button class="btn btn-primary btn-block" style="height:50px" onClick="{{ onShare }}">자료 나눔 신청하기</button>
+</div>
 </div>
 </sc-if>
 
@@ -640,20 +683,138 @@ const BINDINGS = ['무선 제본 (기본)', '중철', '스프링'];
 const BOXTABS = ['이용권 현황', '다운로드 이력', '인쇄 주문 이력', '우리학교 선생님'];
 
 const DATA = [
-  { id: 'ST-D-0001', title: '학교자율시간 진로탐색 워크북', subject: '워크북·활동지', level: '초등', grades: [5, 6], gradeLabel: '초등 5~6학년', format: 'B5', pages: 48, sessions: 12, downloads: 412, sample: true, badge: '', fresh: true, href: B + 'item25' },
-  { id: 'ST-D-0002', title: '한 학기 한 권 독서기록장', subject: '워크북·활동지', level: '중등', grades: [1, 2, 3], gradeLabel: '중학 전학년', format: 'B5', pages: 64, sessions: 16, downloads: 388, sample: true, badge: '', fresh: true, href: B + 'item09' },
-  { id: 'ST-D-0003', title: '학급운영 생활지도 활동지', subject: '워크북·활동지', level: '초등', grades: [3, 4], gradeLabel: '초등 3~4학년', format: 'A4', pages: 32, sessions: 8, downloads: 301, sample: true, badge: '', fresh: true, href: B + 'item21_1' },
-  { id: 'ST-D-0004', title: '감사기록장 4종', subject: '인성·진로기록물', level: '초등', grades: [1, 2, 3, 4, 5, 6], gradeLabel: '초등 전학년', format: 'B5', pages: 28, sessions: 8, downloads: 274, sample: false, badge: 'HOT', fresh: true, href: B + 'item06' },
-  { id: 'ST-D-0005', title: '명문 필사노트', subject: '필사노트', level: '고등', grades: [1, 2, 3], gradeLabel: '중·고등', format: 'B5', pages: 40, sessions: 10, downloads: 233, sample: false, badge: 'NEW', fresh: true, href: B + 'item28_1' },
-  { id: 'ST-D-0006', title: '자유학기제 워크북', subject: '인성·진로기록물', level: '중등', grades: [1], gradeLabel: '중학 1학년', format: 'B5', pages: 56, sessions: 14, downloads: 219, sample: false, badge: 'NEW', fresh: true, href: B + 'item25' },
-  { id: 'ST-D-0007', title: 'AI수업 워크북', subject: 'AI교육', level: '초등', grades: [5, 6], gradeLabel: '초등 5~6학년', format: 'A4', pages: 44, sessions: 12, downloads: 0, sample: false, badge: '출시예정', fresh: false, href: B + 'item07' },
-  { id: 'ST-D-0008', title: '진로 포트폴리오', subject: '인성·진로기록물', level: '중등', grades: [1, 2, 3], gradeLabel: '중학 전학년', format: 'A4', pages: 36, sessions: 9, downloads: 0, sample: false, badge: '출시예정', fresh: false, href: B + 'item06_2' },
-  { id: 'ST-D-0009', title: '학습플래너', subject: '학습플래너', level: '초등', grades: [3, 4, 5, 6], gradeLabel: '초등 3~6학년', format: 'B5', pages: 60, sessions: 0, downloads: 196, sample: false, badge: '', fresh: false, href: B + 'item01_1' },
-  { id: 'ST-D-0010', title: '창의적 체험활동 기록장', subject: '인성·진로기록물', level: '초등', grades: [1, 2, 3, 4, 5, 6], gradeLabel: '초등 전학년', format: 'B5', pages: 24, sessions: 6, downloads: 172, sample: false, badge: '', fresh: false, href: B + 'item21' },
-  { id: 'ST-D-0011', title: '생활안전 · 생태환경 프로젝트', subject: '교과교재·부교재', level: '초등', grades: [3, 4], gradeLabel: '초등 3~4학년', format: 'A4', pages: 30, sessions: 8, downloads: 141, sample: false, badge: '', fresh: false, href: B + 'item07' },
-  { id: 'ST-D-0012', title: '운동회 · 졸업 행사 기록 서식', subject: '워크북·활동지', level: '초등', grades: [1, 2, 3, 4, 5, 6], gradeLabel: '초등 전학년', format: 'A4', pages: 20, sessions: 0, downloads: 118, sample: false, badge: '', fresh: false, href: B + 'item11' },
-  { id: 'ST-D-0013', title: '고등 국어 문학 부교재', subject: '교과교재·부교재', level: '고등', grades: [1, 2, 3], gradeLabel: '중·고등', format: 'A4', pages: 16, sessions: 0, downloads: 96, sample: false, badge: '', fresh: false, href: B + 'item04' },
-  { id: 'ST-D-0014', title: '알림장 · 생활지도 노트', subject: '워크북·활동지', level: '초등', grades: [1, 2], gradeLabel: '초등 1~2학년', format: 'B5', pages: 20, sessions: 0, downloads: 88, sample: false, badge: '', fresh: false, href: B + 'item08' },
+  {"id": "ST-D-0001", "title": "필사노트_중학교_A", "subject": "필사노트", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 80, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0002", "title": "과학 실험 탐구 공책_초등", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 32, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0003", "title": "사고도구어 워크북_초등_A", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 16, "sessions": 0, "downloads": 0, "sample": true, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0004", "title": "필사노트_중학교_B", "subject": "필사노트", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 112, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0005", "title": "33일 필사 프로젝트_고등학교", "subject": "필사노트", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 78, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0006", "title": "진로 워크북_중학교_B", "subject": "워크북·활동지", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 20, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0007", "title": "적자생존 기록 교재_고등학교", "subject": "인성·진로기록물", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 160, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0008", "title": "인성록_중학교", "subject": "인성·진로기록물", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 32, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0009", "title": "창의주제활동 기록장_고등학교", "subject": "워크북·활동지", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 102, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0010", "title": "학습도구어 단어톡톡_고등학교", "subject": "교과교재·부교재", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 12, "sessions": 0, "downloads": 0, "sample": true, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0011", "title": "드림업 활동 워크북_중학교", "subject": "워크북·활동지", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 128, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0012", "title": "필사노트_중학교_C", "subject": "필사노트", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 80, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0013", "title": "학년별 워크북_초등_1권", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 64, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0014", "title": "학년별 워크북_초등_2권", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 80, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0015", "title": "학년별 워크북_초등_3권", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 72, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0016", "title": "학년별 워크북_초등_4권", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 82, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0017", "title": "학년별 워크북_초등_5권", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 72, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0018", "title": "학년별 워크북_초등_6권", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 68, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0019", "title": "문해력 노트_중학교", "subject": "필사노트", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 82, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0020", "title": "인성 필사노트_중학교", "subject": "인성·진로기록물", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 128, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0021", "title": "자기탐구 노트_고등학교", "subject": "워크북·활동지", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 48, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0022", "title": "하루하루 소중히_초등_1권", "subject": "교과교재·부교재", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 90, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0023", "title": "하루하루 소중히_초등_2권", "subject": "교과교재·부교재", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 90, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0024", "title": "하루하루 소중히_초등_3권", "subject": "교과교재·부교재", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 90, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0025", "title": "영어 단어장_고등학교", "subject": "교과교재·부교재", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 150, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0026", "title": "사고도구어 워크북_초등_B", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 12, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0027", "title": "나의 배움 여행 학습일기장_초등", "subject": "인성·진로기록물", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 112, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0028", "title": "한자 부교재_중학교", "subject": "교과교재·부교재", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 50, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0029", "title": "시를 읽는 시간_고등학교", "subject": "교과교재·부교재", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 50, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0030", "title": "고전 필사노트_고등학교", "subject": "필사노트", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 38, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0031", "title": "진로 워크북_중학교_A", "subject": "워크북·활동지", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 40, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0032", "title": "2학기 활동 워크북_초등", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 120, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0033", "title": "교과 부교재_고등학교_A", "subject": "교과교재·부교재", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 56, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0034", "title": "자유학기제 활동 워크북_중학교", "subject": "워크북·활동지", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 60, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0035", "title": "학교에서 만나는 인공지능_중학교", "subject": "AI교육", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 108, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0036", "title": "진로 워크북_중학교_C", "subject": "워크북·활동지", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 64, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0037", "title": "인성 노트_고등학교", "subject": "인성·진로기록물", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 100, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0038", "title": "진로 노트_고등학교", "subject": "인성·진로기록물", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 46, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0039", "title": "활동 워크북_중학교_A", "subject": "워크북·활동지", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 112, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0040", "title": "국어 문법 교재_고등학교", "subject": "교과교재·부교재", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 138, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0041", "title": "활동 워크북_초등_A", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 78, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0042", "title": "윤리 교재_고등학교", "subject": "교과교재·부교재", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 96, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0043", "title": "진로 워크북_고등학교", "subject": "워크북·활동지", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 126, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0044", "title": "활동 워크북_초등_B(2종)", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 80, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0045", "title": "교과 학습지 모음_중학교", "subject": "교과교재·부교재", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 84, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0046", "title": "진로진학 노트_고등학교", "subject": "인성·진로기록물", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 64, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0047", "title": "배움 성장 실록_중학교", "subject": "교과교재·부교재", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 32, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0048", "title": "고전 읽기_고등학교_2학년", "subject": "교과교재·부교재", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 152, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0049", "title": "영어 학습장_고등학교", "subject": "교과교재·부교재", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 56, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0050", "title": "첫걸음 배움공책_초등", "subject": "교과교재·부교재", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 162, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0051", "title": "한자교본_고등학교", "subject": "교과교재·부교재", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 82, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0052", "title": "교과 부교재_고등학교_B", "subject": "교과교재·부교재", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 100, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0053", "title": "영어 단어장_중학교", "subject": "교과교재·부교재", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 160, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0054", "title": "활동 워크북_중학교_B", "subject": "워크북·활동지", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 80, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0055", "title": "활동 워크북_중학교_C", "subject": "워크북·활동지", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 60, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0056", "title": "활동 워크북_중학교_D", "subject": "워크북·활동지", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 100, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0057", "title": "작문 기록장_고등학교", "subject": "교과교재·부교재", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 64, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0058", "title": "나의 인성 키움 노트_고등학교", "subject": "인성·진로기록물", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 64, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0059", "title": "나의 인성 키움 노트_중학교", "subject": "인성·진로기록물", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 100, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0060", "title": "한자교본_초등", "subject": "교과교재·부교재", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 90, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0061", "title": "3학년 교과 교재_중학교", "subject": "교과교재·부교재", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 160, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0062", "title": "한문 부교재_고등학교", "subject": "교과교재·부교재", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 80, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0063", "title": "영어 교재_고등학교", "subject": "교과교재·부교재", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 158, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0064", "title": "꼼꼼하게 알아가는 어휘_초등", "subject": "교과교재·부교재", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 142, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0065", "title": "국어 학습장_중학교_1학년", "subject": "교과교재·부교재", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 76, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0066", "title": "국어 학습장_중학교_2학년", "subject": "교과교재·부교재", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 92, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0067", "title": "수업 활동 교재_초등", "subject": "교과교재·부교재", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 50, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0068", "title": "감사기록장_TYPE_B_초등 고학년(24일)", "subject": "인성·진로기록물", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 122, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0069", "title": "감사기록장_TYPE_B_초등 저학년(25일)", "subject": "인성·진로기록물", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 122, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0070", "title": "감사기록장_TYPE_C_중학교(25일)", "subject": "인성·진로기록물", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 122, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0071", "title": "감사기록장_TYPE_D_고등학교(25일)", "subject": "인성·진로기록물", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 122, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0072", "title": "학교폭력예방", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 54, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0073", "title": "상담관찰 기록장", "subject": "인성·진로기록물", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 130, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0074", "title": "우리반문집", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 62, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0075", "title": "경제금융 리터러시 워크북 (교사용)", "subject": "워크북·활동지", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 10, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0076", "title": "경제금융 리터러시 워크북 (학생용)", "subject": "워크북·활동지", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 28, "sessions": 0, "downloads": 0, "sample": true, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0077", "title": "고교학점제 진로 학업설계 워크북 (학생용)", "subject": "워크북·활동지", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 24, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0078", "title": "고교학점제 진로 학업설계 워크북 (교사용)", "subject": "워크북·활동지", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 6, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0079", "title": "미래시민 프로젝트북 8차 모듈형 (교사용)", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 10, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0080", "title": "미래시민 프로젝트북 8차 모듈형 (학생용)", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 28, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0081", "title": "미래시민 프로젝트북 초등심화편 (학생용)", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 28, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0082", "title": "미래시민 프로젝트북 초등심화편 (교사용)", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 10, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0083", "title": "민주시민-세계시민교육 워크북 (학생용)", "subject": "워크북·활동지", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 20, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0084", "title": "민주시민-세계시민교육 워크북 (교사용)", "subject": "워크북·활동지", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 6, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0085", "title": "민주시민교육 워크북 (교사용)", "subject": "워크북·활동지", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 10, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0086", "title": "민주시민교육 워크북 (학생용)", "subject": "워크북·활동지", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 28, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0087", "title": "생태전환 교육 워크북 (학생용)", "subject": "워크북·활동지", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 28, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0088", "title": "생태전환 교육 워크북 (교사용)", "subject": "워크북·활동지", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 10, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0089", "title": "생태전환교육 심화 워크북 (학생용)", "subject": "워크북·활동지", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 18, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0090", "title": "생태전환교육 심화 워크북 (교사용)", "subject": "워크북·활동지", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 6, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0091", "title": "생태전환교육 워크북(3~4학년)모듈형 (교사용)", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 10, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0092", "title": "생태전환교육 워크북(3~4학년)모듈형 (학생용)", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 28, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0093", "title": "생태전환교육 워크북(5~6학년)심화편 (교사용)", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 10, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0094", "title": "생태전환교육 워크북(5~6학년)심화편 (학생용)", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 28, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0095", "title": "우리마을탐험대 프로젝트북 8차시 모듈형 (학생용)", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 28, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0096", "title": "우리마을탐험대 프로젝트북 8차시 모듈형 (교사용)", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 10, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0097", "title": "우리마을탐험대 프로젝트북3~4학년 (교사용)", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 10, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0098", "title": "우리마을탐험대 프로젝트북3~4학년 (학생용)", "subject": "워크북·활동지", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 28, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0099", "title": "창의적체험활동 종합기록장", "subject": "인성·진로기록물", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 28, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0100", "title": "도담도담 자라는 마음글 필사노트", "subject": "필사노트", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 176, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0101", "title": "반짝반짝 빛나는 마음글 필사노트", "subject": "필사노트", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 180, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0102", "title": "중학생을 위한 마음글 필사노트", "subject": "필사노트", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 168, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0103", "title": "고등학생을 위한 마음글 필사노트", "subject": "필사노트", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 168, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0104", "title": "진로포트폴리오_1학년_내지", "subject": "인성·진로기록물", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 40, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0105", "title": "진로포트폴리오_2학년_내지", "subject": "인성·진로기록물", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 28, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0106", "title": "진로포트폴리오_3학년_내지", "subject": "인성·진로기록물", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 26, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0107", "title": "진로탐색_워크북_2차 완성본", "subject": "워크북·활동지", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 86, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0108", "title": "마태복음_필사노트", "subject": "필사노트", "level": "공통", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "전 학교급", "format": "PDF", "pages": 44, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0109", "title": "동아리활동_만능가이드북_16주차", "subject": "워크북·활동지", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 38, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0110", "title": "시편_필사노트", "subject": "필사노트", "level": "공통", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "전 학교급", "format": "PDF", "pages": 74, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0111", "title": "예술체육_동아리워크북_16주차", "subject": "워크북·활동지", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 36, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0112", "title": "잠언_필사노트", "subject": "필사노트", "level": "공통", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "전 학교급", "format": "PDF", "pages": 64, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0113", "title": "AI시대_디지털리터러시_워크시트_17차시", "subject": "AI교육", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 38, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0114", "title": "중학교 1학년 자유학기제 _ 진로탐색 워크북 통합본", "subject": "워크북·활동지", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 62, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0115", "title": "중학교 1학년 자유학기제 _ 진로탐색 워크북 통합본(60P) - 복사본", "subject": "워크북·활동지", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 60, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0116", "title": "진로탐색_워크북_2차 완성본", "subject": "워크북·활동지", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 34, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0117", "title": "[자유학기제 주제선택] AI와 미래 직업 (Future Job 퓨처 잡) 워크북", "subject": "AI교육", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 34, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0118", "title": "AI수업워크북_초등3-6학년", "subject": "AI교육", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 22, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0119", "title": "AI수업워크북_초등3-6학년_실전편", "subject": "AI교육", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 22, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0120", "title": "AI수업워크북_초등3-6학년_심화편", "subject": "AI교육", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 22, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0121", "title": "AI수업워크북_중학교_기본편", "subject": "AI교육", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 36, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0122", "title": "AI수업워크북_중학교_실전편", "subject": "AI교육", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 30, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0123", "title": "AI수업워크북_중학교_심화편", "subject": "AI교육", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 30, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0124", "title": "AI수업워크북_고등학교_기본편", "subject": "AI교육", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 30, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0125", "title": "AI수업워크북_고등학교_실전편", "subject": "AI교육", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 26, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0126", "title": "AI수업워크북_고등학교_심화편", "subject": "AI교육", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 26, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0127", "title": "QT묵상_필사노트", "subject": "필사노트", "level": "공통", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "전 학교급", "format": "PDF", "pages": 54, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0128", "title": "절기별_필사노트", "subject": "필사노트", "level": "공통", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "전 학교급", "format": "PDF", "pages": 26, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0129", "title": "어린이_성경필사노트", "subject": "필사노트", "level": "공통", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "전 학교급", "format": "PDF", "pages": 26, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0130", "title": "학습플래너 고등부 1종", "subject": "학습플래너", "level": "고등", "grades": [1, 2, 3], "gradeLabel": "고등 전학년", "format": "PDF", "pages": 450, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0131", "title": "학습플래너 중등부 1종", "subject": "학습플래너", "level": "중등", "grades": [1, 2, 3], "gradeLabel": "중학 전학년", "format": "PDF", "pages": 450, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
+  {"id": "ST-D-0132", "title": "학습플래너 초등부 1종", "subject": "학습플래너", "level": "초등", "grades": [1, 2, 3, 4, 5, 6], "gradeLabel": "초등 전학년", "format": "PDF", "pages": 450, "sessions": 0, "downloads": 0, "sample": false, "badge": "", "fresh": false, "href": "https://www.school-tong.com/"},
 ];
 
 const MENU = [
@@ -701,7 +862,7 @@ class Component extends DCLogic {
     tab: 'home', query: '', level: null, gradeSel: [], subjSel: [], specSel: [], sampleOnly: false, hangul: false,
     sort: '최신순', filterOpen: false, sheet: null, itemId: null, faqOpen: null, boxTab: '이용권 현황',
     pay: PAYS[0], doc: DOCS[0], qty: 30, binding: BINDINGS[0], orderId: null,
-    downloads: [], orders: [], toast: '', applied: false,
+    downloads: [], orders: [], toast: '', applied: false, shareCats: [], shareAgree: false,
   };
 
   toast(msg) {
@@ -766,10 +927,10 @@ class Component extends DCLogic {
     };
     const fmtOk = r => {
       const picks = s.specSel.filter(x => x === 'B5' || x === 'A4');
-      return !picks.length || picks.includes(r.format);
+      return !picks.length || !['B5', 'A4'].includes(r.format) || picks.includes(r.format);
     };
     let results = DATA
-      .filter(r => !s.level || r.level === s.level)
+      .filter(r => !s.level || r.level === s.level || r.level === '공통')
       .filter(r => !s.gradeSel.length || r.grades.some(g => s.gradeSel.includes(g)))
       .filter(r => !s.subjSel.length || s.subjSel.includes(r.subject))
       .filter(r => fmtOk(r) && sizeOk(r))
@@ -830,7 +991,7 @@ class Component extends DCLogic {
         ? schoolName + ' 이용권이 적용되어 전체 자료 ' + total + '권(9,902쪽)을 무제한 내려받을 수 있습니다.'
         : schoolName + ' 는 아직 학교 이용권이 없습니다. 무료 샘플 3종은 바로 내려받을 수 있어요.',
       passCta: hasPass ? '이용권 현황 보기' : '학교 이용권 신청',
-      covers: DATA.slice(0, 3).map((r, i) => ({
+      covers: ['AI교육', '교과교재·부교재', '워크북·활동지'].map(k => DATA.find(r => r.subject === k)).map((r, i) => ({
         title: r.title, meta: r.gradeLabel + ' · ' + r.pages + '쪽', format: r.format, fill: INK[i], glyph: glyphOf(r.subject), subject: r.subject,
         onOpen: () => this.setState({ sheet: 'item', itemId: r.id }),
       })),
@@ -838,13 +999,13 @@ class Component extends DCLogic {
         glyph: x.glyph, name: x.key, desc: x.desc, count: x.count + '권 · ' + x.pages.toLocaleString() + '쪽', fill: INK[i % 3],
         onPick: () => this.setState({ tab: 'find', subjSel: [x.key], level: null, gradeSel: [], specSel: [], query: '', filterOpen: true }),
       })),
-      fresh: DATA.filter(r => r.fresh).map(r => ({
-        title: r.title, meta: r.subject + ' · ' + r.gradeLabel, tag: r.badge,
-        cls: r.badge === 'HOT' ? 'tag-accent-2' : r.badge === 'NEW' ? 'tag-accent' : 'tag-outline',
+      fresh: DATA.filter(r => r.sample).map(r => ({
+        title: r.title, meta: r.subject + ' · ' + r.gradeLabel + ' · ' + r.pages + '쪽', tag: '무료 샘플',
+        cls: 'tag-accent',
         onOpen: () => this.setState({ sheet: 'item', itemId: r.id }),
       })),
-      popular: DATA.slice().sort((a, b) => b.downloads - a.downloads).slice(0, 4).map((r, i) => ({
-        rank: i + 1, title: r.title, meta: r.subject + ' · 다운로드 ' + r.downloads,
+      popular: DATA.filter(r => r.subject === 'AI교육').slice(0, 4).map((r, i) => ({
+        rank: i + 1, title: r.title, meta: r.gradeLabel + ' · ' + r.pages + '쪽',
         onOpen: () => this.setState({ sheet: 'item', itemId: r.id }),
       })),
       steps: STEPS,
@@ -931,6 +1092,21 @@ class Component extends DCLogic {
       sheetIsNotice: s.sheet === 'notice',
       sheetIsCart: s.sheet === 'cart',
       sheetIsMenu: s.sheet === 'menu',
+      sheetIsShare: s.sheet === 'share',
+      openShare: () => this.setState({ sheet: 'share' }),
+      shareSteps: [
+        { n: '1', title: '자료 올리기', body: '수업에 쓰던 활동지·워크북 파일을 올려 주세요. 1건당 최대 100MB, 여러 개 가능.' },
+        { n: '2', title: '검수·편집', body: '학교인쇄통 디자인팀이 검수하고 인쇄용으로 다듬습니다. 접수번호로 진행 상황을 안내합니다.' },
+        { n: '3', title: '이용권 코드 발송', body: '승인되면 ST-C 코드가 메일로 갑니다. 승인일부터 1년, 학교 선생님 5명까지 자료실 전체 무제한 + 인쇄비 5% 할인.' },
+      ],
+      shareCatChips: SUBJECTS.map(x => x.key).concat(['기타']).map(k => chip(k, s.shareCats.includes(k), () => this.tog('shareCats', k))),
+      shareAgreeMark: s.shareAgree ? '✓' : '',
+      toggleShareAgree: () => this.setState(st => ({ shareAgree: !st.shareAgree })),
+      onShare: () => {
+        if (!s.shareAgree) { this.toast('편집·재배포 동의에 체크해 주세요.'); return; }
+        this.setState({ sheet: null, shareCats: [], shareAgree: false });
+        this.toast('자료 나눔 신청이 접수되었습니다. 접수번호를 메일로 보내드렸습니다.');
+      },
       item, order,
       toast: s.toast,
     };

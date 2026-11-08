@@ -68,7 +68,7 @@
 <div style="display:flex;flex-direction:column;gap:var(--space-3)">
 <span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-accent-700)">학교인쇄통 디지털자료실</span>
 <h1 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:32px;line-height:1.2;letter-spacing:-.01em;word-break:keep-all">우리 학교 교재·워크북,<br>이제 내려받아<br>바로 인쇄합니다</h1>
-<p style="margin:0;font-size:15.5px;line-height:1.65;color:var(--color-neutral-800);word-break:keep-all">AI교육·교과교재·워크북·인성·진로기록물·필사노트·학습플래너까지 132권 · 9,902쪽의 인쇄용 PDF. 학교 연간 이용권 하나로 선생님 5명까지 무제한 다운로드하고, 클릭 한 번으로 학교인쇄통 제본 인쇄까지 이어집니다.</p>
+<p style="margin:0;font-size:15.5px;line-height:1.65;color:var(--color-neutral-800);word-break:keep-all">AI교육·교과교재·워크북·인성·진로기록물·필사노트·학습플래너까지 132권 · 9,902쪽의 인쇄용 PDF. 학교 연간 이용권 하나로 선생님 5명이 전체 자료를 내려받고(학교당 하루 30파일), 클릭 한 번으로 학교인쇄통 제본 인쇄까지 이어집니다.</p>
 <div style="display:flex;flex-wrap:wrap;gap:var(--space-2);margin-top:var(--space-1)">
 <button class="btn btn-secondary" style="height:48px" onClick="{{ goPass }}">학교 이용권 알아보기</button>
 <button class="btn btn-ghost" style="height:48px" onClick="{{ goSamples }}">무료 샘플 3종 보기</button>
@@ -258,7 +258,7 @@
 <div style="display:flex;flex-direction:column;gap:var(--space-6);padding-top:var(--space-4)">
 <div style="display:flex;flex-direction:column;gap:var(--space-2)">
 <span style="font-size:11.5px;letter-spacing:.14em;color:var(--color-accent-700)">학교 연간 이용권</span>
-<h1 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:29px;line-height:1.25;word-break:keep-all">학교 한 곳, 선생님 5명,<br>1년 무제한</h1>
+<h1 style="margin:0;font-family:var(--font-heading);font-weight:600;font-size:29px;line-height:1.25;word-break:keep-all">학교 한 곳, 선생님 5명,<br>1년 전체 자료</h1>
 <div style="display:flex;align-items:baseline;gap:var(--space-2);margin-top:var(--space-1)">
 <span style="font-family:var(--font-heading);font-weight:600;font-size:34px;color:var(--color-accent-2-700)">240,000원</span>
 <span style="font-size:13px;color:var(--color-neutral-700)">/ 연 · 부가세 포함</span>
@@ -317,6 +317,7 @@
 <button class="tag pick {{ pay.cls }}" style="height:38px;cursor:pointer;font-size:13px" onClick="{{ pay.onPick }}">{{ pay.label }}</button>
 </sc-for>
 </div>
+<p style="margin:0;font-size:12.5px;line-height:1.55;color:var(--color-accent-2-700);word-break:keep-all">앱에서는 휴대폰 결제로 바로 진행됩니다. 계좌이체·학교 법인카드는 홈페이지에서 신청해 주세요.</p>
 </div>
 <div style="display:flex;flex-direction:column;gap:var(--space-2)">
 <span style="font-size:12.5px;color:var(--color-neutral-700)">증빙 서류</span>
@@ -328,6 +329,18 @@
 </div>
 <div class="field"><label for="f-share">나눔 참여 코드 (있는 경우)</label><input class="input" id="f-share" style="height:48px" placeholder="예: ST-C-2026-0007"></div>
 <div class="field"><label for="f-note">요청 사항</label><input class="input" id="f-note" style="height:48px" placeholder="예: 2학기 학급운영 자료 위주로 필요합니다"></div>
+<details style="font-size:13px;line-height:1.6;color:var(--color-neutral-800)"><summary style="cursor:pointer;font-family:var(--font-heading);font-size:14px">개인정보 수집·이용 안내 · 환불 규정 보기</summary>
+<p style="margin:8px 0 4px;word-break:keep-all"><b>개인정보 수집·이용</b> — 항목: 학교명, 담당 선생님 성함, 연락처, 이메일, (세금계산서 선택 시) 사업자등록번호·발행처 이메일 / 목적: 이용권 발급, 결제·증빙 발행, 만료 안내 / 보유 기간: 이용권 만료 후 5년(전자상거래법 거래기록 보존) 뒤 파기. 동의하지 않으면 신청할 수 없습니다.</p>
+<p style="margin:4px 0;word-break:keep-all"><b>환불 규정</b> — 결제일부터 7일 안에 자료를 한 건도 내려받지 않았으면 전액 환불합니다. 자료를 내려받은 뒤에는 디지털 콘텐츠 특성상 청약철회가 제한됩니다(전자상거래법 제17조 제2항).</p>
+</details>
+<button style="border:0;background:transparent;display:flex;gap:var(--space-2);align-items:flex-start;text-align:left;cursor:pointer;padding:0" onClick="{{ togglePrivacy }}">
+<span style="flex:none;width:22px;height:22px;border:1.5px solid var(--color-text);display:flex;align-items:center;justify-content:center;font-size:14px">{{ privacyMark }}</span>
+<span style="font-size:14px;line-height:1.55;word-break:keep-all">(필수) 개인정보 수집·이용에 동의합니다</span>
+</button>
+<button style="border:0;background:transparent;display:flex;gap:var(--space-2);align-items:flex-start;text-align:left;cursor:pointer;padding:0" onClick="{{ toggleRefund }}">
+<span style="flex:none;width:22px;height:22px;border:1.5px solid var(--color-text);display:flex;align-items:center;justify-content:center;font-size:14px">{{ refundMark }}</span>
+<span style="font-size:14px;line-height:1.55;word-break:keep-all">(필수) 환불 규정을 확인했습니다</span>
+</button>
 <button class="btn btn-primary btn-block" style="height:50px" onClick="{{ onApply }}">이용권 신청서 보내기</button>
 <p style="margin:0;font-size:12.5px;color:var(--color-neutral-700)">문의 02-2269-1100 · tong2269@naver.com</p>
 </div>
@@ -585,6 +598,13 @@
 <span style="flex:none;width:22px;height:22px;border:1.5px solid var(--color-text);display:flex;align-items:center;justify-content:center;font-size:14px">{{ shareAgreeMark }}</span>
 <span style="font-size:14px;line-height:1.55;word-break:keep-all">(필수) 제공한 자료를 학교인쇄통이 편집·재배포하는 데 동의합니다</span>
 </button>
+<details style="font-size:13px;line-height:1.6;color:var(--color-neutral-800)"><summary style="cursor:pointer;font-family:var(--font-heading);font-size:14px">개인정보 수집·이용 안내 보기</summary>
+<p style="margin:8px 0 4px;word-break:keep-all">항목: 성함, 학교명, 이메일, 연락처 / 목적: 자료 나눔 접수·검수 안내, 이용권 코드 발송 / 보유 기간: 제공 이용권 종료 후 1년 뒤 파기. 동의하지 않으면 신청할 수 없습니다.</p>
+</details>
+<button style="border:0;background:transparent;display:flex;gap:var(--space-2);align-items:flex-start;text-align:left;cursor:pointer;padding:0" onClick="{{ toggleSharePrivacy }}">
+<span style="flex:none;width:22px;height:22px;border:1.5px solid var(--color-text);display:flex;align-items:center;justify-content:center;font-size:14px">{{ sharePrivacyMark }}</span>
+<span style="font-size:14px;line-height:1.55;word-break:keep-all">(필수) 개인정보 수집·이용에 동의합니다</span>
+</button>
 <button class="btn btn-primary btn-block" style="height:50px" onClick="{{ onShare }}">자료 나눔 신청하기</button>
 </div>
 </div>
@@ -679,6 +699,7 @@ const SPECS = ['B5', 'A4', '32쪽 이하', '33~64쪽', '65~128쪽', '129쪽 이�
 const SORTS = ['최신순', '다운로드 많은순', '쪽수 적은순'];
 const PAYS = ['계좌이체 (학교 행정실)', '학교 법인카드', '개인 신용·체크카드', '휴대폰 결제'];
 const DOCS = ['세금계산서', '현금영수증', '카드 매출전표만'];
+const DAILY_CAP = 30;
 const BINDINGS = ['무선 제본 (기본)', '중철', '스프링'];
 const BOXTABS = ['이용권 현황', '다운로드 이력', '인쇄 주문 이력', '우리학교 선생님'];
 
@@ -861,8 +882,8 @@ class Component extends DCLogic {
   state = {
     tab: 'home', query: '', level: null, gradeSel: [], subjSel: [], specSel: [], sampleOnly: false, hangul: false,
     sort: '최신순', filterOpen: false, sheet: null, itemId: null, faqOpen: null, boxTab: '이용권 현황',
-    pay: PAYS[0], doc: DOCS[0], qty: 30, binding: BINDINGS[0], orderId: null,
-    downloads: [], orders: [], toast: '', applied: false, shareCats: [], shareAgree: false,
+    pay: '휴대폰 결제', doc: DOCS[0], qty: 30, binding: BINDINGS[0], orderId: null,
+    downloads: [], orders: [], toast: '', applied: false, shareCats: [], shareAgree: false, sharePrivacy: false, privacy: false, refund: false,
   };
 
   toast(msg) {
@@ -888,6 +909,7 @@ class Component extends DCLogic {
       return;
     }
     if (this.state.downloads.some(d => d.id === rec.id)) { this.toast('이미 자료함에 있는 자료입니다.'); return; }
+    if (!rec.sample && this.state.downloads.length >= DAILY_CAP) { this.toast('오늘은 학교당 하루 ' + DAILY_CAP + '파일을 모두 내려받았습니다. 내일 다시 내려받을 수 있어요.'); return; }
     const school = this.props.schoolName ?? '서울한강초등학교';
     this.setState(s => ({
       downloads: [{ id: rec.id, title: rec.title, glyph: (SUBJECTS.find(x => x.key === rec.subject) || {}).glyph || '通', stamp: rec.id + ' · PDF ' + rec.pages + '쪽 · 오늘 내려받음', onOrder: () => this.openOrder(rec.id) }, ...s.downloads],
@@ -956,7 +978,7 @@ class Component extends DCLogic {
       ],
       body: rec.sample
         ? '무료 샘플로 공개된 자료입니다. 비회원도 인쇄용 PDF를 바로 내려받아 학급에서 사용할 수 있습니다.'
-        : '이용권 학교 자료입니다. 학교 코드로 등록된 선생님(학교당 5명)은 무제한으로 내려받을 수 있습니다.',
+        : '이용권 학교 자료입니다. 학교 코드로 등록된 선생님(학교당 5명)은 전체 자료를 학교당 하루 30파일까지 내려받을 수 있습니다.',
       downloadLabel: rec.badge === '출시예정' ? '출시예정 자료' : (rec.sample || hasPass ? '인쇄용 PDF 내려받기' : '이용권 신청하고 내려받기'),
       onDownload: () => this.download(rec),
       onOrder: () => this.openOrder(rec.id),
@@ -985,10 +1007,10 @@ class Component extends DCLogic {
       tierName: hasPass ? '유료 회원' : '일반 방문자',
       tierCls: hasPass ? 'tag-accent' : 'tag-outline',
       tierRows: hasPass
-        ? [{ k: '자료실', v: '전체 무제한' }, { k: '인쇄 할인', v: '5% 자동 적용' }, { k: '이용권 코드', v: 'ST-P-2026-0417' }, { k: '유효기간', v: '결제일부터 1년' }]
+        ? [{ k: '자료실', v: '전체 자료 · 하루 30파일' }, { k: '인쇄 할인', v: '5% 자동 적용' }, { k: '이용권 코드', v: 'ST-P-2026-0417' }, { k: '유효기간', v: '결제일부터 1년' }]
         : [{ k: '자료실', v: '무료 샘플 3종만' }, { k: '인쇄 할인', v: '없음' }, { k: '이용권 코드', v: '미발급' }, { k: '유효기간', v: '—' }],
       passNotice: hasPass
-        ? schoolName + ' 이용권이 적용되어 전체 자료 ' + total + '권(9,902쪽)을 무제한 내려받을 수 있습니다.'
+        ? schoolName + ' 이용권이 적용되어 전체 자료 ' + total + '권(9,902쪽)을 하루 30파일까지 내려받을 수 있습니다.'
         : schoolName + ' 는 아직 학교 이용권이 없습니다. 무료 샘플 3종은 바로 내려받을 수 있어요.',
       passCta: hasPass ? '이용권 현황 보기' : '학교 이용권 신청',
       covers: ['AI교육', '교과교재·부교재', '워크북·활동지'].map(k => DATA.find(r => r.subject === k)).map((r, i) => ({
@@ -1028,11 +1050,11 @@ class Component extends DCLogic {
       filterSummary: [s.level, s.gradeSel.length ? s.gradeSel.join('·') + '학년' : '', s.subjSel.join(' · ')].filter(Boolean).join(' · ') || '전체 조건',
       results: results.map(row), noResults: results.length === 0,
       passIncludes: [
-        '전체 자료 ' + total + '종+ 무제한 다운로드 (매월 신규 추가)',
+        '전체 자료 ' + total + '종 이용 · 학교당 하루 30파일까지 다운로드 (매월 신규 추가)',
         '학교 코드 하나로 선생님 5명까지 등록 (추가 계정은 관리자 요청)',
         '교육 목적 인쇄·배부 이용 허락 포함',
         '학교인쇄통 제본 인쇄 주문 시 인쇄비 5% 할인',
-        '계좌이체 · 학교 법인카드 · 개인 카드 · 휴대폰 결제 / 세금계산서·현금영수증 발행',
+        '계좌이체 · 학교 법인카드 · 개인 카드 · 휴대폰 결제 / 세금계산서·현금영수증 발행 (앱에서는 휴대폰 결제)',
       ],
       flows: [
         { name: '계좌이체', sub: '학교 행정실 · 에듀파인', chain: '신청서 → 견적서 자동 메일(즉시) → 행정실 입금 → 입금 확인 → 학교 코드 메일 → 세금계산서(홈택스)' },
@@ -1044,7 +1066,7 @@ class Component extends DCLogic {
       })),
       payChips: PAYS.map(p => chip(p, s.pay === p, () => this.setState({ pay: p }))),
       docChips: DOCS.map(d => chip(d, s.doc === d, () => this.setState({ doc: d }))),
-      onApply: () => { this.setState({ applied: true, tab: 'box', boxTab: '이용권 현황' }); this.toast('신청서가 접수되었습니다. ' + s.pay + ' · ' + s.doc + ' 기준으로 안내 메일을 보냈습니다.'); },
+      onApply: () => { if (!s.privacy || !s.refund) { this.toast('개인정보 동의와 환불 규정 확인에 체크해 주세요.'); return; } this.setState({ privacy: false, refund: false, applied: true, tab: 'box', boxTab: '이용권 현황' }); this.toast('신청서가 접수되었습니다. ' + s.pay + ' · ' + s.doc + ' 기준으로 안내 메일을 보냈습니다.'); },
       boxTabs: BOXTABS.map(t => chip(t, s.boxTab === t, () => this.setState({ boxTab: t }))),
       boxIsPass: s.boxTab === '이용권 현황', boxIsDown: s.boxTab === '다운로드 이력',
       boxIsOrder: s.boxTab === '인쇄 주문 이력', boxIsTeachers: s.boxTab === '우리학교 선생님',
@@ -1097,14 +1119,19 @@ class Component extends DCLogic {
       shareSteps: [
         { n: '1', title: '자료 올리기', body: '수업에 쓰던 활동지·워크북 파일을 올려 주세요. 1건당 최대 100MB, 여러 개 가능.' },
         { n: '2', title: '검수·편집', body: '학교인쇄통 디자인팀이 검수하고 인쇄용으로 다듬습니다. 접수번호로 진행 상황을 안내합니다.' },
-        { n: '3', title: '이용권 코드 발송', body: '승인되면 ST-C 코드가 메일로 갑니다. 승인일부터 1년, 학교 선생님 5명까지 자료실 전체 무제한 + 인쇄비 5% 할인.' },
+        { n: '3', title: '이용권 코드 발송', body: '승인되면 ST-C 코드가 메일로 갑니다. 승인일부터 1년, 학교 선생님 5명까지 자료실 전체 이용(하루 30파일) + 인쇄비 5% 할인.' },
       ],
       shareCatChips: SUBJECTS.map(x => x.key).concat(['기타']).map(k => chip(k, s.shareCats.includes(k), () => this.tog('shareCats', k))),
       shareAgreeMark: s.shareAgree ? '✓' : '',
+      sharePrivacyMark: s.sharePrivacy ? '✓' : '',
+      toggleSharePrivacy: () => this.setState(st => ({ sharePrivacy: !st.sharePrivacy })),
+      privacyMark: s.privacy ? '✓' : '', refundMark: s.refund ? '✓' : '',
+      togglePrivacy: () => this.setState(st => ({ privacy: !st.privacy })),
+      toggleRefund: () => this.setState(st => ({ refund: !st.refund })),
       toggleShareAgree: () => this.setState(st => ({ shareAgree: !st.shareAgree })),
       onShare: () => {
-        if (!s.shareAgree) { this.toast('편집·재배포 동의에 체크해 주세요.'); return; }
-        this.setState({ sheet: null, shareCats: [], shareAgree: false });
+        if (!s.shareAgree || !s.sharePrivacy) { this.toast('편집·재배포 동의와 개인정보 동의에 체크해 주세요.'); return; }
+        this.setState({ sheet: null, shareCats: [], shareAgree: false, sharePrivacy: false });
         this.toast('자료 나눔 신청이 접수되었습니다. 접수번호를 메일로 보내드렸습니다.');
       },
       item, order,

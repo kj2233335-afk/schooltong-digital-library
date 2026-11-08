@@ -603,7 +603,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
     <div>
       <div class="eyebrow">학교인쇄통 디지털자료실</div>
       <h1>우리 학교 <em>교재·워크북</em>,<br>이제 내려받아 바로 인쇄합니다</h1>
-      <p>AI교육·교과교재·워크북·인성·진로기록물·필사노트·학습플래너까지 <b>132권 · 9,902쪽</b>의 인쇄용 PDF. 학교 연간 이용권 하나로 선생님 5명까지 무제한 다운로드하고, 클릭 한 번으로 학교인쇄통 제본 인쇄까지 이어집니다.</p>
+      <p>AI교육·교과교재·워크북·인성·진로기록물·필사노트·학습플래너까지 <b>132권 · 9,902쪽</b>의 인쇄용 PDF. 학교 연간 이용권 하나로 선생님 5명이 전체 자료를 내려받고(학교당 하루 30파일), 클릭 한 번으로 학교인쇄통 제본 인쇄까지 이어집니다.</p>
       <div class="cta">
         <button class="btn gold lg" data-s="plan">학교 이용권 알아보기</button>
         <button class="btn ghost lg" onclick="showFree()">무료 샘플 3종 보기</button>
@@ -648,7 +648,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
   <div class="grid how">
     <div class="card"><div class="k">1</div><h3>자료 올리기</h3><p>수업에 쓰던 활동지·워크북 파일을 올려 주세요. 1건당 최대 100MB, 여러 개 가능.</p></div>
     <div class="card"><div class="k">2</div><h3>검수·편집</h3><p>학교인쇄통 디자인팀이 검수하고 인쇄용으로 다듬습니다. 접수번호로 진행 상황을 안내합니다.</p></div>
-    <div class="card"><div class="k">3</div><h3>이용권 코드 발송</h3><p>승인되면 <b>ST-C</b> 코드가 메일로 갑니다. 승인일부터 1년, 학교 선생님 5명까지 자료실 전체 무제한 + 인쇄비 5% 할인.</p></div>
+    <div class="card"><div class="k">3</div><h3>이용권 코드 발송</h3><p>승인되면 <b>ST-C</b> 코드가 메일로 갑니다. 승인일부터 1년, 학교 선생님 5명까지 자료실 전체 이용(하루 30파일) + 인쇄비 5% 할인.</p></div>
   </div>
   <form class="card form" style="margin-top:18px" onsubmit="event.preventDefault();toast('자료 나눔 접수 완료','접수번호 SHARE-2026-0133 자동 부여 → 관리자 알림 메일. 관리자가 검수·승인하면 ST-C 이용권 코드가 선생님께 자동 발송됩니다.','홈페이지 + 구글 시트')">
     <h3>자료 나눔 신청서</h3>
@@ -658,7 +658,10 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
     <div class="f"><label>제공 자료 분류</label><select><option>AI교육</option><option>교과교재·부교재</option><option>워크북·활동지</option><option>인성·진로기록물</option><option>필사노트</option><option>학습플래너</option><option>기타</option></select></div>
     <div class="f"><label>파일 올리기 <span class="muted" style="font-weight:400">(1건당 최대 100MB · 여러 개 가능)</span></label><input type="file" multiple></div>
     <div class="f"><label>자료 소개 (선택)</label><textarea rows="3" placeholder="학년·차시·활용 방법을 짧게 적어 주세요"></textarea></div>
-    <div class="radios" style="margin-top:14px"><label><input type="checkbox" required> (필수) 제공한 자료를 학교인쇄통이 편집·재배포하는 데 동의합니다</label></div>
+    <details style="margin-top:14px;font-size:13px;line-height:1.6"><summary style="cursor:pointer;font-weight:600">개인정보 수집·이용 안내 보기</summary>
+      <p style="margin:8px 0 4px">항목: 성함, 학교명, 이메일, 연락처 / 목적: 자료 나눔 접수·검수 안내, 이용권 코드 발송 / 보유 기간: 제공 이용권 종료 후 1년 뒤 파기. 동의하지 않으면 신청할 수 없습니다.</p>
+    </details>
+    <div class="radios" style="margin-top:10px;flex-direction:column;align-items:flex-start"><label><input type="checkbox" required> (필수) 제공한 자료를 학교인쇄통이 편집·재배포하는 데 동의합니다</label><label><input type="checkbox" required> (필수) 개인정보 수집·이용에 동의합니다</label></div>
     <div class="f" style="margin-top:18px"><button class="btn pri lg" type="submit">자료 나눔 신청하기</button></div>
   </form>
 </section>
@@ -735,7 +738,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
             <tr><th>폴더 규칙</th><td><code>/library/{자료ID}/</code> 한 자료 = 한 폴더. 자료ID는 <code>ST-D-0001</code>부터 4자리 순번 (9,999종까지)</td></tr>
             <tr><th>파일명 규칙</th><td><code>{자료ID}_{종류}_v{버전}.{확장자}</code> — 종류: 본문 / 표지 / 원본 / 미리보기1~3. 예) <code>ST-D-0001_본문_v2.pdf</code></td></tr>
             <tr><th>용량 추정</th><td>자료당 평균 15MB(본문 PDF 12MB + 표지 1MB + 원본 2MB) × 132권 = 약 2GB (권당 평균 75쪽). 미리보기 이미지는 등록 시 자동 생성</td></tr>
-            <tr><th>다운로드 처리</th><td>① 로그인·이용권 코드 검사 → ② PDF 전 쪽 하단에 「학교명 · 코드 · 일시」 워터마크 삽입 → ③ 10분 유효 1회용 링크 발급 → ④ 로그 기록(자료ID·학교코드·계정·일시·IP). 원본 파일 경로는 절대 노출하지 않음</td></tr>
+            <tr><th>다운로드 처리</th><td>① 로그인·이용권 코드 검사 + 학교당 하루 30파일 상한 확인(넘으면 「내일 다시」 안내) → ② PDF 전 쪽 하단에 「학교명 · 코드 · 일시」 워터마크 삽입 → ③ 10분 유효 1회용 링크 발급 → ④ 로그 기록(자료ID·학교코드·계정·일시·IP). 원본 파일 경로는 절대 노출하지 않음</td></tr>
             <tr><th>권한</th><td>본문·표지·원본 = 이용권 학교(유료·자료제공단) / 미리보기 3장 = 누구나 / 무료 샘플 자료는 본문도 누구나</td></tr>
             <tr><th>버전 관리</th><td>새 버전 업로드 시 이전 파일은 <code>/library/{자료ID}/old/</code>로 이동, 목록에는 최신만 표시. 이미 받은 학교에는 「새 버전」 표시</td></tr>
             <tr><th>기록 연동</th><td>다운로드 로그 → 관리자 통계 + ⑤ 우리학교 자료함 「다운로드 이력」 표. 학교별 월 다운로드 수는 관리자 화면에 집계</td></tr>
@@ -762,15 +765,15 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
     <div>
       <div class="pricecard">
         <div class="eyebrow">학교 연간 이용권</div>
-        <h2>학교 한 곳, 선생님 5명, 1년 무제한</h2>
+        <h2>학교 한 곳, 선생님 5명, 1년 전체 자료</h2>
         <div class="price tnum">연 240,000<small>원 (부가세 포함)</small></div>
         <div style="font-size:13px;opacity:.85">부가세 포함 · 세금계산서 또는 현금영수증 발행</div>
         <ul>
-          <li>전체 자료 132권(9,902쪽) 무제한 다운로드 (매월 신규 추가)</li>
+          <li>전체 자료 132권(9,902쪽) 이용 · 학교당 하루 30파일까지 다운로드 (매월 신규 추가)</li>
           <li>학교 코드 하나로 선생님 5명까지 등록 (추가 계정은 관리자 요청)</li>
           <li>교육 목적 인쇄·배부 이용 허락 포함</li>
           <li>학교인쇄통 제본 인쇄 주문 시 인쇄비 5% 할인</li>
-          <li>계좌이체 · 학교 법인카드 · 개인 카드 · 휴대폰 결제 / 세금계산서·현금영수증 발행</li>
+          <li>계좌이체 · 학교 법인카드 · 개인 카드 · 휴대폰 결제 / 세금계산서·현금영수증 발행 (앱에서는 휴대폰 결제)</li>
         </ul>
         <div class="note">자료 나눔에 참여해 주신 선생님의 학교는 첫 1년 무료 이용권을 드립니다. 신청서의 '나눔 참여 코드'에 안내받은 코드를 입력해 주세요.</div>
       </div>
@@ -820,6 +823,14 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
         <input value="admin@sen.go.kr" placeholder="계산서 받을 이메일" style="margin-top:6px"></div>
       <div class="f"><label>나눔 참여 코드 (있는 경우)</label><input placeholder="예: SHARE-2026-0132"></div>
       <div class="f"><label>요청 사항</label><textarea rows="2" placeholder="시작 희망일, 추가 계정 요청 등"></textarea></div>
+      <details class="agree" style="margin-top:14px;font-size:13px;line-height:1.6"><summary style="cursor:pointer;font-weight:600">개인정보 수집·이용 안내 · 환불 규정 보기</summary>
+        <p style="margin:8px 0 4px"><b>개인정보 수집·이용</b> — 항목: 학교명, 담당 선생님 성함, 연락처, 이메일, (세금계산서 선택 시) 사업자등록번호·발행처 이메일 / 목적: 이용권 발급, 결제·증빙 발행, 만료 안내 / 보유 기간: 이용권 만료 후 5년(전자상거래법 거래기록 보존) 뒤 파기. 동의하지 않을 수 있으나, 동의하지 않으면 신청할 수 없습니다.</p>
+        <p style="margin:4px 0"><b>환불 규정</b> — 결제일부터 7일 안에 자료를 한 건도 내려받지 않았으면 전액 환불합니다. 자료를 내려받은 뒤에는 디지털 콘텐츠 특성상 청약철회가 제한됩니다(전자상거래법 제17조 제2항).</p>
+      </details>
+      <div class="radios" style="margin-top:10px;flex-direction:column;align-items:flex-start">
+        <label><input type="checkbox" required> (필수) 개인정보 수집·이용에 동의합니다</label>
+        <label><input type="checkbox" required> (필수) 환불 규정을 확인했습니다</label>
+      </div>
       <div class="f" style="margin-top:18px"><button class="btn pri lg" type="submit">이용권 신청서 보내기</button></div>
       <div class="muted" style="font-size:12px;margin-top:8px">문의 02-2269-1100 · tong2269@naver.com</div>
     </form>
@@ -842,7 +853,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
   <div class="crumb">디지털자료실 › <b>이용 가이드</b></div>
   <div class="grid how">
     <div class="card"><div class="k">1</div><h3>회원가입 후 학교 코드 입력</h3><p>회원가입 화면의 '학교 코드' 칸에 담당 선생님께 받은 코드를 넣으면 같은 학교로 묶입니다.</p></div>
-    <div class="card"><div class="k">2</div><h3>자료 상세에서 PDF 다운로드</h3><p>다운로드 링크는 발급 후 10분간만 유효합니다. 파일에는 학교명이 자동 표기됩니다.</p></div>
+    <div class="card"><div class="k">2</div><h3>자료 상세에서 PDF 다운로드</h3><p>다운로드 링크는 발급 후 10분간만 유효합니다. 학교당 하루 30파일까지 내려받을 수 있고, 파일에는 학교명이 자동 표기됩니다.</p></div>
     <div class="card"><div class="k">3</div><h3>인쇄 주문으로 연결</h3><p>'이 자료로 인쇄 주문'을 누르면 부수·제본을 고르는 학교인쇄통 주문 화면으로 이동합니다.</p></div>
   </div>
 </section>
@@ -912,7 +923,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
       <span class="chip">① 유료 회원</span>
       <b style="display:block;font-size:17px;margin:10px 0 8px">연간 이용권 결제 학교</b>
       <dl class="kv" style="font-size:13px">
-        <dt>자료실</dt><dd>전체 무제한</dd>
+        <dt>자료실</dt><dd>전체 자료 · 하루 30파일</dd>
         <dt>인쇄 할인</dt><dd>적용 <span class="chip ok">확정 5%</span></dd>
         <dt>유효기간</dt><dd>결제일부터 1년</dd>
       </dl>
@@ -921,7 +932,7 @@ th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
       <span class="chip gold">② 자료제공단</span>
       <b style="display:block;font-size:17px;margin:10px 0 8px">자료를 제공한 선생님 · 자문단</b>
       <dl class="kv" style="font-size:13px">
-        <dt>자료실</dt><dd>전체 무제한</dd>
+        <dt>자료실</dt><dd>전체 자료 · 하루 30파일</dd>
         <dt>인쇄 할인</dt><dd>적용 <span class="chip ok">확정 5%</span></dd>
         <dt>유효기간</dt><dd>코드 발급일부터 1년</dd>
       </dl>
